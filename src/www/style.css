@@ -1,0 +1,50 @@
+body {
+    margin: 0 auto;
+    max-width: 800px;
+    border: 1px solid black;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 2px solid black;
+   
+}
+#logo-img {
+    height: 30px;
+}
+
+
+
+footer nav div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+footer nav div img {
+    height: 23px;
+    margin: 5px;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0px;
+    border-top: 2px solid black;
+}
+
+#toggle-nav {
+    display: flex;
+    justify-content: space-around;
+}
+#toggle-nav a {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid black;
+   
+}
+
+#notes-list {
+    background: rgba(0, 0, 255, 0.158);
+}
