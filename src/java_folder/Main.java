@@ -26,13 +26,18 @@ public class Main {
            res.json(notes);
         });
 
+
+        // DETTA ÄR BARA TEST/SLASK/PISS
+        appTest.post("/rest/notes", (req,res) -> {
+            db.addNote("Test-titel", "Testanteckningingingignig");
+
+        });
+
         try {
             appTest.use(Middleware.statics(Paths.get("src/www/").toString()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
 
     }
 }

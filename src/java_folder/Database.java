@@ -8,7 +8,6 @@ import java.util.List;
 public class Database {
 
     private Connection conn;
-
     public Database() {
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:pimordieDatabase.db");
@@ -39,9 +38,19 @@ public class Database {
 
     }
 
+    public void addNote(String title, String text) { //denna är najs om vi kan nå genom någon input alltså
+        try {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO notes (title, text) VALUES(?, ?)");
+            stmt.setString(1, title);
+            stmt.setString(2, text);
+
+            stmt.executeUpdate(); //Update och inte Query
 
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-
+    }
 
 }

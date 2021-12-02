@@ -1,6 +1,7 @@
 package java_folder;
 
 
+
 public class Notes {
     private int note_id;
     private String title, text;
@@ -43,6 +44,8 @@ public class Notes {
     public void setNote_id(int note_id) {
         this.note_id = note_id;
     }
+
+
 
 
 }
