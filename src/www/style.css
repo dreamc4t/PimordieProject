@@ -45,6 +45,9 @@ header{
     height: 60%;
     width: 100%;
     background-color: rgb(31,71,72);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*footer*/
@@ -339,4 +342,84 @@ strong{
     height: 1px;
     margin: 5px;
 }
+/*about us*/
 
+#about-main{
+    height: 90%;
+    width: 60%;
+    border:solid rgb(255, 255, 255, 0.7)
+}
+#about-top{
+    height: 35%;
+    width: 100%;
+    display: flex;
+}
+#img-teamwork{
+    height: 100%;
+    width: 50%;
+}
+#about-welcome{
+    height: 100%;
+    width: 50%;
+    padding-left: 70px;
+    padding-right: 30px;
+    background-color:rgb(68,140,93);
+    color: rgb(30,53,109);
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#about-middle{
+    height: 30%;
+    width: 100%;
+    display: flex;
+}
+#about-us{
+    width: 30%;
+    background-color:rgb(68,140,93);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(30,53,109);
+}
+#about-us-text{
+    width: 40%;
+    background-color: rgb(31, 71, 72, 0.5);
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#about-middle-color{
+    width: 30%;
+    background-color: rgb(30,53,109);
+}
+#about-bottom{
+    height: 35%;
+    width: 100%;
+    display: flex;
+}
+#about-bottom-color{
+    width: 50%;
+    background-color: rgb(30,53,109);
+    color: rgb(68,140,93);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+#img-box-bottom{
+    width: 50%;
+    background-color:rgb(68,140,93);
+}
+#img-teamwork2{
+    height: 100%;
+    width: 100%;
+}
