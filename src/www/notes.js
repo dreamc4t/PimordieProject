@@ -1,3 +1,5 @@
+
+/* Denna .js-filen är redundant for now 
 let notes = [];
 
 document.onload = showNotes()
@@ -25,8 +27,10 @@ function renderNotes() {
 
 let testknapp = document.getElementById("testbutton");
 testknapp.addEventListener("click", addNote)
+*/
 
-/* ADD NOTE */ 
+
+/* ADD NOTE */  /*
 async function addNote() {
     console.log("Adding new note!");
     let note = {
@@ -40,7 +44,4 @@ async function addNote() {
     });
 
 }
-
-
-
-
+*/
