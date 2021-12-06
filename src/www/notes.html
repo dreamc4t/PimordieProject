@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anteckningar</title>
     <link rel ="stylesheet" href="style.css">
+    <script src="/footer.js"></script>
     <script defer src="notes.js"></script>
+    <script src="/main.js" defer></script>
 </head>
 <body>
     <header>
@@ -35,19 +37,34 @@
     </nav>
 
     <footer>
-        <div>
-            Pimordie ©
+        <div id="logo-box">
+            <img id="footer-logo" src="/img/pimordie_logo.png" alt="">
         </div>
-
-        <nav>
-            <div id="social-div">
-                <a href="https://www.facebook.com/"><img src="/img/Facebook60x60.png"></a>
-                <a href="https://www.instagram.com/"><img src="/img/Instagram60x60.png"></a>
-                <a href="https://www.youtube.com/"><img src="img/YouTube60x60.png"></a>
-                <a href="https://twitter.com/home"><img src="img/Twitter60x60.png"></a>
-            </div>         
-        </nav>
-       
+        <div id="nav-box">
+            <div id="nav-box-top">
+                <div id="inner-box">
+                    <a id="nav-logos" href="#sign-up"><img id="signup" src="/img/signup.png" alt=""></a>
+                    <h5 id="nav-logos-signup">SIGN UP</h5>
+                </div>
+                <div id="inner-box">
+                    <a id="nav-logos" href="#about-us"><img id="about" src="/img/aboutUS.png" alt=""></a>
+                    <h5 id="nav-logos-about">ABOUT US</h5>
+                </div>
+                <div id="inner-box">
+                    <a id="nav-logos" href="#contact"><img id="contact" src="/img/contact.png" alt=""></a>
+                    <h5 id="nav-logos-contact">CONTACT</h5>
+                </div>
+            </div>
+            <div id="nav-box-bottom">
+                <h4 id="copy">PimOrDie ©</h4>
+            </div>
+        </div>
+        <div id="social-box">
+                <a id="social" href="https://www.facebook.com/"> <strong id="">FACEBOOK</strong> </a>
+                <a id="social" href="https://twitter.com/"> <strong>TWITTER</strong></a>
+                <a id="social" href="https://www.youtube.com/"> <strong>YOUTUBE</strong> </a>
+                <a id="social" href="https://www.instagram.com/"> <strong>INSTAGRAM</strong> </a>
+        </div>
     </footer>
 
 </body>
