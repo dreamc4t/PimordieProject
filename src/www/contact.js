@@ -16,16 +16,16 @@ class Contact{
             <div id="contact-main">
                 <div id="contact-contact">
                     <div id="contact-phone">
-                        <img id="contact-logo" src="Pictures/phoneLogo.png" alt="">
-                        <h5 id="contact-text">Jacks nummer</h5>
+                        <img id="contact-logo" src="img/phoneLogo.png" alt="">
+                        <h5 id="contact-text">+46 734 434 432</h5>
                     </div>
                     <div id="contact-email">
-                        <img id="contact-logo" src="Pictures/emailLogo.png" alt="">
-                        <h5 id="contact-text">Dennis Email</h5>
+                        <img id="contact-logo" src="img/emailLogo.png" alt="">
+                        <h5 id="contact-text">Info@PimOrDie.com</h5>
                     </div>
                     <div id="contact-address">
-                        <img id="contact-logo" src="Pictures/mapLogo.png" alt="">
-                        <h5 id="contact-text">Eriks adress</h5>
+                        <img id="contact-logo" src="img/mapLogo.png" alt="">
+                        <h5 id="contact-text">Propellergatan 1, 211 15, Malmö</h5>
                     </div>
                 </div>
                 <div id="contact-map">
