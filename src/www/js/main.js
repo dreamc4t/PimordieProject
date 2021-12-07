@@ -4,8 +4,6 @@ let aboutUs = new AboutUs();
 let notes = new Notes();
 
 
-//document.querySelector('main').innerHTML = notes.render();
-
 onhashchange = changePage;
 changePage();
 
@@ -19,7 +17,7 @@ function changePage() {
         break;
 
         case('todo'):
-        document.querySelector('main').innerHTML = "<h2> RENDERIN TO-DO LIST HERE </h2>";
+        document.querySelector('main').innerHTML = "<h2> RENDER IN TO-DO LIST HERE </h2>";
         break;
 
         case('sign-up'):
