@@ -1,19 +1,20 @@
 class Nav{
     menu = [
-        {href:"#notes", name: 'Notes'},
-        {href:"#todo", name: 'Todo'}
+        {href:"#notes", name: 'Notes', idName: 'notesId'},
+        {href:"#todo", name: 'Todo', idName: 'todoId'}
     ];
 
     renderMainNav() {
         let items = '';
+
         for (let item of this.menu) {
-       //     items += `<a href="${item.href}">${item.name}</a>`;
-       
-       items += `<a href="${item.href}">${item.name}</a>`;
+
+       items += `<a href="${item.href}" id="${item.idName}">${item.name}</a>`;
        
         }
+        
         return `
-        <nav id="toggle-nav">
+        <nav>
             ${items}
         </nav>
         `;
