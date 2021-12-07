@@ -1,10 +1,8 @@
 let nav = new Nav();
-let contact = new Contact();
-let aboutUs = new AboutUs();
-let toDoList = new ToDoList();
 
 
-document.querySelector('#toggle-nav').innerHTML = nav.render();
+
+document.querySelector('main').innerHTML = nav.renderMainNav();
 
 onhashchange = changePage;
 changePage();
@@ -19,23 +17,26 @@ function changePage() {
         break;
 
         case('todo'):
-        document.querySelector('main').innerHTML = toDoList.renderToDoList();
+        document.querySelector('main').innerHTML = "<h2> RENDERIN TO-DO LIST HERE </h2>";
         break;
 
         case('sign-up'):
-        document.querySelector('main').innerHTML = "<h2> SIGN UP HERE </h2>";
+        let signUp = new SignUp();
+        document.querySelector('main').innerHTML = signUp.renderSignUp();
         break;
 
         case('about-us'):
+        let aboutUs = new AboutUs();
         document.querySelector('main').innerHTML = aboutUs.renderAboutUs();
         break;
 
         case('contact'):
+        let contact = new Contact();
         document.querySelector('main').innerHTML = contact.renderContact();
         break;
 
-        default:
-            document.querySelector('main').innerHTML = result.join('');
+        default: 
+        document.querySelector('main').innerHTML = result.join('');
     }
 }
 
