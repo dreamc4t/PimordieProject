@@ -7,6 +7,7 @@
 body{
     height: 100vh;
     width: 100%;
+    background-color: rgb(31,71,72);
 }
 
 header{
@@ -39,8 +40,16 @@ header{
     color: white;
     font-size: 50px;
 }
+main{
+    height: 60%;
+    width: 100%;
+    background-color: rgb(31,71,72);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
+/* Denna behövs väl ej längre?
 #main-wrapper{
     height: 60%;
     width: 100%;
@@ -49,6 +58,7 @@ header{
     justify-content: center;
     align-items: center;
 }
+*/
 
 /*footer*/
 footer{
@@ -225,6 +235,7 @@ strong{
     flex-direction: column;
 }
 #contact-headline{
+    margin-top: 15px;
     font-size: 40px;
     padding-left: 50px;
 }
@@ -272,16 +283,13 @@ strong{
     border-radius: 30%;
 }
 #contact-text{
-    height: 35px;
+    height: 25px;
     width: 400px;
-    font-size: 30px;
+    font-size: 20px;
     padding-left: 15px;
     align-items: center;
 }
-#contact-map{
-    height: 100%;
-    width: 40%;
-}
+
 
 
 #contact-rightside{
@@ -334,7 +342,7 @@ strong{
     height: 80%;
     width: 80%;
     border-radius: 10%;
-    margin-left: 65px;
+    margin-left: 40px;
     border:solid white;
 
 
@@ -366,7 +374,7 @@ strong{
     padding-right: 30px;
     background-color:rgb(68,140,93);
     color: rgb(30,53,109);
-    font-size: 40px;
+    font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -379,7 +387,7 @@ strong{
 #about-us{
     width: 30%;
     background-color:rgb(68,140,93);
-    font-size: 50px;
+    font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -425,24 +433,128 @@ strong{
     width: 100%;
 }
 
-
-/* #toggle-nav, alltså Notes eller To-do knapparna */ 
-#toggle-nav nav {
+/*sign up*/
+#signup-mainbox{
     display: flex;
-    background-color: hotpink;
+    height: 90%;
+    width: 60%;
+    border:solid rgb(255, 255, 255, 0.7)
+    
+}
+#signup-leftbox{
+    width: 50%;
+    height: 100%;
+}
+#signup-img{
+    height: 100%;
+    width: 100%;
+}
+#signup-rightbox{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(30,53,109);
+    color: white;
+}
+#signup-title{
+    margin-left: 50px;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    
+}
+#signup-email{
+    margin-left: 50px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+#email-input{
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 6%;
+    outline: none;
+}
+#signup-password{
+    margin-left: 50px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+#password-input{
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 6%;
+    outline: none;
+}
+#show-password{
+    display: flex;
+    margin-left: 50px;
+    height: 10%;
+    align-items: center
+}
+#checkbox{
+    margin-right: 10px;
+}
+#password-text{
+
+}
+#signup-button{
+    border-radius: 20%;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 8%;
+    justify-content: center;
+}
+
+/* .toggle-nav, alltså Notes eller To-do knapparna */ 
+.toggle-nav nav {
+    display: flex;
     justify-content: space-evenly;
+    padding-bottom: 20px;
 }
 
-#toggle-nav a {
-    background-color: lawngreen;
-    padding: 30px 40px;
-    border: 1px black solid;
+.toggle-nav a {
+    background-color:  rgb(68,140,93);
+    padding: 26px 35px;
+    border: 2px white solid;
     border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgb(43, 39, 39);
+    
 }
 
-#toggle-nav a:hover {
-    background-color: lightcoral;
+.toggle-nav a:hover {
+    background-color: rgba(214, 208, 208, 0.74);
 }
 
+/* To do listan */ 
+#to-do-list {
+    list-style: none;
+    background-color: greenyellow;
+    padding: 2px;
+}
 
+#to-do-list li {
+    border: 1px black solid;
+    padding: 5px;
+    margin: 5px;
+    width: 650px;
+    
+}
+
+#to-do-list li button {
+    padding: 0px 10px;
+   
+}
+
+#c #to-do-list li input {
+    width: 550px;
+}
+    
 

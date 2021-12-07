@@ -7,6 +7,7 @@
 body{
     height: 100vh;
     width: 100%;
+    background-color: rgb(31,71,72);
 }
 
 header{
@@ -64,6 +65,7 @@ main{
     height: 400px;
     width: 300px;
 }
+*/
 
 /*footer*/
 footer{
@@ -511,4 +513,52 @@ strong{
     height: 8%;
     justify-content: center;
 }
+
+/* .toggle-nav, alltså Notes eller To-do knapparna */ 
+.toggle-nav nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+.toggle-nav a {
+    background-color:  rgb(68,140,93);
+    padding: 26px 35px;
+    border: 2px white solid;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgb(43, 39, 39);
+    
+}
+
+.toggle-nav a:hover {
+    background-color: rgba(214, 208, 208, 0.74);
+}
+
+/* To do listan */ 
+#to-do-list {
+    list-style: none;
+    background-color: greenyellow;
+    padding: 2px;
+}
+
+#to-do-list li {
+    border: 1px black solid;
+    padding: 5px;
+    margin: 5px;
+    width: 650px;
+    
+}
+
+#to-do-list li button {
+    padding: 0px 10px;
+   
+}
+
+#c #to-do-list li input {
+    width: 550px;
+}
+    
 
