@@ -13,8 +13,6 @@ public class Main {
         Express app = new Express();
         Database db = new Database();
 
-        app.listen(3000);
-        System.out.println("Running on port 3000");
 
 
         app.get("/hello-world", (req, res) -> {
@@ -23,12 +21,28 @@ public class Main {
         });
 
         app.get("/rest/notes", (req, res) -> {
-           List<Notes> notes = db.getNotes();
+           List<Note> notes = db.getNotes();
+
            res.json(notes);
         });
 
         app.post("/rest/notes", (req,res) -> {
-            db.addNote("Test-titel", "Testanteckningingingignig");
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println(note.toString());
+
+            res.send("Post OK!");
+
+            db.addNote(note);
+        });
+
+        app.delete("/rest/notes/:id", (req,res) -> {
+
+            int note_id =  Integer.parseInt(req.getParam("id"));
+
+            res.send("DELETED");
+
+            db.deleteNote(note_id);
 
         });
 
@@ -38,5 +52,7 @@ public class Main {
             e.printStackTrace();
         }
 
+        app.listen(3000);
+        System.out.println("Running on port 3000");
     }
 }
