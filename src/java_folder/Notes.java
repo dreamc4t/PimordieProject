@@ -1,10 +1,16 @@
 package java_folder;
 
 
+import java.time.Instant;
 
 public class Notes {
     private int note_id;
     private String title, text;
+    private long last_updated_datetime;
+    private long created_datetime;
+
+
+    //Instant instant = Instant.ofEpochSecond(unixTime);
 
 
     public Notes() {
