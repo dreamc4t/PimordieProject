@@ -23,7 +23,6 @@ public class Database {
             PreparedStatement stmntName = conn.prepareStatement("SELECT * FROM notes");
             ResultSet resultSet = stmntName.executeQuery();
 
-
             Notes[] notesFromResultSet = (Notes[]) Utils.readResultSetToObject(resultSet, Notes[].class);
             notesList = List.of(notesFromResultSet);
 
