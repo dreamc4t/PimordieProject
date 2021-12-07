@@ -27,6 +27,10 @@ public class Notes {
         this.note_id = note_id;
     }
 
+    public int getNote_id() {
+        return note_id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -43,15 +47,15 @@ public class Notes {
         this.text = text;
     }
 
-    public int getNote_id() {
-        return note_id;
+    public long getLast_updated_datetime() {
+        return last_updated_datetime;
     }
 
-    public void setNote_id(int note_id) {
-        this.note_id = note_id;
+    public void setLast_updated_datetime(long last_updated_datetime) {
+        this.last_updated_datetime = last_updated_datetime;
     }
 
-
-
-
+    public long getCreated_datetime() {
+        return created_datetime;
+    }
 }

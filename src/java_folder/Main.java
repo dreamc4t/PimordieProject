@@ -13,8 +13,6 @@ public class Main {
         Express app = new Express();
         Database db = new Database();
 
-        app.listen(3000);
-        System.out.println("Running on port 3000");
 
 
         app.get("/hello-world", (req, res) -> {
@@ -37,6 +35,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        app.listen(3000);
+        System.out.println("Running on port 3000");
     }
 }
