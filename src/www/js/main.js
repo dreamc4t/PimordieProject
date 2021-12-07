@@ -1,7 +1,8 @@
 let nav = new Nav();
 
-document.querySelector('#toggle-nav').innerHTML = nav.renderMainNav();
+document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
+/*  +"<style>  #notes a{ background-color: linen; } </style>" */
 
 onhashchange = changePage;
 changePage();
@@ -12,12 +13,12 @@ function changePage() {
 
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = "<h2> RENDER IN NOTES HERE </h2>";
+        document.querySelector('main').innerHTML = "<h2> RENDER IN NOTES HERE </h2>" + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
 
         case('todo'):
         let toDoList = new ToDoList();
-        document.querySelector('main').innerHTML = toDoList.renderToDoList();
+        document.querySelector('main').innerHTML = toDoList.renderToDoList() + " <style> #todoId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
 
         case('sign-up'):
@@ -40,5 +41,8 @@ function changePage() {
     }
 }
 
+function activePage() {
+
+}
 
 

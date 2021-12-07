@@ -510,24 +510,26 @@ strong{
     justify-content: center;
 }
 
-/* #toggle-nav, alltså Notes eller To-do knapparna */ 
-#toggle-nav nav {
+/* .toggle-nav, alltså Notes eller To-do knapparna */ 
+.toggle-nav nav {
     display: flex;
     justify-content: space-evenly;
     padding-bottom: 20px;
 }
 
-#toggle-nav a {
+.toggle-nav a {
     background-color:  rgb(68,140,93);
     padding: 26px 35px;
-    border: 1px black solid;
+    border: 2px white solid;
     border-radius: 10px;
     text-decoration: none;
     font-size: 18px;
+    font-weight: bolder;
+    color: rgb(43, 39, 39);
     
 }
 
-#toggle-nav a:hover {
+.toggle-nav a:hover {
     background-color: rgba(214, 208, 208, 0.74);
 }
 
@@ -551,7 +553,8 @@ strong{
    
 }
 
-#c#to-do-list li input {
+#c #to-do-list li input {
     width: 550px;
 }
     
+
