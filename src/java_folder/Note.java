@@ -3,7 +3,7 @@ package java_folder;
 
 import java.time.Instant;
 
-public class Notes {
+public class Note {
     private int note_id;
     private String title, text;
     private long last_updated_datetime;
@@ -13,19 +13,14 @@ public class Notes {
     //Instant instant = Instant.ofEpochSecond(unixTime);
 
 
-    public Notes() {
+    public Note() {
     }
 
-    public Notes(String title, String text) {
+    public Note(String title, String text) {
         this.title = title;
         this.text = text;
     }
 
-    public Notes(String title, String text, int note_id) {
-        this.title = title;
-        this.text = text;
-        this.note_id = note_id;
-    }
 
     public int getNote_id() {
         return note_id;
@@ -57,5 +52,16 @@ public class Notes {
 
     public long getCreated_datetime() {
         return created_datetime;
+    }
+
+    @Override
+    public String toString() {
+        return "Notes{" +
+                "note_id=" + note_id +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", last_updated_datetime=" + last_updated_datetime +
+                ", created_datetime=" + created_datetime +
+                '}';
     }
 }
