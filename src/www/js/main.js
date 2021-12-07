@@ -1,8 +1,7 @@
 let nav = new Nav();
 
+document.querySelector('#toggle-nav').innerHTML = nav.renderMainNav();
 
-
-document.querySelector('main').innerHTML = nav.renderMainNav();
 
 onhashchange = changePage;
 changePage();
@@ -17,7 +16,8 @@ function changePage() {
         break;
 
         case('todo'):
-        document.querySelector('main').innerHTML = "<h2> RENDERIN TO-DO LIST HERE </h2>";
+        let toDoList = new ToDoList();
+        document.querySelector('main').innerHTML = toDoList.renderToDoList();
         break;
 
         case('sign-up'):
@@ -39,5 +39,6 @@ function changePage() {
         document.querySelector('main').innerHTML = result.join('');
     }
 }
+
 
 
