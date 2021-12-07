@@ -1,10 +1,10 @@
 let nav = new Nav();
 let contact = new Contact();
 let aboutUs = new AboutUs();
+let notes = new Notes();
 
 
-
-document.querySelector('nav').innerHTML = nav.render();
+//document.querySelector('main').innerHTML = notes.render();
 
 onhashchange = changePage;
 changePage();
@@ -15,7 +15,7 @@ function changePage() {
 
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = "<h2> RENDER IN NOTES HERE </h2>";
+        notes.render();
         break;
 
         case('todo'):
@@ -35,7 +35,7 @@ function changePage() {
         break;
 
         default:
-            document.querySelector('main').innerHTML = result.join('');
+            document.querySelector('main').innerHTML = notes.render();
     }
 }
 

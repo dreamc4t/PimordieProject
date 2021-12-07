@@ -1,6 +1,7 @@
 let notes = [];
 
-document.onload = showNotes()
+document.onload = showNotes();
+document.getElementById("testbutton").addEventListener("click", addNote);
 
 async function showNotes() {
     let result = await fetch('/rest/notes') 
@@ -8,23 +9,26 @@ async function showNotes() {
     renderNotes();
 }
 
+function renderNotesPage() {
+    return `
+    <div id="notes-list"></div>  Här är det notes från JS via DATABASEN
+    <button id="testbutton">TESTKNAPP</button>
+    `
+}
+
 function renderNotes() {
     let notesList = document.getElementById("notes-list");
-    notesList.innerHTML = ""; 
-    
+    notesList.innerHTML = "";
     for (let note of notes) {
-        let notesLi = `
+        notesList.insertAdjacentHTML('beforeend', `
         <p>
             Title: ${note.title} <br>
             Text: ${note.text} <br>
         </p>
-        `;
-        notesList.innerHTML += notesLi;
+        `);
     }
 }
 
-let testknapp = document.getElementById("testbutton");
-testknapp.addEventListener("click", addNote)
 
 /* ADD NOTE */ 
 async function addNote() {
@@ -38,7 +42,6 @@ async function addNote() {
         method: "POST",
         body: JSON.stringify(note)
     });
-
 }
 
 

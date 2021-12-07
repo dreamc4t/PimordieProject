@@ -4,7 +4,8 @@ let aboutUs = new AboutUs();
 
 
 
-document.querySelector('nav').innerHTML = nav.render();
+document.querySelector('#toggle-nav').innerHTML = "test";
+console.log("helllloooo")
 
 onhashchange = changePage;
 changePage();
@@ -15,7 +16,7 @@ function changePage() {
 
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = "<h2> RENDER IN NOTES HERE </h2>";
+        document.querySelector('main').innerHTML = notes.renderNotesPage();
         break;
 
         case('todo'):
@@ -35,7 +36,7 @@ function changePage() {
         break;
 
         default:
-            document.querySelector('main').innerHTML = result.join('');
+            document.querySelector('main').innerHTML = renderNotesPage();
     }
 }
 

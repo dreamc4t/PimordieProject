@@ -1,6 +1,48 @@
+
+class Notes {
+
+    constructor() {
+        this.render();
+        //document.getElementById("testbutton").addEventListener("click", addNote);
+    }
+
+    render() {
+        return `
+            <div id="notes-list"></div>  Här är det notes från JS via DATABASEN
+            <button id="testbutton">TESTKNAPP</button>
+        `;
+    }
+
+    showNotes() {
+        let notesList = document.getElementById("notes-list");
+        notesList.innerHTML = "";
+        let notes = this.getNotesFromDB();
+        for (let note of notes) {
+        notesList.insertAdjacentHTML('beforeend', `
+            <p>
+                Title: ${note.title} <br>
+                Text: ${note.text} <br>
+            </p>
+        `);
+        }
+    }
+
+    getNotesFromDB() {
+        //result = await fetch('/rest/notes');
+        //notes = await result.json();
+        let notes = [];
+        notes.push({
+            title: 'title-test',
+            text: 'text-test'
+        });
+        return notes;
+    }
+
+}
+/*
 let notes = [];
 
-document.onload = showNotes()
+
 
 async function showNotes() {
     let result = await fetch('/rest/notes') 
@@ -8,26 +50,29 @@ async function showNotes() {
     renderNotes();
 }
 
+function renderNotesPage() {
+    return `
+    <div id="notes-list"></div>  Här är det notes från JS via DATABASEN
+    <button id="testbutton">TESTKNAPP</button>
+    `
+}
+
 function renderNotes() {
     let notesList = document.getElementById("notes-list");
-    notesList.innerHTML = ""; 
-    
+    notesList.innerHTML = "";
     for (let note of notes) {
-        let notesLi = `
+        notesList.insertAdjacentHTML('beforeend', `
         <p>
             Title: ${note.title} <br>
             Text: ${note.text} <br>
         </p>
-        `;
-        notesList.innerHTML += notesLi;
+        `);
     }
 }
 
-let testknapp = document.getElementById("testbutton");
-testknapp.addEventListener("click", addNote)
 
 /* ADD NOTE */ 
-async function addNote() {
+/*async function addNote() {
     console.log("Adding new note!");
     let note = {
         title: "test-title-for-text-note",
@@ -38,8 +83,7 @@ async function addNote() {
         method: "POST",
         body: JSON.stringify(note)
     });
-
-}
+}*/
 
 
 
