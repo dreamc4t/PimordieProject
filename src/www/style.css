@@ -429,12 +429,12 @@ strong{
 /* #toggle-nav, alltså Notes eller To-do knapparna */ 
 #toggle-nav nav {
     display: flex;
-    background-color: hotpink;
+    background-color: rgb(121, 72, 96);
     justify-content: space-evenly;
 }
 
 #toggle-nav a {
-    background-color: lawngreen;
+    background-color: rgba(126, 252, 0, 0.274);
     padding: 30px 40px;
     border: 1px black solid;
     border-radius: 10px;
@@ -443,6 +443,30 @@ strong{
 #toggle-nav a:hover {
     background-color: lightcoral;
 }
+
+/* To do listan */ 
+#to-do-list {
+    list-style: none;
+    background-color: greenyellow;
+    padding: 2px;
+}
+
+#to-do-list li {
+    border: 1px black solid;
+    padding: 5px;
+    margin: 5px;
+    width: 650px;
+}
+
+#to-do-list li button {
+    padding: 0px 10px;
+   
+}
+
+#c#to-do-list li input {
+    width: 550px;
+}
+    
 
 
 

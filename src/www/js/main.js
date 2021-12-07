@@ -1,7 +1,7 @@
 let nav = new Nav();
 let contact = new Contact();
 let aboutUs = new AboutUs();
-
+let toDoList = new ToDoList();
 
 
 document.querySelector('#toggle-nav').innerHTML = nav.render();
@@ -19,7 +19,7 @@ function changePage() {
         break;
 
         case('todo'):
-        document.querySelector('main').innerHTML = "<h2> RENDER IN TO-DO LIST HERE </h2>";
+        document.querySelector('main').innerHTML = toDoList.renderToDoList();
         break;
 
         case('sign-up'):
