@@ -13,8 +13,9 @@ public class Main {
         Express appTest = new Express();
         Database db = new Database();
 
-        appTest.listen(3000);
-        System.out.println("Running on port 3000");
+        int port = 3000;
+        appTest.listen(port);
+        System.out.println("Running on port " + port);
 
 
         appTest.get("/", (req, res) -> {
