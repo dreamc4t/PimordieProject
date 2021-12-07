@@ -1,75 +1,48 @@
 
 class Notes {
 
-    constructor() {
-        this.render();
-        //document.getElementById("testbutton").addEventListener("click", addNote);
-    }
-
     render() {
-        return `
-            <div id="notes-list"></div>  Här är det notes från JS via DATABASEN
-            <button id="testbutton">TESTKNAPP</button>
+        document.querySelector('main').innerHTML = `
+            <div id="notes-container"></div>
         `;
+        this.showNotes();
     }
 
     showNotes() {
-        let notesList = document.getElementById("notes-list");
+        let notesList = document.getElementById("notes-container");
         notesList.innerHTML = "";
         let notes = this.getNotesFromDB();
         for (let note of notes) {
         notesList.insertAdjacentHTML('beforeend', `
-            <p>
-                Title: ${note.title} <br>
-                Text: ${note.text} <br>
-            </p>
+            <div class="note">
+                <h2>Title: ${note.title}</h2>
+                <h3>Text: ${note.text}</h3>
+            </div>
         `);
         }
     }
 
     getNotesFromDB() {
-        //result = await fetch('/rest/notes');
-        //notes = await result.json();
-        let notes = [];
-        notes.push({
-            title: 'title-test',
-            text: 'text-test'
+        // Create temporary mock notes while waiting for backend to get ready
+        let mockNotes = [];
+        for(let i = 1; i <= 20; i++) {
+            mockNotes.push({
+                title: `Note ${i}`,
+                text: `this is note number ${i}`
+            })
+        }
+        return mockNotes;
+
+        /*
+        let result = await fetch("/rest/notes", {
+            method: "GET"
         });
-        return notes;
+        let notesFromDB = await result.json();
+        return notesFromDB;
+        */
     }
 
 }
-/*
-let notes = [];
-
-
-
-async function showNotes() {
-    let result = await fetch('/rest/notes') 
-    notes = await result.json();
-    renderNotes();
-}
-
-function renderNotesPage() {
-    return `
-    <div id="notes-list"></div>  Här är det notes från JS via DATABASEN
-    <button id="testbutton">TESTKNAPP</button>
-    `
-}
-
-function renderNotes() {
-    let notesList = document.getElementById("notes-list");
-    notesList.innerHTML = "";
-    for (let note of notes) {
-        notesList.insertAdjacentHTML('beforeend', `
-        <p>
-            Title: ${note.title} <br>
-            Text: ${note.text} <br>
-        </p>
-        `);
-    }
-}
-
 
 /* ADD NOTE */ 
 /*async function addNote() {

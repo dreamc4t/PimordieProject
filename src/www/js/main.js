@@ -1,14 +1,11 @@
-let nav = new Nav();
-
-
-
-document.querySelector('main').innerHTML = nav.renderMainNav();
+let notes = new Notes();
+notes.render();
 
 onhashchange = changePage;
 changePage();
 
 function changePage() {
-    let page = location.hash.replace('#', ''); 
+    let page = location.hash.replace('#', '');
     console.log(page);
 
     switch(page) {
@@ -36,7 +33,7 @@ function changePage() {
         break;
 
         default:
-            document.querySelector('main').innerHTML = notes.render();
+            notes.render();
     }
 }
 
