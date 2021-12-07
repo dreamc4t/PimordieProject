@@ -7,7 +7,10 @@ class Nav{
     renderMainNav() {
         let items = '';
         for (let item of this.menu) {
-            items += `<a href="${item.href}">${item.name}</a>`;
+       //     items += `<a href="${item.href}">${item.name}</a>`;
+       
+       items += `<a href="${item.href}">${item.name}</a>`;
+       
         }
         return `
         <nav id="toggle-nav">

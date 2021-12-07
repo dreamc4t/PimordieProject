@@ -424,3 +424,25 @@ strong{
     height: 100%;
     width: 100%;
 }
+
+
+/* #toggle-nav, alltså Notes eller To-do knapparna */ 
+#toggle-nav nav {
+    display: flex;
+    background-color: hotpink;
+    justify-content: space-evenly;
+}
+
+#toggle-nav a {
+    background-color: lawngreen;
+    padding: 30px 40px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+#toggle-nav a:hover {
+    background-color: lightcoral;
+}
+
+
+
