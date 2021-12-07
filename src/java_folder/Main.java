@@ -26,6 +26,7 @@ public class Main {
            res.json(notes);
         });
 
+
         app.post("/rest/notes", (req,res) -> {
             Note note = (Note) req.getBody(Note.class);
 
@@ -36,9 +37,9 @@ public class Main {
             db.addNote(note);
         });
 
-        app.delete("/rest/notes/:id", (req,res) -> {
+        app.delete("/rest/notes/:note_id", (req,res) -> {
 
-            int note_id =  Integer.parseInt(req.getParam("id"));
+            int note_id =  Integer.parseInt(req.getParam("note_id"));
 
             res.send("DELETED");
 

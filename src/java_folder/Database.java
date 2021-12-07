@@ -71,7 +71,7 @@ public class Database {
 
     public void deleteNote(int note_id){
         try {
-            PreparedStatement stmt =conn.prepareStatement("DELETE note WHERE note_id = ?");
+            PreparedStatement stmt =conn.prepareStatement("DELETE FROM notes WHERE note_id = ?");
             stmt.setInt(1,note_id);
 
             int i=stmt.executeUpdate();
