@@ -28,9 +28,6 @@ class Contact{
                         <h5 id="contact-text">Propellergatan 1, 211 15, Malmö</h5>
                     </div>
                 </div>
-                <div id="contact-map">
-                    <map name=""></map>
-                </div>
             </div>
         </article>
         <aside id="contact-rightside">
