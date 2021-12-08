@@ -1,14 +1,12 @@
 class ToDoList{
-    
-    
-
     async renderTodoList() {
         let todos = [];
         let result = await fetch('/rest/todo-list');
         todos = await result.json();
         
         let todoList = document.querySelector('#todoUl');
-        todoList.innerHTML = ""; 
+        todoList.innerHTML = "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>" ; 
+
     
         for(let todo of todos) {
             console.log(todo)
@@ -17,20 +15,46 @@ class ToDoList{
                 text: ${todo.text}
             </li>
             `;
-            todoList.innerHTML += todoLi + "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>";
+            todoList.innerHTML += todoLi ;
         }
-    }
-   
+        todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>";
 
-    async addTodo() {
+
+
+       let todoInput = document.getElementById("todoInput").value;
+        let addBtn = document.getElementById("todoAddButton");
+        addBtn.addEventListener("click", tester)
+ 
+        function tester() {
+            console.log(todoInput + "hOAIJSALDKj")
+        }
+        /*
+       this.addTodo("Hej du adasdasd test to do");
+
+
+     
+       */
+
+       
+
+
+
+    }
+
+
+
+    async addTodo(textInput) {
         console.log("Adding new todo list item!");
 
-        let data = {text: "TODO TODO text text test test test"};
         let rawResponse = await fetch('/rest/todo-list', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
+            body: JSON.stringify(textInput)
         });
+        
     }
+
+
+    
 
 }

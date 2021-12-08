@@ -497,27 +497,49 @@ strong{
 }
 
 /* To do listan */ 
-#to-do-list {
-    list-style: none;
-    background-color: greenyellow;
-    padding: 2px;
-}
 
-#to-do-list li {
+#todoUl {
+
+}
+#todoUl li{
+    list-style: none;
     border: 1px black solid;
     padding: 5px;
     margin: 5px;
-    width: 650px;
+    width: 500px;
+    
     
 }
 
-#to-do-list li button {
-    padding: 0px 10px;
-   
-}
-
-#c #to-do-list li input {
-    width: 550px;
-}
+/* TO DO INPUT + BUTTON */
+#todoInput {
+    margin-top: 5px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 0;
+    width: 400px;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  
+  /*  button */
+  #todoAddButton {
+    margin-top: 5px;
+    padding: 10px;
+    width: 100px;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+  
+  #todoAddButton:hover {
+    background-color: #bbb;
+  }
     
 
