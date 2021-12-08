@@ -1,33 +1,54 @@
-let notes = [];
 
-document.onload = showNotes()
+class Notes {
 
-async function showNotes() {
-    let result = await fetch('/rest/notes') 
-    notes = await result.json();
-    renderNotes();
-}
-
-function renderNotes() {
-    let notesList = document.getElementById("notes-list");
-    notesList.innerHTML = ""; 
-    
-    for (let note of notes) {
-        let notesLi = `
-        <p>
-            Title: ${note.title} <br>
-            Text: ${note.text} <br>
-        </p>
+    render() {
+        let toReturn = "";
+        toReturn += `
+            <div id="notes-container">
+                ${this.prepareNotesRender()}
+            </div>
         `;
-        notesList.innerHTML += notesLi;
+        return toReturn;
     }
-}
 
-let testknapp = document.getElementById("testbutton");
-testknapp.addEventListener("click", addNote)
+    prepareNotesRender() {
+        let notesRender = "";
+        let notes = this.getNotesFromDB();
+        for (let note of notes) {
+            notesRender += `
+                <div class="note">
+                    <h2>Title: ${note.title}</h2>
+                    <h3>Text: ${note.text}</h3>
+                </div>
+            `;
+        }
+        return notesRender;
+    }
+
+    getNotesFromDB() {
+        // Create temporary mock notes while waiting for backend to get ready
+        let mockNotes = [];
+        for(let i = 1; i <= 20; i++) {
+            mockNotes.push({
+                title: `Note ${i}`,
+                text: `this is note number ${i}`
+            })
+        }
+        return mockNotes;
+
+        /*
+        let result = await fetch("/rest/notes", {
+            method: "GET"
+        });
+        let notesFromDB = await result.json();
+        return notesFromDB;
+        */
+    }
+
+}
 
 /* ADD NOTE */ 
-async function addNote() {
+/*async function addNote() {
     console.log("Adding new note!");
     let note = {
         title: "test-title-for-text-note",
@@ -38,8 +59,7 @@ async function addNote() {
         method: "POST",
         body: JSON.stringify(note)
     });
-
-}
+}*/
 
 
 

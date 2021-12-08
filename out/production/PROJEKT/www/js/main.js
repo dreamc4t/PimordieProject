@@ -13,7 +13,7 @@ function changePage() {
 
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = "<h2> RENDER IN NOTES HERE </h2>" + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
+        document.querySelector('main').innerHTML = notes.renderNotesPage();
         break;
 
         case('todo'):
@@ -36,8 +36,8 @@ function changePage() {
         document.querySelector('main').innerHTML = contact.renderContact();
         break;
 
-        default: 
-        document.querySelector('main').innerHTML = result.join('');
+        default:
+            document.querySelector('main').innerHTML = renderNotesPage();
     }
 }
 

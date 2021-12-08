@@ -40,6 +40,7 @@ header{
     color: white;
     font-size: 50px;
 }
+
 main{
     height: 60%;
     width: 100%;
@@ -47,16 +48,24 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 
-/* Denna behövs väl ej längre?
-#main-wrapper{
-    height: 60%;
+/*Notes-page*/
+#notes-container {
+    height: 100%;
     width: 100%;
-    background-color: rgb(31,71,72);
+    padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items:flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.note {
+    background-color:beige;
+    height: 400px;
+    width: 300px;
 }
 */
 
@@ -498,9 +507,6 @@ strong{
 }
 #checkbox{
     margin-right: 10px;
-}
-#password-text{
-
 }
 #signup-button{
     border-radius: 20%;
