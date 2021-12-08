@@ -150,13 +150,13 @@ footer{
     width: 100%;
     padding: 20px 20px 0 20px;
     display: flex;
+    justify-content: center;
     gap: 20px;
 }
 #notes-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
     overflow: auto;
 }
 #notes-list button {
@@ -167,7 +167,7 @@ footer{
 }
 #currently-displayed-note {
     background-color: beige;
-    flex-grow: 3;
+    width: 700px;
     overflow: auto;
     padding: 20px;
 }

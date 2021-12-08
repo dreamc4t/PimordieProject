@@ -2,7 +2,6 @@
 class Notes {
 
     render() {
-        
         let toReturn = `
             <div id="notes-page">
                 <div id="notes-list">
@@ -13,9 +12,7 @@ class Notes {
                 <div id="currently-displayed-note"></div>
             </div>
         `;
-
         this.renderNotesList();
-        
         return toReturn;
     }
 
@@ -23,12 +20,22 @@ class Notes {
         let notesList = "";
         for (let note of await this.getNotesFromDB()) {
             notesList += `
-                <button onclick="notes.renderCurrentlyDisplayedNote(${note.note_id})">
-                    <h2>${note.id}Title: ${note.title}</h2>
+                <button id="note-button-${note.note_id}" onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markButtonAsActive(${note.note_id})">
+                    <h2>${note.title}</h2>
                 </button>
             `;
         }
         document.querySelector('#notes-list').insertAdjacentHTML('beforeend', notesList);
+    }
+
+    async markButtonAsActive(id) {
+        for (let note of await this.getNotesFromDB()) {
+            if(note.note_id === id) {
+                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgb(200,200,160)";
+            } else {
+                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "beige";
+            }
+        }
     }
 
     async renderCurrentlyDisplayedNote(id) {
@@ -42,26 +49,11 @@ class Notes {
     }
 
     async getNotesFromDB() {
-        // Create temporary mock notes while waiting for backend to get ready
-        /*let mockNotes = [];
-        for(let i = 1; i <= 15; i++) {
-            mockNotes.push({
-                id: i,
-                title: `Note ${i}`,
-                text: `this is note number ${i}`
-            })
-        }
-        return mockNotes;*/
-
-        
         let result = await fetch('/rest/notes');
         let notesFromDB = await result.json();
-        console.log('test')
-        console.log(notesFromDB);
         return notesFromDB;
         
     }
-
 }
 
 /* ADD NOTE */ 
