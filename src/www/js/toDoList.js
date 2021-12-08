@@ -1,25 +1,26 @@
 class ToDoList{
+    
+    
 
-    renderToDoList() {
-        return`
-         <ul id="to-do-list"> 
-                <li>
-                    <label for="checker">CHECKBOX TEST</label>
-                    <input type="checkbox" name="checker">
-                </li>
-                <li>
-                    <label for="checker">CHECKBOX TEST</label>
-                    <input type="checkbox" name="checker">
-                </li>
-                <li>
-                    <input type="text" id="to-do-list-input" placeholder="Add to do item...">
-                    <button id="add-button-to-do">Add</button>
-                </li>
-                
-            </ul>
-        `;
+    async renderTodoList() {
+        let todos = [];
+        let result = await fetch('/rest/todo-list');
+        todos = await result.json();
+        
+        let todoList = document.querySelector('#todoUl');
+        todoList.innerHTML = ""; 
+    
+        for(let todo of todos) {
+            console.log(todo)
+            let todoLi = `
+            <li>
+                text: ${todo.text}
+            </li>
+            `;
+            todoList.innerHTML += todoLi + "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>";
+        }
     }
-
+   
 
     async addTodo() {
         console.log("Adding new todo list item!");
