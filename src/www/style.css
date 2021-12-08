@@ -145,19 +145,34 @@ footer{
 }
 
 /*Notes-page*/
-#notes-container {
+#notes-page {
     height: 100%;
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     display: flex;
-    align-items:flex-start;
-    flex-wrap: wrap;
     gap: 20px;
 }
-.note {
+#notes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    overflow: auto;
+}
+#notes-list button {
+    width: 200px;
     background-color:beige;
-    height: 400px;
-    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+#currently-displayed-note {
+    background-color: beige;
+    flex-grow: 3;
+    overflow: auto;
+    padding: 20px;
+}
+#currently-displayed-note p {
+    font-size: 20px;
 }
 
 /*Social/download side*/
