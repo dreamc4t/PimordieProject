@@ -19,4 +19,17 @@ class ToDoList{
             </ul>
         `;
     }
+
+
+    async addTodo() {
+        console.log("Adding new todo list item!");
+
+        let data = {text: "TODO TODO text text test test test"};
+        let rawResponse = await fetch('/rest/todo-list', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+    }
+
 }

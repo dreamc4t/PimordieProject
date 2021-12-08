@@ -15,11 +15,12 @@ function changePage() {
 
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = notes.render();
+        document.querySelector('main').innerHTML = notes.render() + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
 
         case('todo'):
         let toDoList = new ToDoList();
+        toDoList.addTodo();
         document.querySelector('main').innerHTML = toDoList.renderToDoList() + " <style> #todoId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
 
@@ -43,8 +44,6 @@ function changePage() {
     }
 }
 
-function activePage() {
 
-}
 
 
