@@ -1,6 +1,7 @@
 let nav = new Nav();
 let notes = new Notes();
 
+
 document.querySelector('main').innerHTML = notes.render();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
@@ -12,16 +13,19 @@ changePage();
 function changePage() {
     let page = location.hash.replace('#', '');
     console.log(page);
-
+    
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = notes.render();
+        document.querySelector('main').innerHTML = notes.render() + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
 
+        
         case('todo'):
+        document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
         let toDoList = new ToDoList();
-        document.querySelector('main').innerHTML = toDoList.renderToDoList() + " <style> #todoId{ background-color: rgb(129, 155, 129);  } </style> ";
+        toDoList.renderTodoList();
         break;
+        
 
         case('sign-up'):
         let signUp = new SignUp();
@@ -43,8 +47,7 @@ function changePage() {
     }
 }
 
-function activePage() {
 
-}
+    
 
 
