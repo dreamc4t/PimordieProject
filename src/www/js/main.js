@@ -1,5 +1,7 @@
 let nav = new Nav();
+let notes = new Notes();
 
+document.querySelector('main').innerHTML = notes.render();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
@@ -13,7 +15,7 @@ function changePage() {
 
     switch(page) {
         case('notes'):
-        notes.render();
+        document.querySelector('main').innerHTML = notes.render();
         break;
 
         case('todo'):
@@ -37,7 +39,7 @@ function changePage() {
         break;
 
         default:
-            notes.render();
+            document.querySelector('main').innerHTML = notes.render();
     }
 }
 
