@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Running on port " + port);
 
         try {
-            app.use(Middleware.statics(Paths.get("src/www/").toString()));
+            app.use(Middleware.statics(Paths.get("src/www").toString()));
         } catch (IOException e) {
             e.printStackTrace();
         }
