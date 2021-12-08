@@ -1,8 +1,6 @@
 let nav = new Nav();
 let notes = new Notes();
 
-
-document.querySelector('main').innerHTML = notes.render();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
