@@ -2,25 +2,23 @@
 class Notes {
 
     render() {
-        let notesRender = prepareNotesForRender();
-        let renderToReturn =  `
-            <div id="notes-container">
-                ${notesRender}
-            </div>
+        document.querySelector('main').innerHTML = `
+            <div id="notes-container"></div>
         `;
-        return renderToReturn;
+        this.showNotes();
     }
 
-    prepareNotesForRender() {
-        let toReturn = "";
+    showNotes() {
+        let notesList = document.getElementById("notes-container");
+        notesList.innerHTML = "";
         let notes = this.getNotesFromDB();
         for (let note of notes) {
-            toReturn += `
-                <div class="note">
-                    <h2>Title: ${note.title}</h2>
-                    <h3>Text: ${note.text}</h3>
-                </div>
-            `;
+        notesList.insertAdjacentHTML('beforeend', `
+            <div class="note">
+                <h2>Title: ${note.title}</h2>
+                <h3>Text: ${note.text}</h3>
+            </div>
+        `);
         }
     }
 
