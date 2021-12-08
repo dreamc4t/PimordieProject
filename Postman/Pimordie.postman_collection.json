@@ -1,0 +1,23 @@
+{
+	"info": {
+		"_postman_id": "84640b6f-6cda-4ab0-94db-eae7f76354f3",
+		"name": "Pimordie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost",
+					"host": [
+						"localhost"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
