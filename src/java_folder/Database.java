@@ -81,4 +81,51 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+
+    //TO DO LIST HÄR UNDER
+
+    public List<Todo> getTodolist() {
+        List<Todo> todoList = null;
+        try {
+            PreparedStatement stmntName = conn.prepareStatement("SELECT * FROM todo_list");
+            ResultSet resultSet = stmntName.executeQuery();
+
+            Todo[] todoListFromResultSet = (Todo[]) Utils.readResultSetToObject(resultSet, Todo[].class);
+            todoList = List.of(todoListFromResultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return todoList;
+    }
+
+    public void addTodo(Todo todo) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO todo_list (text) VALUES(?)");
+            stmt.setString(1, todo.getText());
+
+            int i=stmt.executeUpdate();
+            System.out.println(i+ " todo list item added. Records updated");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteTodo(int todo_id){
+        try {
+            PreparedStatement stmt =conn.prepareStatement("DELETE FROM todo_list WHERE todo_id = ?");
+            stmt.setInt(1,todo_id);
+
+            int i=stmt.executeUpdate();
+            System.out.println(i+" records updated. Removed todo item with ID " + todo_id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

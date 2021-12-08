@@ -1,23 +1,25 @@
 package java_folder;
 
-
-
 public class Todo {
     private int todo_id;
     private String text;
-    private boolean isCompeted;
+    private boolean isCompleted;
 
     public Todo() {
     }
 
-    public Todo(String text, boolean isCompeted) {
+    public Todo(String text) {
         this.text = text;
-        this.isCompeted = isCompeted;
     }
 
-    public Todo(String text, boolean isCompeted, int note_id) {
+    public Todo(String text, boolean isCompleted) {
         this.text = text;
-        this.isCompeted = isCompeted;
+        this.isCompleted = isCompleted;
+    }
+
+    public Todo(String text, boolean isCompleted, int note_id) {
+        this.text = text;
+        this.isCompleted = isCompleted;
         this.todo_id = note_id;
 
     }
@@ -26,12 +28,38 @@ public class Todo {
         return todo_id;
     }
 
+    public void setTodo_id(int todo_id) {
+        this.todo_id = todo_id;
+    }
+
     public String getText() {
         return text;
     }
 
-    public boolean isCompeted() {
-        return isCompeted;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
+
+
+    /* Gammal kod
+    public int getTodo_id() {
+        return todo_id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
     public void setTodo_id(int todo_id) {
@@ -42,16 +70,18 @@ public class Todo {
         this.text = text;
     }
 
-    public void setCompeted(boolean competed) {
-        isCompeted = competed;
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
+
+     */
 
     @Override
     public String toString() {
         return "Todo{" +
                 "todo_id=" + todo_id +
                 ", text='" + text + '\'' +
-                ", isCompeted=" + isCompeted +
+                ", isCompleted=" + isCompleted +
                 '}';
     }
 }
