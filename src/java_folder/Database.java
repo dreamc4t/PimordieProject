@@ -62,7 +62,6 @@ public class Database {
             PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, text = ?, last_updated_datetime = ? WHERE note_id = ?");
             stmt.setString(1, note.getTitle());
             stmt.setString(2, note.getText());
-            System.out.println("the unixTime = "+ unixTimestamp());
             stmt.setLong(3, unixTimestamp());
             stmt.setInt(4, note_id);
 
@@ -110,8 +109,9 @@ public class Database {
 
     public void addTodo(Todo todo) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO todo_list (text) VALUES(?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO todo_list (text, isCompleted ) VALUES(?, ?)");
             stmt.setString(1, todo.getText());
+            stmt.setBoolean(2,todo.isCompleted());
 
             int i = stmt.executeUpdate();
             System.out.println(i + " todo list item added. Records updated");
@@ -136,7 +136,7 @@ public class Database {
 
     public void updateTodo(int todo_id, String text) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET (text = ?) WHERE todo_id = ?");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET text = ? WHERE todo_id = ?");
             stmt.setString(1, text);
             stmt.setInt(2, todo_id);
 
@@ -160,7 +160,7 @@ public class Database {
 
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
-
+        System.out.println("the unixTime = "+ unixTimestamp());
         return unixtime;
     };
 }
