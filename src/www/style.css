@@ -507,8 +507,7 @@ strong{
     padding: 5px;
     margin: 5px;
     width: 500px;
-    
-    
+    min-height: 27px;
 }
 
 /* TO DO INPUT + BUTTON */
@@ -542,4 +541,13 @@ strong{
     background-color: #bbb;
   }
     
+  #trashcan-div {
+      background-color: blue;
+      margin: -5px;
+      padding: 4px;
+  }
+
+  #trashcan-div:hover{
+      cursor: pointer;
+  }
 

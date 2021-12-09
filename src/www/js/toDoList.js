@@ -11,17 +11,23 @@ class ToDoList{
         for(let todo of todos) {
             console.log(todo)
             let todoLi = `
-            <li>
-                text: ${todo.text}
+            <li> 
+                ${todo.text} "<span style='float:right;' id='trashcan-div'> <img src='img/trashcan.png' style='height:15px;' id='trashcan-image'> </span>"
             </li>
             `;
             todoList.innerHTML += todoLi ;
         }
         todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>";
         
-
         let addBtn = document.getElementById("todoAddButton");
         addBtn.addEventListener("click", this.addTodoItem);
+
+        let deleteBtn = document.getElementById("trashcan-div")
+        deleteBtn.addEventListener("click", tester);
+
+        function tester() {
+            console.log("TESTER");
+        }
 
     }
 
@@ -52,6 +58,8 @@ class ToDoList{
     } 
 
     async deleteToDoItem() {
+        console.log("Deleting item!");
+        alert("ASDASD");
 
     }
        
