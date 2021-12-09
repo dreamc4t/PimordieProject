@@ -1,37 +1,63 @@
-let notes = [];
 
-document.onload = showNotes();
-document.getElementById("testbutton").addEventListener("click", addNote);
+class Notes {
 
-async function showNotes() {
-    let result = await fetch('/rest/notes') 
-    notes = await result.json();
-    renderNotes();
-}
+    render() {
+        let toReturn = `
+            <div id="notes-page">
+                <div id="notes-list">
+                    <button>
+                        <h2 id="add-note">- Add note -</h2>
+                    </button>
+                </div>
+                <div id="currently-displayed-note"></div>
+            </div>
+        `;
+        this.renderNotesList();
+        return toReturn;
+    }
 
-function renderNotesPage() {
-    return `
-    <div id="notes-list"></div>  Här är det notes från JS via DATABASEN
-    <button id="testbutton">TESTKNAPP</button>
-    `
-}
+    async renderNotesList() {
+        let notesList = "";
+        for (let note of await this.getNotesFromDB()) {
+            notesList += `
+                <button id="note-button-${note.note_id}" onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markButtonAsActive(${note.note_id})">
+                    <h2>${note.title}</h2>
+                </button>
+            `;
+        }
+        document.querySelector('#notes-list').insertAdjacentHTML('beforeend', notesList);
+    }
 
-function renderNotes() {
-    let notesList = document.getElementById("notes-list");
-    notesList.innerHTML = "";
-    for (let note of notes) {
-        notesList.insertAdjacentHTML('beforeend', `
-        <p>
-            Title: ${note.title} <br>
-            Text: ${note.text} <br>
-        </p>
-        `);
+    async markButtonAsActive(id) {
+        for (let note of await this.getNotesFromDB()) {
+            if(note.note_id === id) {
+                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgb(200,200,160)";
+            } else {
+                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "beige";
+            }
+        }
+    }
+
+    async renderCurrentlyDisplayedNote(id) {
+        let currentNoteElement = document.querySelector('#currently-displayed-note');
+        for (let note of await this.getNotesFromDB()) {
+            if(note.note_id === id) {
+                currentNoteElement.innerHTML = `<p>${note.text}</p>`;
+            }
+        }
+
+    }
+
+    async getNotesFromDB() {
+        let result = await fetch('/rest/notes');
+        let notesFromDB = await result.json();
+        return notesFromDB;
+        
     }
 }
 
-
 /* ADD NOTE */ 
-async function addNote() {
+/*async function addNote() {
     console.log("Adding new note!");
     let note = {
         title: "test-title-for-text-note",
@@ -42,7 +68,7 @@ async function addNote() {
         method: "POST",
         body: JSON.stringify(note)
     });
-}
+}*/
 
 
 

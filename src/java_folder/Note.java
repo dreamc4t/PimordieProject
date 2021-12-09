@@ -1,7 +1,7 @@
 package java_folder;
 
 
-import java.time.Instant;
+//import java.time.Instant;
 
 public class Note {
     private int note_id;
@@ -44,10 +44,6 @@ public class Note {
 
     public long getLast_updated_datetime() {
         return last_updated_datetime;
-    }
-
-    public void setLast_updated_datetime(long last_updated_datetime) {
-        this.last_updated_datetime = last_updated_datetime;
     }
 
     public long getCreated_datetime() {

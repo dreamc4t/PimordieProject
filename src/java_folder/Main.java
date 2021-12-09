@@ -13,10 +13,6 @@ public class Main {
         Express app = new Express();
         Database db = new Database();
 
-        int port = 3000;
-        app.listen(port);
-        System.out.println("Running on port " + port);
-
         try {
             app.use(Middleware.statics(Paths.get("src/www").toString()));
         } catch (IOException e) {
@@ -27,19 +23,33 @@ public class Main {
             res.send("HELLO,we are pimordie");
         });
 
-        //Här är req/res för notes
+        //Här är req/res för "notes"
+        // Hämta alla "notes"
         app.get("/rest/notes", (req, res) -> {
            List<Note> notes = db.getNotes();
            res.json(notes);
         });
-
+        // Skapa en ny "note"
         app.post("/rest/notes", (req,res) -> {
             Note note = (Note) req.getBody(Note.class);
             System.out.println(note.toString());
             res.send("Post OK!");
             db.addNote(note);
+
+        });
+        //uppdatera notes
+        app.put("/rest/notes/:note_id", (req,res) -> {
+            int note_id =  Integer.parseInt(req.getParam("note_id"));
+
+            Note note = (Note) req.getBody(Note.class);
+
+            System.out.println(note.toString());
+            res.send("Updated");
+
+            db.updateNotes(note,note_id);
         });
 
+        // Tabort en "note"
         app.delete("/rest/notes/:note_id", (req,res) -> {
             int note_id =  Integer.parseInt(req.getParam("note_id"));
             res.send("DELETED");
@@ -67,5 +77,9 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
+        int port = 3000;
+        app.listen(port);
+        System.out.println("Running on port " + port);
     }
+
 }

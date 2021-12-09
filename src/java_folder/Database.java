@@ -3,11 +3,14 @@ package java_folder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import express.utils.Utils;
 import java.sql.*;
+import java.time.Instant;
 import java.util.List;
 
 public class Database {
 
     private Connection conn;
+
+
 
     public Database() {
         try {
@@ -45,7 +48,7 @@ public class Database {
             stmt.setString(2, note.getText());
 
             int i = stmt.executeUpdate();
-            System.out.println(i + " records updated");
+            System.out.println(i + " Records updated");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,13 +56,14 @@ public class Database {
 
     }
 
-    public void updateNotes(int note_id, String title, String text, long last_updated_datetime) {
+    public void updateNotes(Note note,int note_id) {
 
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET (title = ?, text = ?, last_updated_datetime = ?) WHERE note_id = ?");
-            stmt.setString(1, title);
-            stmt.setString(2, text);
-            stmt.setLong(3, last_updated_datetime);
+            PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, text = ?, last_updated_datetime = ? WHERE note_id = ?");
+            stmt.setString(1, note.getTitle());
+            stmt.setString(2, note.getText());
+            System.out.println("the unixTime = "+ unixTimestamp());
+            stmt.setLong(3, unixTimestamp());
             stmt.setInt(4, note_id);
 
             int i = stmt.executeUpdate();
@@ -153,4 +157,10 @@ public class Database {
         }
 
     }
+
+    private long unixTimestamp(){
+        long unixtime = Instant.now().getEpochSecond();
+
+        return unixtime;
+    };
 }
