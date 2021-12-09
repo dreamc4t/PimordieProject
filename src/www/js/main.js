@@ -8,6 +8,12 @@ document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 onhashchange = changePage;
 changePage();
 
+function openMail() {
+    var adminMail = document.createElement("a");
+    adminMail.href = "mailto:info@pimordie.com";
+    adminMail.click();
+}
+
 function changePage() {
     let page = location.hash.replace('#', '');
     console.log(page);
