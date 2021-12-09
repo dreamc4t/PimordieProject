@@ -1,5 +1,7 @@
 let nav = new Nav();
+let notes = new Notes();
 
+document.querySelector('main').innerHTML = notes.render();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
@@ -8,12 +10,12 @@ onhashchange = changePage;
 changePage();
 
 function changePage() {
-    let page = location.hash.replace('#', ''); 
+    let page = location.hash.replace('#', '');
     console.log(page);
 
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = notes.renderNotesPage();
+        document.querySelector('main').innerHTML = notes.render();
         break;
 
         case('todo'):
@@ -37,7 +39,7 @@ function changePage() {
         break;
 
         default:
-            document.querySelector('main').innerHTML = renderNotesPage();
+            document.querySelector('main').innerHTML = notes.render();
     }
 }
 

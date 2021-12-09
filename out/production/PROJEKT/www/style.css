@@ -2,16 +2,19 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-
 }
+
 body{
     height: 100vh;
     width: 100%;
     background-color: rgb(31,71,72);
+    display: flex;
+    flex-direction: column;
 }
 
+/*Header*/
 header{
-    height: 20%;
+    height: 100px;
     width: 100%;
     background-color: rgb(30,53,109);
     display: flex;
@@ -20,167 +23,156 @@ header{
 #logo-div {
     display: flex;
     justify-content: center;
+    margin:6px 40px;
+    align-items: center;
 }
 #header-div {
     display: flex;
     justify-content: center;
-}
-#logo-div {
-    margin:6px 40px;
     align-items: center;
 }
 #logo-img {
-    max-height: 130px;
-}
-#header-div {
-    align-items: center;
+    max-height: 80px;
 }
 #header-div h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
-    font-size: 50px;
-}
-main{
-    height: 60%;
-    width: 100%;
-    background-color: rgb(31,71,72);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 45px;
 }
 
-/* Denna behövs väl ej längre?
-#main-wrapper{
-    height: 60%;
+/*Main*/
+main{
     width: 100%;
+    margin-bottom: 180px;
     background-color: rgb(31,71,72);
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
-*/
+
+/* .toggle-nav, alltså Notes eller To-do knapparna */ 
+.toggle-nav {
+    background-color: rgb(31,71,72);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+.toggle-nav a {
+    background-color:  rgb(68,140,93);
+    padding: 15px;
+    border: 2px white solid;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgb(43, 39, 39);
+}
+
+.toggle-nav a:hover {
+    background-color: rgba(214, 208, 208, 0.74);
+}
 
 /*footer*/
 footer{
     background-color: rgb(30,53,109);
-    height: 20%;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0px;
 }
-/*Logo side*/
-#logo-box{
-    height: 100%;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#footer-logo{
-    width: 130px;
-    height: 130px;
-    opacity: 0.7;
-    align-items: center;
-}
-#footer-logo:hover{
-    opacity: 1;
-}
-/*Nav side*/
+
+/*Footer Nav*/
 #nav-box{
-    height: 100%;
-    width: 60%;
     display: flex;
-    flex-direction: column;
-
+    flex-direction: row;
 }
-#nav-box-top{
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-}
-#nav-box-bottom{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 2px solid black;
-    background-color: #1e356d;
-    padding: 15px 0 ;
-}
-
-#inner-box{
+.footer-nav-button{
     background-color: rgb(68,140,93);
-    height: 90%;
-    width: 15%;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: 74px;
+    width: 70px;
+    margin: 13px 10px;
     border-radius: 20%;
     border: solid white;
     border-color: rgba(255, 255, 255, 0.63);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
 }
-#inner-box:hover{
+.footer-nav-button:hover{
     background-color: rgb(31,71,72);
     border: solid white;
     border-color:rgb(68,140,93);
 }
-#signup{
-    height: 75px;
-    width: 75px;
+.footer-nav-button img {
+    height: 50px;
+    width: 50px;
     display: flex;
     justify-content: center;
 }
-#about{
-    height: 80px;
-    width: 80px;
-}
-#contact{
-    height: 80px;
-    width: 80px;
+.footer-nav-button h5 {
+    font-size: 10px;
+    color: white;
 }
 #nav-logos{
     display: flex;
     justify-content: center;
+}
 
-    
-}
-#nav-logos-signup{
-    width: 55px;
-    height: 13px;
-    margin-bottom: 5px;
-    color: white
-}
-#nav-logos-about{
-    width: 70px;
-    height: 13px;
-    margin-bottom: 5px;
-    color: white
-}
-#nav-logos-contact{
-    width: 65px;
-    height: 13px;
-    margin-bottom: 5px;
-    color: white
-}
-#copy{
-    height: 60%;
-    width: 87px;
-    color: rgb(255, 255, 255, 0.3);
+/*copyright pimordie*/
+#copyright-pimordie{
+    height: 100%;
+    display: flex;
+    align-items:flex-end;
     justify-content: center;
-    align-items: center;
+    padding: 15px 0;
 }
-#copy:hover{
+#copyright-pimordie h4{
+    color: rgb(255, 255, 255, 0.3);
+}
+#copyright-pimordie h4:hover{
    color:white;
+}
+
+/*Notes-page*/
+#notes-page {
+    height: 100%;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    gap: 20px;
+}
+#notes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    overflow: auto;
+}
+#notes-list button {
+    width: 200px;
+    background-color:beige;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+#currently-displayed-note {
+    background-color: beige;
+    flex-grow: 3;
+    overflow: auto;
+    padding: 20px;
+}
+#currently-displayed-note p {
+    font-size: 20px;
 }
 
 /*Social/download side*/
@@ -191,9 +183,7 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
-
 #social{
     width: auto;
     text-decoration: none;
@@ -204,7 +194,6 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 strong{
     width: 150px;
@@ -351,8 +340,8 @@ strong{
     height: 1px;
     margin: 5px;
 }
-/*about us*/
 
+/*about us*/
 #about-main{
     height: 90%;
     width: 60%;
@@ -499,38 +488,12 @@ strong{
 #checkbox{
     margin-right: 10px;
 }
-#password-text{
-
-}
 #signup-button{
     border-radius: 20%;
     margin-left: 50px;
     margin-right: 50px;
     height: 8%;
     justify-content: center;
-}
-
-/* .toggle-nav, alltså Notes eller To-do knapparna */ 
-.toggle-nav nav {
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-}
-
-.toggle-nav a {
-    background-color:  rgb(68,140,93);
-    padding: 26px 35px;
-    border: 2px white solid;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bolder;
-    color: rgb(43, 39, 39);
-    
-}
-
-.toggle-nav a:hover {
-    background-color: rgba(214, 208, 208, 0.74);
 }
 
 /* To do listan */ 

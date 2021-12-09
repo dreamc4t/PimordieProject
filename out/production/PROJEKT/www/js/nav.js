@@ -13,11 +13,7 @@ class Nav{
        
         }
         
-        return `
-        <nav>
-            ${items}
-        </nav>
-        `;
+        return items;
     }
 
     render() {

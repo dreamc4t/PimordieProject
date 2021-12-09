@@ -1,10 +1,7 @@
-
 class SignUp{
 
-
-
-
     renderSignUp(){
+        
         return`
         <div id="signup-mainbox">
             <nav id="signup-leftbox">
@@ -20,8 +17,24 @@ class SignUp{
                     <input id="checkbox" type="checkbox">
                     <h2 id="password-text">Show password</h2>
                 </div>
-                <button id="signup-button">SIGN UP</button>
+                <button id="signup-button" onclick="signup.createAccount">SIGN UP</button>
             </article>
         </div>`
     }
+
+    createAccount(){
+
+        let createEmail = document.querySelector("#email-input").value;
+        let createPassword = document.querySelector("#password-input").value;
+        let user = {
+            username: createEmail,
+            password: createPassword
+        }
+
+        let result = await fetch("/rest/users", {
+        method: "POST",
+        body: JSON.stringify(user)
+        });
+    }
+
 }
