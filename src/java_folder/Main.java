@@ -13,7 +13,8 @@ public class Main {
         Express app = new Express();
         Database db = new Database();
 
-        int port = 3003;
+
+        int port = 3000;
         app.listen(port);
         System.out.println("Running on port " + port);
 

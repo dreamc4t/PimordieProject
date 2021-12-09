@@ -541,13 +541,13 @@ strong{
     background-color: #bbb;
   }
     
-  #trashcan-div {
+  .trashcan-div {
       background-color: blue;
       margin: -5px;
       padding: 4px;
   }
 
-  #trashcan-div:hover{
+  .trashcan-div:hover{
       cursor: pointer;
   }
 
