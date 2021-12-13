@@ -28,7 +28,7 @@ class Login{
 
         let loginEmail = document.querySelector("#email-input").value;
         let loginPassword = document.querySelector("#password-input").value;
-
+      
         let user = {
             email: loginEmail,
             password: loginPassword
