@@ -123,7 +123,9 @@ public class Main {
             res.send("Updated");
         });
 
-        int port = 5000;
+
+        int port = 3000;
+
         app.listen(port);
         System.out.println("Running on port " + port);
 
