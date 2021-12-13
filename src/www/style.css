@@ -496,6 +496,12 @@ strong{
     justify-content: center;
 }
 
+#login-create-toggle{
+    color: white;
+    margin-left: 242px;
+    margin-top: 15px;
+}
+
 /* To do listan */ 
 
 #todoUl {
@@ -507,8 +513,7 @@ strong{
     padding: 5px;
     margin: 5px;
     width: 500px;
-    
-    
+    min-height: 27px;
 }
 
 /* TO DO INPUT + BUTTON */
@@ -542,4 +547,18 @@ strong{
     background-color: #bbb;
   }
     
+  .trashcan-div {
+      background-color: blue;
+      margin: -5px;
+      padding: 4px;
+  }
 
+  .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
+      cursor: pointer;
+  }
+
+.isItCompleted-div {
+    margin-right: 15px;
+    margin-top: 1px;
+    float: right;
+}

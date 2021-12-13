@@ -56,20 +56,6 @@ class Notes {
     }
 }
 
-/* ADD NOTE */ 
-/*async function addNote() {
-    console.log("Adding new note!");
-    let note = {
-        title: "test-title-for-text-note",
-        text: "text text text test test test"
-    }
-
-    let result = await fetch("/rest/notes", {
-        method: "POST",
-        body: JSON.stringify(note)
-    });
-}*/
-
 
 
 
