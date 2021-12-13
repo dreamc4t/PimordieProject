@@ -5,9 +5,9 @@ class Notes {
         let toReturn = `
             <div id="notes-page">
                 <div id="notes-menu">
-                    <span id="add-note" class="note-list-item" onclick="notes.addNote()">
+                    <div id="add-note" class="note-list-item" onclick="notes.addNote()">
                         <h2>+</h2>
-                    </span>
+                    </div>
                     <div id="notes-list">
                         
                     </div>
@@ -80,7 +80,7 @@ class Notes {
         let currentNoteElement = document.querySelector('#notes-input');
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
-                currentNoteElement.innerHTML = `<p>${note.text}</p>`;
+                currentNoteElement.textContent = note.text;
             }
         }
 
@@ -91,6 +91,7 @@ class Notes {
         let result = await fetch('/rest/notes');
         let notesFromDB = await result.json();
         return notesFromDB;
+<<<<<<< Updated upstream
     }
 
 
@@ -109,6 +110,9 @@ class Notes {
 
     
     
+=======
+    }    
+>>>>>>> Stashed changes
 }
 
 
