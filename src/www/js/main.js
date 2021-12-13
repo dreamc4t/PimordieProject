@@ -1,7 +1,6 @@
 let nav = new Nav();
 let notes = new Notes();
 let login = new Login();
-document.querySelector('main').innerHTML = notes.render();
 
 
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
@@ -23,7 +22,8 @@ function changePage() {
     
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = notes.render() + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
+        document.querySelector('main').innerHTML = notes.render();
+        notes.renderNotesList();
         break;
 
         
