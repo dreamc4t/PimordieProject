@@ -1,16 +1,37 @@
 class ToDoList{
     
-    async renderTodoList() {
+    async getTodoListFromDb(sortingBy, ascendDecend) {
         let todos = [];
         let result = await fetch('/rest/todo-list');
         todos = await result.json();
+
         
+        function getSortOrder(prop) {    
+            return function(a, b) {    
+                if (a[prop] > b[prop]) {    
+                    return 1;    
+                } else if (a[prop] < b[prop]) {    
+                    return -1;    
+                }    
+                return 0;    
+            }    
+        } 
+        todos.sort(getSortOrder(sortingBy));
+        if (ascendDecend == "ascend") {
+            todos.reverse();
+        }
+        
+        
+        return todos;
+    }
+    
+    async renderTodoList(sortingBy, ascendDecend) {
         let todoList = document.querySelector('#todoUl');
-        todoList.innerHTML = "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>" ; 
+        todoList.innerHTML = "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style> <button id='sortCompletedButton'> Sortera efter completed</button> <button id='sortAlphabetButton'> Sortera alfabetiskt</button> <button id='sortLastAddedButton'> Sortera efter senast tillagd</button> " ; 
 
         console.log("rendering todo list..")
         
-        for(let todo of todos) {
+        for(let todo of await this.getTodoListFromDb(sortingBy, ascendDecend)) {
             let todoLi = `
             <li> 
                 ${todo.text} ID=${todo.todo_id} Completed?=${todo.completed}
@@ -28,10 +49,19 @@ class ToDoList{
             
       }
 
-        todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>";
+        todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>  ";
         
         let addBtn = document.getElementById("todoAddButton");
         addBtn.addEventListener("click", addTodoItem);
+
+        let sortButtonCompleted = document.getElementById("sortCompletedButton");
+        sortButtonCompleted.addEventListener("click", sortCompleted)
+
+        let sortButtonAlphabet = document.getElementById("sortAlphabetButton");
+        sortButtonAlphabet.addEventListener("click", sortAlphabetically)
+
+        let sortLastAddedButton = document.getElementById("sortLastAddedButton");
+        sortLastAddedButton.addEventListener("click", sortLastAdded)
 
         document.querySelectorAll(".trashcan-div").forEach(item => {
             item.addEventListener("click", deleteItemByClick)
@@ -41,11 +71,72 @@ class ToDoList{
             item.addEventListener("click", setIsCompelted)
         }); 
 
+       
+
     }
 }
 
 let toDoList1 = new ToDoList();
+       
 
+        let complCounter = 1;
+        async function sortCompleted() {
+            if (complCounter  == 1 ) {
+                toDoList1.renderTodoList("completed");
+                complCounter++;
+            }
+            else if (complCounter == 2){
+                toDoList1.renderTodoList("completed", "ascend");
+                complCounter++;
+            }
+            else {
+                toDoList1.renderTodoList();
+                complCounter++;
+            }
+
+            if (complCounter >3) {
+                complCounter = 1;
+            }
+        }
+
+        let alphabetCounter = 1;
+        async function sortAlphabetically() {
+            if (alphabetCounter  == 1 ) {
+                toDoList1.renderTodoList("text");
+                alphabetCounter++;
+            }
+            else if (alphabetCounter == 2){
+                toDoList1.renderTodoList("text", "ascend");
+                alphabetCounter++;
+            }
+            else {
+                toDoList1.renderTodoList();
+                alphabetCounter++;
+            }
+
+            if (alphabetCounter >3) {
+                alphabetCounter = 1;
+            }
+        }
+
+        let lastAddedCounter = 1;
+        async function sortLastAdded() {
+            console.log("HEJ!")
+            if (lastAddedCounter  == 1 ) {
+                toDoList1.renderTodoList("todo_id");
+                lastAddedCounter++;
+            }
+            else if (lastAddedCounter == 2){
+                toDoList1.renderTodoList("todo_id", "ascend");
+                lastAddedCounter++;
+            }
+
+            if (lastAddedCounter >2) {
+                lastAddedCounter = 1;
+            }
+        }
+
+        
 
     async function deleteItemByClick() {
 
@@ -95,8 +186,6 @@ let toDoList1 = new ToDoList();
     async function setIsCompelted() {
 
         idToComplete = this.id.replace('done','');
-        console.log(this.id)
-        console.log(idToComplete + " is completed!")
 
 
         let todo = {
@@ -111,4 +200,6 @@ let toDoList1 = new ToDoList();
         toDoList1.renderTodoList();
     }
 
+
+  
 

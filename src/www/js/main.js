@@ -3,6 +3,7 @@ let notes = new Notes();
 let login = new Login();
 document.querySelector('main').innerHTML = notes.render();
 
+
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
