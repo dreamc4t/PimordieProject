@@ -175,6 +175,14 @@ footer{
     font-size: 20px;
 }
 
+#notes-input{
+    height: 100%;
+    width: 100%;
+    background-color: beige;
+    border:none;
+    outline: none;
+}
+
 /*Social/download side*/
 #social-box{
     height: 100%;

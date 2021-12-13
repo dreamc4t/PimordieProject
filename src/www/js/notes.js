@@ -10,7 +10,7 @@ class Notes {
                     </button>
                 </div>
                 <div id="currently-displayed-note">
-                <input id="notes-input" type="text">
+                    <input id="notes-input" type="text-note">
                 </div>
             </div>
         `;
@@ -74,14 +74,38 @@ class Notes {
         return notesFromDB;
     }
 
-    async updateNotes(){
-        
-        do{
-            let textUpdate = document.querySelector("#notes-input").value;
-        }while
-        
 
-        //setTimeout(1000);
+
+
+
+
+    
+    /*form.addEventListener('blur', (event) => {
+      event.target.style.background = '';
+    }, true);*/
+    
+
+
+
+    async updateNotesFocus(event){
+        
+            event.preventDefault();
+
+            do{
+                let textInput = document.querySelector("#notes-input").value;
+
+                let textUpdate = {
+                    text: textInput
+                };
+    
+                let result = await fetch("/rest/notes", {
+                    method: "PUT",
+                    body: JSON.stringify(textUpdate)
+                    });
+            }while(focus('#notes-input') && setTimeout(1000));
+            
+
+            
     }
 }
 

@@ -24,7 +24,6 @@ function changePage() {
         case('notes'):
         document.querySelector('main').innerHTML = notes.render() + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
-
         
         case('todo'):
         document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
