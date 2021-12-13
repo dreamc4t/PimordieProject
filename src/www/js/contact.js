@@ -1,6 +1,7 @@
 class Contact{
 
 
+    
     //Render in main when #contact
     renderContact(){
         return`
@@ -21,11 +22,15 @@ class Contact{
                     </div>
                     <div id="contact-email">
                         <img id="contact-logo" src="img/emailLogo.png" alt="">
-                        <h5 id="contact-text">Info@PimOrDie.com</h5>
+                        <h5 id="contact-text">
+                        <a href="javascript:void(0);" onclick=openMail()>Info@PimOrDie.com</a>
+                        </h5>
                     </div>
                     <div id="contact-address">
                         <img id="contact-logo" src="img/mapLogo.png" alt="">
-                        <h5 id="contact-text">Propellergatan 1, 211 15, Malmö</h5>
+                        <h5 id="contact-text">
+                        <a href="https://www.google.com/maps/place/Propellergatan+1,+211+15+Malm%C3%B6/@55.6102707,12.9754889,17z/data=!3m1!4b1!4m5!3m4!1s0x4653a4035d202817:0xe8292db6903ccd60!8m2!3d55.6102707!4d12.9776776">Propellergatan 1, 211 15, Malmö</a>
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -44,7 +49,7 @@ class Contact{
             </div>
             <hr id="line">
             <div id="contact-innerbox">
-                <button id="send-button" onclick="">SEND MESSAGE</button>
+                <button id="send-button" onclick="#">SEND MESSAGE</button>
             </div>
         </aside>
         `;

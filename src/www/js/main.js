@@ -2,6 +2,7 @@ let nav = new Nav();
 let notes = new Notes();
 let login = new Login();
 document.querySelector('main').innerHTML = notes.render();
+
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
@@ -9,19 +10,28 @@ document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 onhashchange = changePage;
 changePage();
 
+function openMail() {
+    var adminMail = document.createElement("a");
+    adminMail.href = "mailto:info@pimordie.com";
+    adminMail.click();
+}
+
 function changePage() {
     let page = location.hash.replace('#', '');
     console.log(page);
-
+    
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = notes.render();
+        document.querySelector('main').innerHTML = notes.render() + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
         break;
 
+        
         case('todo'):
-        let toDoList = new ToDoList();
-        document.querySelector('main').innerHTML = toDoList.renderToDoList() + " <style> #todoId{ background-color: rgb(129, 155, 129);  } </style> ";
+        document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
+        toDoList1.renderTodoList();
+        
         break;
+        
 
         case('login'):
 
@@ -47,8 +57,7 @@ function changePage() {
     }
 }
 
-function activePage() {
 
-}
+    
 
 
