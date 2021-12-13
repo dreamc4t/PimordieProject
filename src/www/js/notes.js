@@ -9,7 +9,9 @@ class Notes {
                         <h2 id="add-note">- Add note -</h2>
                     </button>
                 </div>
-                <div id="currently-displayed-note"></div>
+                <div id="currently-displayed-note">
+                <input id="notes-input" type="text">
+                </div>
             </div>
         `;
         this.renderNotesList();
@@ -53,6 +55,16 @@ class Notes {
         let notesFromDB = await result.json();
         return notesFromDB;
         
+    }
+
+    async updateNotes(){
+        
+        do{
+            let textUpdate = document.querySelector("#notes-input").value;
+        }while
+        
+
+        //setTimeout(1000);
     }
 }
 
