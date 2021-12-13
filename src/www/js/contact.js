@@ -37,7 +37,7 @@ class Contact{
         </article>
         <aside id="contact-rightside">
             <div id="contact-innerbox">
-                <input id="input-contact" type="text" placeholder="FULL NAME">
+                <input id="input-fullname" type="text" placeholder="FULL NAME">
             </div>
             <hr id="line">
             <div id="contact-innerbox">
@@ -54,4 +54,22 @@ class Contact{
         </aside>
         `;
     }
+
+    async contactMessage(){
+
+        let sendFullname = document.querySelector("#input-fullname").value;
+        let sendEmail = document.querySelector("#pinput-email").value;
+        let sendMessage = document.querySelector("#input-message").value;
+        let message = {
+            fullname: sendFullname,
+            email: sendEmail,
+            password: sendMessage
+        }
+
+        let result = await fetch("/rest/users", {
+        method: "POST",
+        body: JSON.stringify(message)
+        });
+    }
 }
+

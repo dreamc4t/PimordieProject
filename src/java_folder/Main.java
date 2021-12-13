@@ -13,6 +13,7 @@ public class Main {
         Express app = new Express();
         Database db = new Database();
 
+
         try {
             app.use(Middleware.statics(Paths.get("src/www").toString()));
         } catch (IOException e) {
@@ -77,6 +78,33 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
+        // req/res Login
+        app.post("/rest/users", (req, res) ->{
+            User user = (User) req.getBody(User.class);
+
+            db.login(user);
+
+            res.send("OK");
+        });
+
+        // res/req signup
+        app.post("/rest/users/", ((req, res) -> {
+            User user = (User) req.getBody(User.class);
+
+            db.createUser(user);
+
+            res.send("OK");
+        }));
+
+        // req/res contact
+        app.post("/rest/contact", ((request, response) -> {
+            ContactMessage message = (ContactMessage) request.getBody(ContactMessage.class);
+
+        db.addMessage(message);
+
+            response.send("OK");
+        }));
+
         //Sätta todo item som completed
         app.put("/rest/todo-list/:todo_id", (req,res) -> {
             int todo_id =  Integer.parseInt(req.getParam("todo_id"));
@@ -98,6 +126,7 @@ public class Main {
         int port = 3000;
         app.listen(port);
         System.out.println("Running on port " + port);
+
     }
 
 }

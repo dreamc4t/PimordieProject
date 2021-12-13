@@ -1,5 +1,7 @@
 let nav = new Nav();
 let notes = new Notes();
+let login = new Login();
+document.querySelector('main').innerHTML = notes.render();
 
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
@@ -31,10 +33,14 @@ function changePage() {
         break;
         
 
-        case('sign-up'):
-        let signUp = new SignUp();
-        document.querySelector('main').innerHTML = signUp.renderSignUp();
+        case('login'):
+
+        document.querySelector('main').innerHTML = login.renderLogin();
         break;
+
+        case('sign-up'):
+        let signup = new SignUp();
+        document.querySelector('main').innerHTML = signup.renderSignUp();
 
         case('about-us'):
         let aboutUs = new AboutUs();
