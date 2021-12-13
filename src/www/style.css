@@ -164,8 +164,10 @@ footer{
     flex-direction: column;
     align-items: center;
     overflow: auto;
+    row-gap: 10px;
+    padding-right: 20px;
 }
-#notes-list button {
+.note-list-item {
     width: 200px;
     display: flex;
     align-items: center;
@@ -192,19 +194,30 @@ footer{
 .note-button {
     background-color:rgb(68,140,93);
     padding: 10px;
-    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
 }
 .note-button:hover {
     background-color: rgba(255,255,255,0.5);
 }
 #currently-displayed-note {
-    background-color: beige;
+    background-color: rgb(68,140,93);
     width: 700px;
     overflow: auto;
     padding: 20px;
+    color: white;
 }
 #currently-displayed-note p {
     font-size: 20px;
+}
+
+#notes-input{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(68,140,93);
+    color: white;
+    border:none;
+    outline: none;
 }
 
 /*Social/download side*/
