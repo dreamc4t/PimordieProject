@@ -6,6 +6,7 @@ import express.middleware.Middleware;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
+import org.apache.commons.fileupload.FileItem;
 
 public class Main {
     public static void main(String[] args) {
@@ -78,20 +79,6 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
-        //Här är req/res för file upload
-        app.post(/api/file-upload), (req,res) -> {
-            String imageUrl = null;
-
-            try {
-                List<FileItem> files = req.getFormData("files");
-                imageUrl = db.uploadImage(files.get(0));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            res.send(imageUrl);
-        }
-
         // req/res Login
         app.post("/rest/users", (req, res) ->{
             User user = (User) req.getBody(User.class);
@@ -135,6 +122,27 @@ public class Main {
             }
 
             res.send("Updated");
+        });
+
+        //Här är req/res för file upload
+        app.post("/api/file-upload", (req, res) -> {
+            String fileUrl = null;
+
+            // extract the file from the FormData
+            try {
+                List<FileItem> files = req.getFormData("files");
+
+                fileUrl = db.uploadFile(files.get(0));
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                res.send("error");
+            }
+
+            // return "/uploads/image-name.jpg
+            res.send("stored " + fileUrl);
+
         });
 
         int port = 3000;

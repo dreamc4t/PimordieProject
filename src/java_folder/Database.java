@@ -2,6 +2,7 @@ package java_folder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import express.utils.Utils;
+import org.apache.commons.fileupload.FileItem;
 
 import java.io.FileOutputStream;
 import java.nio.file.Paths;
@@ -265,16 +266,33 @@ public class Database {
 
         return user;
     }
+//************************ File upload ************************
 
-    public String uploadImage(FileItem image){
+    public String uploadFile(FileItem file) {
 
-        String imageUrl= "/uploads/" + image.getName();
+        String fileUrl = "/uploads/" + file.getName();
 
-        try (var os = new FileOutputStream(Paths.get("src/www" + imageUrl).toString())){
+        try (var os = new FileOutputStream(Paths.get("src/www" + fileUrl).toString())) {
 
+            os.write(file.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
+
+        return fileUrl;
     }
 
+    public void createFile(Files file) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO file (fileUrl) VALUES(?)");
+            stmt.setString(1, file.getFileUrl());
+
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
         System.out.println("the unixTime = "+ unixTimestamp());
