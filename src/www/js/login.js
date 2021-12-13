@@ -34,7 +34,7 @@ class Login{
             password: loginPassword
         }
 
-        let result = await fetch("/rest/users", {
+        let result = await fetch("/rest/user", {
         method: "POST",
         body: JSON.stringify(user)
         });
