@@ -77,6 +77,19 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
+        //Här är req/res för file upload
+        app.post(/api/file-upload), (req,res) -> {
+            String imageUrl = null;
+
+            try {
+                List<FileItem> files = req.getFormData("files");
+                imageUrl = db.uploadImage(files.get(0));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            res.send(imageUrl);
+        }
         int port = 3000;
         app.listen(port);
         System.out.println("Running on port " + port);

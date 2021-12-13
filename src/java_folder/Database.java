@@ -2,6 +2,9 @@ package java_folder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import express.utils.Utils;
+
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.Instant;
 import java.util.List;
@@ -156,6 +159,15 @@ public class Database {
             e.printStackTrace();
         }
 
+    }
+
+    public String uploadImage(FileItem image){
+
+        String imageUrl= "/uploads/" + image.getName();
+
+        try (var os = new FileOutputStream(Paths.get("src/www" + imageUrl).toString())){
+
+        }
     }
 
     private long unixTimestamp(){
