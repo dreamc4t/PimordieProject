@@ -1,5 +1,6 @@
 class SignUp{
 
+
     renderSignUp(){
         
         return`
@@ -17,17 +18,18 @@ class SignUp{
                     <input id="checkbox" type="checkbox">
                     <h2 id="password-text">Show password</h2>
                 </div>
-                <button id="signup-button" onclick="signup.createAccount">SIGN UP</button>
+                <button onclick="signup.createAccount()" id="signup-button">SIGN UP</button>
+                <a id="login-create-toggle" href="#login">Back to login</a>
             </article>
         </div>`
     }
 
-    createAccount(){
+    async createAccount(){
 
         let createEmail = document.querySelector("#email-input").value;
         let createPassword = document.querySelector("#password-input").value;
         let user = {
-            username: createEmail,
+            email: createEmail,
             password: createPassword
         }
 

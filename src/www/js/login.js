@@ -1,7 +1,6 @@
-class SignUp{
+class Login{
 
-
-    renderSignUp(){
+    renderLogin(){
         
         return`
         <div id="signup-mainbox">
@@ -9,7 +8,7 @@ class SignUp{
                 <img id="signup-img" src="img/register.jpg" alt="">
             </nav>
             <article id="signup-rightbox">
-                <h1 id="signup-title">SIGN UP</h1>
+                <h1 id="signup-title">Login</h1>
                 <h2 id="signup-email">Email Address</h2>
                 <input id="email-input" type="text">
                 <h2 id="signup-password">Password</h2>
@@ -18,28 +17,25 @@ class SignUp{
                     <input id="checkbox" type="checkbox">
                     <h2 id="password-text">Show password</h2>
                 </div>
-                <button onclick="signup.createAccount()" id="signup-button">SIGN UP</button>
+                <button onclick="login.loginAccount()" id="signup-button">Login</button>
+                <a id="login-create-toggle" href="#sign-up">Create account</a>
             </article>
-        </div>`
+        </div>
+        `
     }
 
-    async createAccount(){
+    async loginAccount(){
 
-        let createEmail = document.querySelector("#email-input").value;
-        let createPassword = document.querySelector("#password-input").value;
+        let loginEmail = document.querySelector("#email-input").value;
+        let loginPassword = document.querySelector("#password-input").value;
         let user = {
-            email: createEmail,
-            password: createPassword
+            email: loginEmail,
+            password: loginPassword
         }
 
         let result = await fetch("/rest/users", {
         method: "POST",
         body: JSON.stringify(user)
         });
-
-        await result.text();
-
-
     }
-
 }

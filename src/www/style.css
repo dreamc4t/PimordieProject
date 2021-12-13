@@ -496,6 +496,12 @@ strong{
     justify-content: center;
 }
 
+#login-create-toggle{
+    color: white;
+    margin-left: 242px;
+    margin-top: 15px;
+}
+
 /* To do listan */ 
 #to-do-list {
     list-style: none;

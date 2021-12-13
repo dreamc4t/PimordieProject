@@ -153,4 +153,78 @@ public class Database {
         }
 
     }
+    //ContactMessage
+    public void addMessage(ContactMessage message){
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO contact(fullname, email, message) VALUES(?, ?, ?)");
+            stmt.setString(1, message.getFullName());
+            stmt.setString(2, message.getEmail());
+            stmt.setString(3, message.getMessage());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //create user
+
+    public Boolean createUser(User user){
+        Boolean create = false;
+        try {
+
+            User userTry = this.getUserByEmail(user.getEmail());
+            if(userTry == null){
+                create = true;
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO users(email, password) VALUES(?, ?)");
+                stmt.setString(1, user.getEmail());
+                stmt.setString(2, user.getPassword());
+
+                stmt.executeUpdate();
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return create;
+    }
+
+    //Login
+    public Boolean login(User user){
+        Boolean login = false;
+        User userTry = this.getUserByEmail(user.getEmail());
+        if(userTry != null){
+            if(userTry.getPassword().equals(user.getPassword())){
+                login = true;
+            }
+        }
+        return login;
+    }
+
+
+    public User getUserByEmail(String email){
+        User user = null;
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT*FROM users WHERE email = ?");
+            stmt.setString(1, email);
+
+            ResultSet rs = stmt.executeQuery();
+
+            User[] userFromRS = (User[]) Utils.readResultSetToObject(rs, User[].class);
+
+            user = userFromRS[0];
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
 }
