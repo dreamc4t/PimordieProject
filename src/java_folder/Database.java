@@ -2,6 +2,10 @@ package java_folder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import express.utils.Utils;
+import org.apache.commons.fileupload.FileItem;
+
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.Instant;
 import java.util.List;
@@ -62,7 +66,6 @@ public class Database {
             PreparedStatement stmt = conn.prepareStatement("UPDATE notes SET title = ?, text = ?, last_updated_datetime = ? WHERE note_id = ?");
             stmt.setString(1, note.getTitle());
             stmt.setString(2, note.getText());
-            System.out.println("the unixTime = "+ unixTimestamp());
             stmt.setLong(3, unixTimestamp());
             stmt.setInt(4, note_id);
 
@@ -136,8 +139,9 @@ public class Database {
 
     public void addTodo(Todo todo) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO todo_list (text) VALUES(?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO todo_list (text, isCompleted ) VALUES(?, ?)");
             stmt.setString(1, todo.getText());
+            stmt.setBoolean(2,todo.isCompleted());
 
             int i = stmt.executeUpdate();
             System.out.println(i + " todo list item added. Records updated");
@@ -162,7 +166,7 @@ public class Database {
 
     public void updateTodo(int todo_id, String text) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET (text = ?) WHERE todo_id = ?");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET text = ? WHERE todo_id = ?");
             stmt.setString(1, text);
             stmt.setInt(2, todo_id);
 
@@ -262,11 +266,36 @@ public class Database {
 
         return user;
     }
+//************************ File upload ************************
 
+    public String uploadFile(FileItem file) {
 
+        String fileUrl = "/uploads/" + file.getName();
+
+        try (var os = new FileOutputStream(Paths.get("src/www" + fileUrl).toString())) {
+
+            os.write(file.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return fileUrl;
+    }
+
+    public void createFile(Files file) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO file (fileUrl) VALUES(?)");
+            stmt.setString(1, file.getFileUrl());
+
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
-
+        System.out.println("the unixTime = "+ unixTimestamp());
         return unixtime;
     };
 }

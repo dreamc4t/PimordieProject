@@ -28,7 +28,7 @@ class SignUp{
 
         let createEmail = document.querySelector("#email-input").value;
         let createPassword = document.querySelector("#password-input").value;
-        
+
         let user = {
             email: createEmail,
             password: createPassword
