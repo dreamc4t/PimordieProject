@@ -1,8 +1,9 @@
 let nav = new Nav();
 let notes = new Notes();
 let login = new Login();
-document.querySelector('main').innerHTML = notes.render();
 
+document.querySelector('main').innerHTML = notes.render();
+notes.renderNotesList();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
@@ -22,9 +23,9 @@ function changePage() {
     
     switch(page) {
         case('notes'):
-        document.querySelector('main').innerHTML = notes.render() + " <style> #notesId{ background-color: rgb(129, 155, 129);  } </style> ";
+        document.querySelector('main').innerHTML = notes.render();
+        notes.renderNotesList();
         break;
-
         
         case('todo'):
         document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
@@ -54,6 +55,7 @@ function changePage() {
 
         default:
             document.querySelector('main').innerHTML = notes.render();
+            notes.renderNotesList();
     }
 }
 
