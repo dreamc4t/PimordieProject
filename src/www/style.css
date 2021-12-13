@@ -202,6 +202,15 @@ footer{
     font-size: 20px;
 }
 
+#notes-input{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(68,140,93);
+    color: white;
+    border:none;
+    outline: none;
+}
+
 /*Social/download side*/
 #social-box{
     height: 100%;
