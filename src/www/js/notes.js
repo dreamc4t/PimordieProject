@@ -5,7 +5,7 @@ class Notes {
         let toReturn = `
             <div id="notes-page">
                 <div id="notes-list">
-                    <button id="add-note-button" onclick="">
+                    <button id="add-note-button" onclick="notes.addNote()">
                         <h2 id="add-note">- Add note -</h2>
                     </button>
                 </div>
@@ -18,7 +18,16 @@ class Notes {
 
     //skapa en ny note
     async addNote() {
-        
+        let newNote = {
+            title: 'New Note',
+            text: ''
+        }
+        let result = await fetch('/rest/notes', {
+            method: 'post',
+            body: JSON.stringify(newNote)
+        });
+        console.log('note added');
+        document.querySelector('main').innerHTML = notes.render(); //update notes-list
     }
 
     //rendera listan där man kan välja vilken note man vill se
@@ -61,7 +70,6 @@ class Notes {
         let result = await fetch('/rest/notes');
         let notesFromDB = await result.json();
         return notesFromDB;
-        
     }
 }
 
