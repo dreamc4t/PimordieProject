@@ -218,15 +218,9 @@ public class Database {
             User userTry = this.getUserByEmail(user.getEmail());
             if(userTry == null){
                 create = true;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO user(email, password) VALUES(?, ?)");
-=======
+
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
->>>>>>> Stashed changes
-=======
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
->>>>>>> Stashed changes
+
                 stmt.setString(1, user.getEmail());
                 stmt.setString(2, user.getPassword());
 

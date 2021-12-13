@@ -28,13 +28,13 @@ class SignUp{
 
         let createEmail = document.querySelector("#email-input").value;
         let createPassword = document.querySelector("#password-input").value;
-        
+        console.log(createEmail, createPassword)
         let user = {
             email: createEmail,
             password: createPassword
         }
 
-        let result = await fetch("/rest/users", {
+        let result = await fetch("/rest/user", {
         method: "POST",
         body: JSON.stringify(user)
         });
