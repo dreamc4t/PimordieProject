@@ -125,6 +125,7 @@ public class Main {
             res.send("Updated");
         });
 
+<<<<<<< Updated upstream
 
         //Här är req/res för file upload
         app.post("/api/file-upload", (req, res) -> {
@@ -149,6 +150,9 @@ public class Main {
 
         int port = 5000;
 
+=======
+        int port = 4000;
+>>>>>>> Stashed changes
         app.listen(port);
         System.out.println("Running on port " + port);
 

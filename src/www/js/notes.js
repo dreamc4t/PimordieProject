@@ -16,6 +16,12 @@ class Notes {
                     <input id="notes-input" type="text-note">
                     <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
                 </div>
+<<<<<<< Updated upstream
+=======
+                <div id="currently-displayed-note">
+                <input id="notes-input" type="text">
+                </div>
+>>>>>>> Stashed changes
             </div>
         `;
         return toReturn;
@@ -108,8 +114,20 @@ class Notes {
         }); 
     }
 
+<<<<<<< Updated upstream
     
 
+=======
+    async updateNotes(){
+        
+        do{
+            let textUpdate = document.querySelector("#notes-input").value;
+        }while
+        
+
+        //setTimeout(1000);
+    }
+>>>>>>> Stashed changes
 }
 
 
