@@ -34,7 +34,7 @@ class ToDoList{
         for(let todo of await this.getTodoListFromDb(sortingBy, ascendDecend)) {
             let todoLi = `
             <li> 
-                ${todo.text} ID=${todo.todo_id} Completed?=${todo.completed}
+                ${todo.text}
                 <span class='trashcan-div'id='trash${todo.todo_id}' style='float:right;'> <img src='img/trashcan.png' style='height:15px;' class='trashcan-image'> </span>
                 `;
     
