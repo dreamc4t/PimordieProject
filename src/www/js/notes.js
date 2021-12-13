@@ -4,10 +4,16 @@ class Notes {
     render() {
         let toReturn = `
             <div id="notes-page">
-                <div id="notes-list">
-                    <button id="add-note-button" onclick="">
-                        <h2 id="add-note">- Add note -</h2>
-                    </button>
+                <div id="notes-menu">
+                    <div id="add-note" class="note-list-item" onclick="notes.addNote()">
+                        <h2>+</h2>
+                    </div>
+                    <div id="notes-list">
+                        
+                    </div>
+                </div>
+                <div id="currently-displayed-note">
+                    <input id="notes-input" type="text-note">
                 </div>
                 <div id="currently-displayed-note"></div>
             </div>
@@ -50,7 +56,7 @@ class Notes {
         let currentNoteElement = document.querySelector('#currently-displayed-note');
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
-                currentNoteElement.innerHTML = `<p>${note.text}</p>`;
+                currentNoteElement.textContent = note.text;
             }
         }
 
@@ -61,7 +67,6 @@ class Notes {
         let result = await fetch('/rest/notes');
         let notesFromDB = await result.json();
         return notesFromDB;
-        
     }
 }
 

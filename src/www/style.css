@@ -54,13 +54,13 @@ main{
 /* .toggle-nav, alltså Notes eller To-do knapparna */ 
 .toggle-nav {
     background-color: rgb(31,71,72);
-    height: 80px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     position: absolute;
-    bottom: 100px;
+    bottom: 110px;
     width: 100%;
 }
 
@@ -146,12 +146,18 @@ footer{
 
 /*Notes-page*/
 #notes-page {
-    height: 100%;
+    height: calc(100vh - 280px); /*footer 100px, togglenav 80px, header 100px*/
     width: 100%;
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 20px 20px;
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+#notes-menu { /*notes-list + add-note*/
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-bottom: 20px;
 }
 #notes-list {
     display: flex;
@@ -161,9 +167,35 @@ footer{
 }
 #notes-list button {
     width: 200px;
-    background-color:beige;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+#add-note {
+    background-color:rgb(68,140,93);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 166px;
+    margin-left: 34px;
+}
+#add-note:hover {
+    background-color:rgba(255,255,255,0.5);
+}
+.notes-trashcan {
+    height: 20px;
+    margin-right: 10px;
+}
+.notes-trashcan:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+.note-button {
+    background-color:rgb(68,140,93);
     padding: 10px;
     margin-bottom: 20px;
+}
+.note-button:hover {
+    background-color: rgba(255,255,255,0.5);
 }
 #currently-displayed-note {
     background-color: beige;
