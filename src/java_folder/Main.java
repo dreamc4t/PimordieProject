@@ -89,7 +89,7 @@ public class Main {
         });
 
         // res/req signup
-        app.post("/rest/users/", ((req, res) -> {
+        app.post("/rest/user/", ((req, res) -> {
             User user = (User) req.getBody(User.class);
 
             db.createUser(user);

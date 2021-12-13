@@ -218,7 +218,7 @@ public class Database {
             User userTry = this.getUserByEmail(user.getEmail());
             if(userTry == null){
                 create = true;
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO users(email, password) VALUES(?, ?)");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
                 stmt.setString(1, user.getEmail());
                 stmt.setString(2, user.getPassword());
 
@@ -249,7 +249,7 @@ public class Database {
     public User getUserByEmail(String email){
         User user = null;
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE email = ?");
             stmt.setString(1, email);
 
             ResultSet rs = stmt.executeQuery();
