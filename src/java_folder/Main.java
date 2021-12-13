@@ -77,7 +77,25 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
-        int port = 3000;
+        //Sätta todo item som completed
+        app.put("/rest/todo-list/:todo_id", (req,res) -> {
+            int todo_id =  Integer.parseInt(req.getParam("todo_id"));
+            Todo todo = db.getTodoListById(todo_id);
+
+
+            if (todo.isCompleted() == true) {
+                System.out.println(todo.getTodo_id() + " is now set to 'not completed' aka false");
+                db.completeTodo(todo_id, false);
+            }
+            else {
+                System.out.println(todo.getTodo_id() + " is now set to 'completed' aka true");
+                db.completeTodo(todo_id, true);
+            }
+
+            res.send("Updated");
+        });
+
+        int port = 3011;
         app.listen(port);
         System.out.println("Running on port " + port);
     }

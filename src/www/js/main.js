@@ -26,8 +26,7 @@ function changePage() {
         
         case('todo'):
         document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
-        let toDoList = new ToDoList();
-        toDoList.renderTodoList();
+        toDoList1.renderTodoList();
         
         break;
         

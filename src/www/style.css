@@ -547,7 +547,12 @@ strong{
       padding: 4px;
   }
 
-  .trashcan-div:hover{
+  .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
       cursor: pointer;
   }
 
+.isItCompleted-div {
+    margin-right: 15px;
+    margin-top: 1px;
+    float: right;
+}

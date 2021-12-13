@@ -2,11 +2,6 @@ class ToDoList{
     
     async renderTodoList() {
         let todos = [];
-        let listWeSee = [];
-        listWeSee = document.getElementsByClassName('listWeSee');
-        /*
-        console.log(listWeSee);
-        */
         let result = await fetch('/rest/todo-list');
         todos = await result.json();
         
@@ -15,77 +10,68 @@ class ToDoList{
 
         console.log("rendering todo list..")
         
-        let i = 0;
         for(let todo of todos) {
             let todoLi = `
-            <li class="listWeSee"> 
-                ${todo.text} ID=${todo.todo_id} <span class='trashcan-div'id='tc${i}' style='float:right;'> <img src='img/trashcan.png' style='height:15px;' class='trashcan-image'> </span>
-            </li>
-            `;
+            <li> 
+                ${todo.text} ID=${todo.todo_id} Completed?=${todo.completed}
+                <span class='trashcan-div'id='trash${todo.todo_id}' style='float:right;'> <img src='img/trashcan.png' style='height:15px;' class='trashcan-image'> </span>
+                `;
+    
+                if (todo.completed == true) {
+                    todoLi += "<input type='checkbox' class='isItCompleted-div'id='done" + todo.todo_id +"' checked> </li>"
+                }
+                else {
+                    todoLi += "<input type='checkbox' class='isItCompleted-div'id='done"+ todo.todo_id +"'> </li>"
+
+            }
             todoList.innerHTML += todoLi;
-
-            console.log(todo.todo_id)
-            listWeSee[i].value = todo.todo_id;
             
-            i++
+      }
 
-        }
-        /*
-        for (let i = 0; i <listWeSee.length; i++) {
-            console.log(listWeSee[i].value);
-        }
-        */
         todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>";
         
         let addBtn = document.getElementById("todoAddButton");
-        addBtn.addEventListener("click", this.addTodoItem);
+        addBtn.addEventListener("click", addTodoItem);
 
+        document.querySelectorAll(".trashcan-div").forEach(item => {
+            item.addEventListener("click", deleteItemByClick)
+        }); 
 
-
-        /* Här är tcX's id samma som listWeSee[X]value */
-        let testButton = [];
-       
-        for (let i = 0; i<listWeSee.length; i++) {
-            testButton[i] = document.getElementById("tc" + i);
-            testButton[i].addEventListener("click", function(){
-                console.log("Test test ")
-                console.log(listWeSee[i].value)
-
-
-            });
-        }
-    
-        
-        
-
-
+        document.querySelectorAll(".isItCompleted-div").forEach(item => {
+            item.addEventListener("click", setIsCompelted)
+        }); 
 
     }
+}
 
+let toDoList1 = new ToDoList();
+
+
+    async function deleteItemByClick() {
+
+        idTodelete = this.id.replace('trash', '')
+        let yesOrNo = confirm("Are you sure?");
     
+        if (yesOrNo == true) {
+            let todo = {
+                todo_id: idTodelete
+            }
+        
+            let result = await fetch('/rest/todo-list/' + idTodelete, {
+                method: 'delete',
+                body: JSON.stringify(todo)
+            });
+            console.log("Deleting id with id number " + idTodelete)
+        }
 
-   
-      async deleteTodoItem() {
-        console.log("Här var det delete function!")
-        /*
-        let id = {
-            todo_id: 42
-        };
-        let result = await fetch("/rest/todo-list", {
-            method: "DELETE",
-            body: JSON.stringify(item)
-        });
-        */
-      }
+        else {
+            console.log("ok inget jävla deletande då")
+        }
+        toDoList1.renderTodoList();
+        
+    }
 
-
-
-
-
-
-
-
-    async addTodoItem() {
+    async function addTodoItem() {
         if (document.getElementById("todoInput").value == '') {
             alert("Must enter something");
             console.log("Failed adding todo item, no value has been input")
@@ -102,6 +88,27 @@ class ToDoList{
             });
             document.getElementById("todoInput").value = ''; 
         }       
+        toDoList1.renderTodoList();
+
     } 
 
-}
+    async function setIsCompelted() {
+
+        idToComplete = this.id.replace('done','');
+        console.log(this.id)
+        console.log(idToComplete + " is completed!")
+
+
+        let todo = {
+            todo_id: idToComplete
+        }
+    
+        let result = await fetch('/rest/todo-list/' + idToComplete, {
+            method: 'put',
+            body: JSON.stringify(todo)
+        });
+        console.log("Set todo item with id number " + idToComplete +" to compelted. WP")
+        toDoList1.renderTodoList();
+    }
+
+

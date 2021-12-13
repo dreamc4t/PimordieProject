@@ -108,6 +108,32 @@ public class Database {
         return todoList;
     }
 
+    public Todo getTodoListById(int id) {
+
+
+        Todo todo = null;
+        PreparedStatement statement = null;
+
+        try {
+            statement = conn.prepareStatement("SELECT * FROM todo_list WHERE todo_id = ?");
+            statement.setInt(1, id);//ej 0-index
+
+            ResultSet rs = statement.executeQuery(); //detta är en lista, vi vill dock ha en todo och ej en hel lista
+
+            Todo[] todosFromRs = (Todo[]) Utils.readResultSetToObject(rs, Todo[].class); //skapa temporär array
+
+            todo = todosFromRs[0]; //tar första ur arrayen!
+            System.out.println("Getting todo with text: " + todo.getText() + " (id = " + id + ")");
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return todo;
+    }
+
     public void addTodo(Todo todo) {
         try {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO todo_list (text) VALUES(?)");
@@ -148,10 +174,15 @@ public class Database {
 
     public void completeTodo(int todo_id, boolean isCompleted) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET isCompleted = true WHERE todo_id = ?");
+
+
+
+            PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET isCompleted = " + isCompleted + " WHERE todo_id = ?");
             stmt.setInt(1, todo_id);
 
-            stmt.executeUpdate();
+            int i = stmt.executeUpdate();
+            System.out.println(i + " records updated. Set todo item with ID " + todo_id + "'s completed status to " + isCompleted);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
