@@ -28,20 +28,13 @@ class SignUp{
 
         let createEmail = document.querySelector("#email-input").value;
         let createPassword = document.querySelector("#password-input").value;
-<<<<<<< Updated upstream
         console.log(createEmail, createPassword)
-=======
->>>>>>> Stashed changes
         let user = {
             email: createEmail,
             password: createPassword
         }
 
-<<<<<<< Updated upstream
         let result = await fetch("/rest/user", {
-=======
-        let result = await fetch("/rest/users", {
->>>>>>> Stashed changes
         method: "POST",
         body: JSON.stringify(user)
         });
