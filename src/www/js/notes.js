@@ -92,6 +92,7 @@ class Notes {
         let notesFromDB = await result.json();
         return notesFromDB;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }
 
 
@@ -110,6 +111,9 @@ class Notes {
 
     
     
+=======
+    }    
+>>>>>>> Stashed changes
 =======
     }    
 >>>>>>> Stashed changes

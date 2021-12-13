@@ -219,7 +219,11 @@ public class Database {
             if(userTry == null){
                 create = true;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO user(email, password) VALUES(?, ?)");
+=======
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
+>>>>>>> Stashed changes
 =======
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
 >>>>>>> Stashed changes
