@@ -12,7 +12,9 @@ class Notes {
                         
                     </div>
                 </div>
-                <div id="currently-displayed-note"></div>
+                <div id="currently-displayed-note">
+                    <input id="notes-input" type="text-note">
+                </div>
             </div>
         `;
         return toReturn;
@@ -74,7 +76,7 @@ class Notes {
 
     //rendera den valda anteckningen så den visas på höger sida
     async renderCurrentlyDisplayedNote(id) {
-        let currentNoteElement = document.querySelector('#currently-displayed-note');
+        let currentNoteElement = document.querySelector('#notes-input');
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
                 currentNoteElement.innerHTML = `<p>${note.text}</p>`;
@@ -89,6 +91,34 @@ class Notes {
         let notesFromDB = await result.json();
         return notesFromDB;
     }
+
+
+
+
+
+
+    
+    /*form.addEventListener('blur', (event) => {
+      event.target.style.background = '';
+    }, true);*/
+    
+
+
+
+        
+
+
+    let textInput = document.querySelector("#notes-input").value;
+
+    let textUpdate = {
+        text: textInput
+    };
+    
+    let result = await fetch("/rest/notes", {
+    method: "PUT",
+    body: JSON.stringify(textUpdate)
+    }); 
+    
 }
 
 
