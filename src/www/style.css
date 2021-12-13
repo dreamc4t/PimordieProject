@@ -153,23 +153,50 @@ footer{
     justify-content: center;
     gap: 20px;
 }
+#notes-menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
 #notes-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
+    row-gap: 10px;
+    padding-right: 20px;
 }
-#notes-list button {
+.note-list-item {
     width: 200px;
-    background-color:beige;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+#add-note {
+    background-color:rgb(68,140,93);
     padding: 10px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.notes-trashcan {
+    height: 20px;
+    margin-right: 10px;
+}
+.notes-trashcan:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+.note-button {
+    background-color:rgb(68,140,93);
+    padding: 10px;
+    display: flex;
+    width: 100%;
 }
 #currently-displayed-note {
-    background-color: beige;
+    background-color: rgb(68,140,93);
     width: 700px;
     overflow: auto;
     padding: 20px;
+    color: white;
 }
 #currently-displayed-note p {
     font-size: 20px;
