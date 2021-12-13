@@ -49,7 +49,7 @@ class Contact{
             </div>
             <hr id="line">
             <div id="contact-innerbox">
-                <button id="send-button" onclick="#">SEND MESSAGE</button>
+                <button id="send-button" onclick="contact.contactMessage()">SEND MESSAGE</button>
             </div>
         </aside>
         `;
@@ -58,15 +58,16 @@ class Contact{
     async contactMessage(){
 
         let sendFullname = document.querySelector("#input-fullname").value;
-        let sendEmail = document.querySelector("#pinput-email").value;
+        let sendEmail = document.querySelector("#input-contact").value;
         let sendMessage = document.querySelector("#input-message").value;
+        
         let message = {
             fullname: sendFullname,
             email: sendEmail,
             password: sendMessage
         }
 
-        let result = await fetch("/rest/users", {
+        let result = await fetch("/rest/contact", {
         method: "POST",
         body: JSON.stringify(message)
         });

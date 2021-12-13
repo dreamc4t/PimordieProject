@@ -82,6 +82,7 @@ public class Main {
         app.post("/rest/users", (req, res) ->{
             User user = (User) req.getBody(User.class);
 
+
             db.login(user);
 
             res.send("OK");
@@ -124,7 +125,7 @@ public class Main {
         });
 
 
-        int port = 3000;
+        int port = 5000;
 
         app.listen(port);
         System.out.println("Running on port " + port);

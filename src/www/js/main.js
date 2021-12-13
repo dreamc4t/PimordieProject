@@ -1,6 +1,8 @@
 let nav = new Nav();
 let notes = new Notes();
 let login = new Login();
+let signup = new SignUp();
+let contact = new Contact();
 
 document.querySelector('main').innerHTML = notes.render();
 notes.renderNotesList();
@@ -30,18 +32,16 @@ function changePage() {
         case('todo'):
         document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
         toDoList1.renderTodoList();
-        
         break;
-        
 
         case('login'):
-
         document.querySelector('main').innerHTML = login.renderLogin();
         break;
 
-        case('sign-up'):
-        let signup = new SignUp();
+        case('signup'):
+ 
         document.querySelector('main').innerHTML = signup.renderSignUp();
+        break;
 
         case('about-us'):
         let aboutUs = new AboutUs();
@@ -49,13 +49,13 @@ function changePage() {
         break;
 
         case('contact'):
-        let contact = new Contact();
+
         document.querySelector('main').innerHTML = contact.renderContact();
         break;
 
         default:
             document.querySelector('main').innerHTML = notes.render();
-            notes.renderNotesList();
+        notes.renderNotesList();
     }
 }
 
