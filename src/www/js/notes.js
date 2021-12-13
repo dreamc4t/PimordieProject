@@ -5,7 +5,7 @@ class Notes {
         let toReturn = `
             <div id="notes-page">
                 <div id="notes-list">
-                    <button>
+                    <button id="add-note-button" onclick="">
                         <h2 id="add-note">- Add note -</h2>
                     </button>
                 </div>
@@ -16,6 +16,12 @@ class Notes {
         return toReturn;
     }
 
+    //skapa en ny note
+    async addNote() {
+        
+    }
+
+    //rendera listan där man kan välja vilken note man vill se
     async renderNotesList() {
         let notesList = "";
         for (let note of await this.getNotesFromDB()) {
@@ -28,6 +34,7 @@ class Notes {
         document.querySelector('#notes-list').insertAdjacentHTML('beforeend', notesList);
     }
 
+    //Styr färgen på list-items så man ser vilken note som är vald
     async markButtonAsActive(id) {
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
@@ -38,6 +45,7 @@ class Notes {
         }
     }
 
+    //rendera den valda anteckningen så den visas på höger sida
     async renderCurrentlyDisplayedNote(id) {
         let currentNoteElement = document.querySelector('#currently-displayed-note');
         for (let note of await this.getNotesFromDB()) {
@@ -48,6 +56,7 @@ class Notes {
 
     }
 
+    //fetcha alla anteckningar
     async getNotesFromDB() {
         let result = await fetch('/rest/notes');
         let notesFromDB = await result.json();
