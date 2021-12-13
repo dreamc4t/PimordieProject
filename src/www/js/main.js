@@ -1,6 +1,6 @@
 let nav = new Nav();
 let notes = new Notes();
-
+let login = new Login();
 document.querySelector('main').innerHTML = notes.render();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
@@ -24,7 +24,7 @@ function changePage() {
         break;
 
         case('login'):
-        let login = new Login();
+
         document.querySelector('main').innerHTML = login.renderLogin();
         break;
 

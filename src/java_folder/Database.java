@@ -209,7 +209,7 @@ public class Database {
     public User getUserByEmail(String email){
         User user = null;
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT*FROM users WHERE email = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?");
             stmt.setString(1, email);
 
             ResultSet rs = stmt.executeQuery();
