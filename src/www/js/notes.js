@@ -14,6 +14,7 @@ class Notes {
                 </div>
                 <div id="currently-displayed-note">
                     <input id="notes-input" type="text-note">
+                    <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
                 </div>
             </div>
         `;
@@ -93,31 +94,20 @@ class Notes {
     }
 
 
+    async updateNote(){
+        let textInput = document.querySelector("#notes-input").value;
 
-
-
-
-    
-    /*form.addEventListener('blur', (event) => {
-      event.target.style.background = '';
-    }, true);*/
-    
-
-
-
+        let textUpdate = {
+            text: textInput
+        };
         
+        await fetch("/rest/notes", {
+        method: "PUT",
+        body: JSON.stringify(textUpdate)
+        }); 
+    }
 
-
-    let textInput = document.querySelector("#notes-input").value;
-
-    let textUpdate = {
-        text: textInput
-    };
     
-    let result = await fetch("/rest/notes", {
-    method: "PUT",
-    body: JSON.stringify(textUpdate)
-    }); 
     
 }
 
