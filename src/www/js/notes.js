@@ -76,7 +76,7 @@ class Notes {
 
     //rendera den valda anteckningen så den visas på höger sida
     async renderCurrentlyDisplayedNote(id) {
-        let currentNoteElement = document.querySelector('#currently-displayed-note');
+        let currentNoteElement = document.querySelector('#notes-input');
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
                 currentNoteElement.innerHTML = `<p>${note.text}</p>`;
@@ -105,26 +105,20 @@ class Notes {
 
 
 
-    async updateNotesFocus(event){
         
-            event.preventDefault();
 
-            do{
-                let textInput = document.querySelector("#notes-input").value;
 
-                let textUpdate = {
-                    text: textInput
-                };
+    let textInput = document.querySelector("#notes-input").value;
+
+    let textUpdate = {
+        text: textInput
+    };
     
-                let result = await fetch("/rest/notes", {
-                    method: "PUT",
-                    body: JSON.stringify(textUpdate)
-                    });
-            }while(focus('#notes-input') && setTimeout(1000));
-            
-
-            
-    }
+    let result = await fetch("/rest/notes", {
+    method: "PUT",
+    body: JSON.stringify(textUpdate)
+    }); 
+    
 }
 
 

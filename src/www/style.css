@@ -205,7 +205,8 @@ footer{
 #notes-input{
     height: 100%;
     width: 100%;
-    background-color: beige;
+    background-color: rgb(68,140,93);
+    color: white;
     border:none;
     outline: none;
 }
