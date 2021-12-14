@@ -60,9 +60,11 @@ class Notes {
 
   //rendera listan där man kan välja vilken note man vill se
   async renderNotesList() {
-    let notesList = "";
-    for (let note of await this.getNotesFromDB()) {
-      notesList += `
+    let notesFromDB = await this.getNotesFromDB();
+    this.sortByCreationDateDescending(notesFromDB);
+    let notesListToRender = "";
+    for (let note of notesFromDB) {
+      notesListToRender += `
                 <span class="note-list-item">
                     <img class="notes-trashcan" src="img/trashcan.png" onclick="notes.deleteNote(${note.note_id})">
                     <div id="note-button-${note.note_id}" class="note-button"  onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markNoteListItemAsActive(${note.note_id}); notes.assignNewIdToSaveButton(${note.note_id})">
@@ -71,7 +73,13 @@ class Notes {
                 </span>
             `;
     }
-    document.querySelector("#notes-list").innerHTML = notesList;
+    document.querySelector("#notes-list").innerHTML = notesListToRender;
+  }
+
+  sortByCreationDateDescending(notes) {
+    notes.sort(function (a, b) {
+      return b.created_datetime - a.created_datetime;
+    });
   }
 
   //Styr färgen på list-items så man ser vilken note som är vald
