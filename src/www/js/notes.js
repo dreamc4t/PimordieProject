@@ -13,7 +13,7 @@ class Notes {
                     </div>
                 </div>
                 <div id="currently-displayed-note">
-                    <input id="notes-input" type="text-note" autocomplete="off">
+                    <textarea id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
                     <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
                 </div>
             </div>
@@ -80,7 +80,7 @@ class Notes {
         let currentNoteElement = document.querySelector('#notes-input');
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
-                currentNoteElement.setAttribute('value', note.text);
+                currentNoteElement.textContent = note.text;
             }
         }
     }
@@ -106,6 +106,11 @@ class Notes {
         }); 
     }
 
+    autoGrowTextarea() {
+        let textarea = document.querySelector('#notes-input');
+        textarea.style.height = "5px";
+        textarea.style.height = (textarea.scrollHeight)+"px";
+    }
     
 
 
