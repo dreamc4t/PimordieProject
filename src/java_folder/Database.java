@@ -211,19 +211,29 @@ public class Database {
 
     //create user
 
-    public void createUser(User user) {
+    public Boolean createUser(User user){
+        Boolean create = false;
         try {
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
-            stmt.setString(1, user.getEmail());
-            stmt.setString(2, user.getPassword());
+            User userTry = this.getUserByEmail(user.getEmail());
+            if(userTry == null){
+                create = true;
 
-            stmt.executeUpdate();
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
+
+                stmt.setString(1, user.getEmail());
+                stmt.setString(2, user.getPassword());
+
+                stmt.executeUpdate();
+
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    };
+
+        return create;
+    }
 
     //Login
     public Boolean login(User user){
@@ -287,7 +297,7 @@ public class Database {
     }
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
-        System.out.println("the unixTime = "+ unixtime);
+        System.out.println("the unixTime = "+ unixTimestamp());
         return unixtime;
     };
 }

@@ -90,24 +90,22 @@ public class Main {
         });
 
         // res/req signup
-        app.post("/rest/signup", (req, res) -> {
-
+        app.post("/rest/user", ((req, res) -> {
             User user = (User) req.getBody(User.class);
 
-            System.out.println(user.toString());
             db.createUser(user);
 
             res.send("OK");
-        });
+        }));
 
         // req/res contact
-        app.post("/rest/contact", (req, res) -> {
-            ContactMessage message = (ContactMessage) req.getBody(ContactMessage.class);
+        app.post("/rest/contact", ((request, response) -> {
+            ContactMessage message = (ContactMessage) request.getBody(ContactMessage.class);
 
         db.addMessage(message);
 
-            res.send("OK");
-        });
+            response.send("OK");
+        }));
 
         //Sätta todo item som completed
         app.put("/rest/todo-list/:todo_id", (req,res) -> {
@@ -148,7 +146,7 @@ public class Main {
 
         });
 
-        int port = 3000;
+        int port = 5000;
 
         app.listen(port);
         System.out.println("Running on port " + port);

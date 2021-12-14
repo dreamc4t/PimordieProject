@@ -2,10 +2,10 @@ package java_folder;
 
 public class User {
 
-    private int user_id;
+    private int userID;
     private String email;
     private String password;
-    private long created_date_time;
+    private long createdDateTime;
 
     public User() {
     }
@@ -16,11 +16,11 @@ public class User {
     }
 
     public int getUserID() {
-        return user_id;
+        return userID;
     }
 
-    public void setUserID(int user_id) {
-        this.user_id = user_id;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getEmail() {
@@ -39,22 +39,21 @@ public class User {
         this.password = password;
     }
 
-    public long getCreated_date_time() {
-        return created_date_time;
+    public long getCreatedDateTime() {
+        return createdDateTime;
     }
 
-    public void setCreated_date_time(long created_date_time) {
-        this.created_date_time = created_date_time;
+    public void setCreatedDateTime(long createdDateTime) {
+        this.createdDateTime = createdDateTime;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "userID=" + userID +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", created_date_time=" + created_date_time +
+                ", createdDateTime=" + createdDateTime +
                 '}';
     }
 }
-

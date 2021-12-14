@@ -166,14 +166,12 @@ footer{
     overflow: auto;
     row-gap: 10px;
     padding-right: 20px;
-    overflow-x: hidden;
 }
 .note-list-item {
     width: 200px;
     display: flex;
     align-items: center;
     color: white;
-    
 }
 #add-note {
     background-color:rgb(68,140,93);
@@ -182,11 +180,8 @@ footer{
     justify-content: center;
     width: 166px;
     margin-left: 34px;
-    border-radius: 0.5cm;
-    border:solid white;
     
 }
-
 #add-note:hover {
     background-color:rgba(255,255,255,0.5);
 }
@@ -198,49 +193,34 @@ footer{
     background-color: rgba(0,0,0,0.5);
 }
 .note-button {
-    background-color: rgb(30,53,109);
+    background-color:rgb(68,140,93);
     padding: 10px;
     display: flex;
     width: 100%;
     border-radius: 0.5cm;
-    border:solid white;
 }
 .note-button:hover {
     background-color: rgba(255,255,255,0.5);
 }
 #currently-displayed-note {
-    background-color: rgb(30,53,109);
+    background-color: rgb(68,140,93);
     width: 700px;
     overflow: auto;
-    padding: 40px;
+    padding: 20px;
     color: white;
     border-radius: 1.5cm;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
 }
+#currently-displayed-note p {
+    font-size: 20px;
+}
+
 #notes-input{
+    height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgb(68,140,93);
     color: white;
     border:none;
     outline: none;
-    resize: none;
-    border-radius: 0.2cm;
-    padding: 5px;
-}
-#save-note-button{
-    background-color:rgb(68,140,93);
-    border-radius: 0.5cm;
-    height: 50px;
-    width: 80px;
-    color: white;
-    border:solid white;
-    
-}
-#save-note-button:hover{
-    background-color: rgba(255,255,255,0.5);
 }
 
 /*Social/download side*/
@@ -379,9 +359,6 @@ strong{
     align-items: flex-start;
     outline: none;
 }
-#input-fullname::placeholder{
-    color: white;
-}
 #input-contact{
     color: white;
     height: 80%;
@@ -390,9 +367,6 @@ strong{
     margin-left: 15px;
     border:none;
     outline: none;
-}
-#input-contact::placeholder{
-    color: white;
 }
 #contact-innerbox{
     height: 10%;
@@ -419,9 +393,7 @@ strong{
     outline: none;
  
 }
-#input-message::placeholder{
-    color: white;
-}
+
 #send-button{
     height: 80%;
     width: 80%;
@@ -442,28 +414,23 @@ strong{
     width: 60%; 
 }
 #about-top{
-    border-top-left-radius: 1.5cm;
     height: 35%;
     width: 100%;
     display: flex;
-    background-color: rgb(30,53,109);
-    border-top-right-radius: 1.5cm;
 }
 #img-teamwork{
     height: 100%;
     width: 50%;
     border-top-left-radius: 1.5cm;
-    border-bottom-right-radius: 1.5cm;
     border-top: solid white;
     border-left: solid white;
-
 }
 #about-welcome{
     height: 100%;
     width: 50%;
     padding-left: 70px;
     padding-right: 30px;
-    background-color: rgb(30,53,109);
+    background-color:rgb(68,140,93);
     color: white;
     font-size: 32px;
     display: flex;
@@ -480,7 +447,7 @@ strong{
 }
 #about-us{
     width: 30%;
-    background-color: rgb(30,53,109);
+    background-color:rgb(68,140,93);
     font-size: 40px;
     display: flex;
     justify-content: center;
@@ -490,7 +457,7 @@ strong{
 }
 #about-us-text{
     width: 40%;
-    background-color: rgb(30,53,109);
+    background-color: rgb(31, 71, 72, 0.5);
     color: white;
     padding-left: 30px;
     padding-right: 30px;
@@ -502,23 +469,12 @@ strong{
 #about-middle-color{
     width: 30%;
     background-color: rgb(30,53,109);
-    color: white;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-size: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-right: solid white;
 }
 #about-bottom{
-    background-color: rgb(30,53,109);
     height: 35%;
     width: 100%;
     display: flex;
-    border-bottom-right-radius: 1.5cm;
-    border-bottom-left-radius: 1.5cm;
-
 }
 #about-bottom-color{
     width: 50%;
@@ -536,6 +492,7 @@ strong{
 }
 #img-box-bottom{
     width: 50%;
+    background-color:rgb(68,140,93);
     border-bottom-right-radius: 1.5cm;
 }
 #img-teamwork2{
@@ -544,7 +501,6 @@ strong{
     border-bottom-right-radius: 1.5cm;
     border-bottom: solid white;
     border-right: solid white;
-    border-top-left-radius: 1.5cm;
 }
 
 /*sign up*/
@@ -635,9 +591,8 @@ strong{
 
 #login-create-toggle{
     color: white;
-    margin-left: 245px;
+    margin-left: 200px;
     margin-top: 15px;
-
 }
 
 /* To do listan */ 
