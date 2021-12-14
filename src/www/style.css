@@ -673,7 +673,7 @@ strong{
     height: 600px;
     /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
     padding: 5px;
-    width: 525px;
+    width: 570px;
     border: 5px white solid;
     border-radius: 25px;
     background-color:rgb(68,140,93);
@@ -805,6 +805,7 @@ strong{
 }
 
 .todoBottom {
+    margin: 5px;
     align-self: flex-end;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
@@ -828,5 +829,5 @@ strong{
 #todoUl {
     overflow: auto;
     height: 350px;
-    
+    width: 530px;
 }
