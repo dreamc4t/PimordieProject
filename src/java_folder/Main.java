@@ -139,8 +139,6 @@ public class Main {
                 res.send("error");
             }
 
-            // return "/uploads/image-name.jpg
-            // Här var felet! Det stod "stored" + fileUrl
             res.send(fileUrl);
 
         });
@@ -163,6 +161,10 @@ public class Main {
             db.deleteFile(file_id);
         });
 
+        app.get("/rest/composite", (req, res) -> {
+            List<CompositeKeyNotesFiles> compKeys = db.getCompositeKeys();
+            res.json(compKeys);
+        });
 
         int port = 3000;
 
