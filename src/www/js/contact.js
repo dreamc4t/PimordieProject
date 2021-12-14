@@ -1,10 +1,7 @@
-class Contact{
-
-
-    
-    //Render in main when #contact
-    renderContact(){
-        return`
+class Contact {
+  //Render in main when #contact
+  renderContact() {
+    return `
         <article id="contact-leftside">
             <div id="contact-header">
                 <h1 id="contact-headline">
@@ -53,24 +50,24 @@ class Contact{
             </div>
         </aside>
         `;
-    }
+  }
 
-    async contactMessage(){
+  async contactMessage() {
+    let sendFullname = document.querySelector("#input-fullname").value;
+    let sendEmail = document.querySelector("#input-contact").value;
+    let sendMessage = document.querySelector("#input-message").value;
 
-        let sendFullname = document.querySelector("#input-fullname").value;
-        let sendEmail = document.querySelector("#input-contact").value;
-        let sendMessage = document.querySelector("#input-message").value;
-        
-        let message = {
-            fullname: sendFullname,
-            email: sendEmail,
-            password: sendMessage
-        }
+    console.log(sendEmail, sendFullname, sendMessage);
+    let message = {
+      fullName: sendFullname,
+      email: sendEmail,
+      message: sendMessage,
+    };
+    console.log(message);
 
-        let result = await fetch("/rest/contact", {
-        method: "POST",
-        body: JSON.stringify(message)
-        });
-    }
+    let result = await fetch("/rest/contact", {
+      method: "POST",
+      body: JSON.stringify(message),
+    });
+  }
 }
-
