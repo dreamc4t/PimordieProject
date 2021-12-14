@@ -13,7 +13,7 @@ class Notes {
                     </div>
                 </div>
                 <div id="currently-displayed-note">
-                    <input id="notes-input" type="text-note">
+                    <input id="notes-input" type="text-note" autocomplete="off">
                     <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
                 </div>
                 <div id="currently-displayed-note">
@@ -83,10 +83,9 @@ class Notes {
         let currentNoteElement = document.querySelector('#notes-input');
         for (let note of await this.getNotesFromDB()) {
             if(note.note_id === id) {
-                currentNoteElement.textContent = note.text;
+                currentNoteElement.setAttribute('value', note.text);
             }
         }
-
     }
 
     //fetcha alla anteckningar
