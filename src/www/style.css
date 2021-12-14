@@ -40,6 +40,10 @@ header{
     font-size: 45px;
 }
 
+#headerLink:link {
+    text-decoration: none;
+}
+
 /*Main*/
 main{
     width: 100%;
@@ -89,6 +93,18 @@ footer{
     justify-content: space-between;
     position: fixed;
     bottom: 0px;
+}
+
+footer h5 {
+    text-align: center;
+    
+}
+footer a:link {
+    text-decoration: none;
+}
+
+#inner-box1 {
+    background-color: black;
 }
 
 /*Footer Nav*/
@@ -669,15 +685,37 @@ strong{
 /* To do listan */ 
 
 #todoUl {
-
+    height: 600px;
+    /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
+    padding: 5px;
+    width: 525px;
+    border: 5px white solid;
+    border-radius: 25px;
+    background-color:rgb(68,140,93);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    align-content: center;
 }
+
 #todoUl li{
     list-style: none;
-    border: 1px black solid;
+    border: 1px white solid;
+    border-radius: 10px;
+    background-color: rgb(30,53,109);
+    color: white;
     padding: 5px;
     margin: 5px;
     width: 500px;
-    min-height: 27px;
+    height:27px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    /* min-height: 27px; */
+}
+
+#todoUl li:hover {
+    background-color: rgba(23, 41, 85, 0.5);
 }
 
 /* TO DO INPUT + BUTTON */
@@ -685,8 +723,8 @@ strong{
     margin-top: 5px;
     margin-left: 5px;
     border: none;
-    border-radius: 0;
-    width: 400px;
+    border-radius: 10px;
+    width: 390px;
     padding: 10px;
     float: left;
     font-size: 16px;
@@ -695,26 +733,29 @@ strong{
   /*  button */
   #todoAddButton {
     margin-top: 5px;
+    margin-right: 5px;
     padding: 10px;
     width: 100px;
-    background: #d9d9d9;
-    color: #555;
+    background: rgb(30,53,109);
+    border: 1px white solid;
+    color: white;
     float: left;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 0;
+    border-radius: 10px;
   }
   
   #todoAddButton:hover {
-    background-color: #bbb;
+    background-color:rgba(23, 41, 85, 0.5);
   }
     
   .trashcan-div {
-      background-color: blue;
+      /* background-color: rgb(30,53,109); */
+      border-radius: 8px;
       margin: -5px;
-      padding: 4px;
+      padding: 5px;
   }
 
   .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
@@ -729,4 +770,64 @@ strong{
 
 .img-tests {
     width: 200px;
+}
+
+/* Sorting buttons */
+#sortCompletedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#sortAlphabetButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#sortLastAddedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.todoBottom {
+    align-self: flex-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Mouseover/hover sort-buttons */
+#sortCompletedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortAlphabetButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortLastAddedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
 }
