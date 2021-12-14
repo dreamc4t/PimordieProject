@@ -63,8 +63,8 @@ async function addFile(e) {
      // create a post object containing values from inputs
      // and the uploaded image url
      let post = {
-         //add note_id here
-         fileUrl: fileUrl
+        note_id: note_id,
+        fileUrl: fileUrl
      }
  
      let result = await fetch("/rest/files", {
