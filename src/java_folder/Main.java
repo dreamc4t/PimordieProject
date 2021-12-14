@@ -133,21 +133,38 @@ public class Main {
             // extract the file from the FormData
             try {
                 List<FileItem> files = req.getFormData("files");
-
                 fileUrl = db.uploadFile(files.get(0));
-
-
             } catch (Exception e) {
                 e.printStackTrace();
                 res.send("error");
             }
 
             // return "/uploads/image-name.jpg
-            res.send("stored " + fileUrl);
+            // Här var felet! Det stod "stored" + fileUrl
+            res.send(fileUrl);
 
         });
 
-        int port = 3001;
+        app.post("/rest/files", (req, res) -> {
+            Files file = (Files) req.getBody(Files.class);
+
+            db.createFile(file);
+            res.send("post OK");
+        });
+
+        app.get("/rest/files", (req, res) -> {
+            List<Files> files = db.getFiles();
+            res.json(files);
+        });
+
+        app.delete("/rest/files/:file_id", (req,res) -> {
+            int file_id =  Integer.parseInt(req.getParam("file_id"));
+            res.send("DELETED");
+            db.deleteFile(file_id);
+        });
+
+
+        int port = 3000;
 
         app.listen(port);
         System.out.println("Running on port " + port);
