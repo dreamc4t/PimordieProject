@@ -5,7 +5,7 @@ class Login{
         return`
         <div id="signup-mainbox">
             <nav id="signup-leftbox">
-                <img id="signup-img" src="img/register.jpg" alt="">
+                <img id="signup-img" src="img/lock.jpg" alt="">
             </nav>
             <article id="signup-rightbox">
                 <h1 id="signup-title">LOGIN</h1>
