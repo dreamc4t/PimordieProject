@@ -14,7 +14,7 @@ class Notes {
                 </div>
                 <div id="currently-displayed-note">
                     <textarea id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
-                    <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
+                    <button class="save-button" onclick="notes.updateNote()" id="id-that-will-change-depending">Save Note</button>
                 </div>
             </div>
         `;
@@ -55,7 +55,7 @@ class Notes {
             notesList += `
                 <span class="note-list-item">
                     <img class="notes-trashcan" src="img/trashcan.png" onclick="notes.deleteNote(${note.note_id})">
-                    <div id="note-button-${note.note_id}" class="note-button"  onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markNoteListItemAsActive(${note.note_id})">
+                    <div id="note-button-${note.note_id}" class="note-button"  onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markNoteListItemAsActive(${note.note_id}); notes.assignNewIdToSaveButton(${note.note_id})">
                         <h2>${note.title}</h2>
                     </div>
                 </span>
@@ -92,7 +92,6 @@ class Notes {
         return notesFromDB;
     }
 
-
     async updateNote(){
         let textInput = document.querySelector("#notes-input").value;
 
@@ -110,6 +109,11 @@ class Notes {
         let textarea = document.querySelector('#notes-input');
         textarea.style.height = "5px";
         textarea.style.height = (textarea.scrollHeight)+"px";
+    }
+
+    assignNewIdToSaveButton(id) {
+        let saveButton = document.querySelector('.save-button');
+        saveButton.setAttribute('id', id);
     }
     
 
