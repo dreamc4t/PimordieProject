@@ -73,6 +73,8 @@ async function addFile(e) {
      });
  
      filePosts.push(post)
+     toggleFiles();
+     toggleFiles();
  
      console.log(await result.text())
 

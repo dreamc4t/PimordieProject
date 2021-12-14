@@ -18,7 +18,7 @@ class Notes {
                     <button id="toggle-files-button" onclick="toggleFiles()">Show/hide files of this note</button>
 
                     <div id="file-list"> Ladda upp fil
-                      <form class="file-upload-form" onsubmit='addFile(event)'>
+                      <form class="file-upload-form" onsubmit="addFile(event)">
                         <input type='file' placeholder='select image'>
                         <button type='submit'>Add file</button>
                       </form>
