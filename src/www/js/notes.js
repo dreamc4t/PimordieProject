@@ -55,7 +55,7 @@ class Notes {
                 <span class="note-list-item">
                     <img class="notes-trashcan" src="img/trashcan.png" onclick="notes.deleteNote(${note.note_id})">
                     <div id="note-button-${note.note_id}" class="note-button"  onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markNoteListItemAsActive(${note.note_id}); notes.assignNewIdToSaveButton(${note.note_id})">
-                        <h2>${note.title} id=${note.note_id}</h2>
+                        <h2>${note.title}</h2>
                     </div>
                 </span>
             `;
