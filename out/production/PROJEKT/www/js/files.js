@@ -107,6 +107,7 @@ async function toggleFiles() {
     }
     else {
         console.log("Hiding files!")
+        document.getElementById("file-container").innerHTML = "";
     }
     toggleCounter++;
     if (toggleCounter >2) {
