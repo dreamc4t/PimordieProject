@@ -58,10 +58,12 @@ async function addFile(e) {
  
      // get the uploaded image url from response
      let fileUrl = await uploadResult.text();
- 
+     let note_id = document.querySelector('.file-upload-form').getAttribute('id');
+     console.log(note_id);
      // create a post object containing values from inputs
      // and the uploaded image url
      let post = {
+         //add note_id here
          fileUrl: fileUrl
      }
  
