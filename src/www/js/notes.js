@@ -14,10 +14,21 @@ class Notes {
                 </div>
                 <div id="currently-displayed-note">
                     <input id="notes-input" type="text-note">
+
+                    <div id='file-container'> </div> 
+                    <button id="toggle-files-button" onclick="toggleFiles()">Show/hide files of this note</button>
+
+                    <div id="file-list"> Ladda upp fil<form onsubmit='addFile(event)'>
+                    <input type='file' placeholder='select image'>
+                    <button type='submit'>Add file</button>
+                    </form></div>
+                    
                     <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
                 </div>
             </div>
         `;
+        
+        
         return toReturn;
     }
 

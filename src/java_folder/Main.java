@@ -79,6 +79,24 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
+        //Sätta todo item som completed
+        app.put("/rest/todo-list/:todo_id", (req,res) -> {
+            int todo_id =  Integer.parseInt(req.getParam("todo_id"));
+            Todo todo = db.getTodoListById(todo_id);
+
+
+            if (todo.isCompleted() == true) {
+                System.out.println(todo.getTodo_id() + " is now set to 'not completed' aka false");
+                db.completeTodo(todo_id, false);
+            }
+            else {
+                System.out.println(todo.getTodo_id() + " is now set to 'completed' aka true");
+                db.completeTodo(todo_id, true);
+            }
+
+            res.send("Updated");
+        });
+
         // req/res Login
         app.post("/rest/user", (req, res) ->{
             User user = (User) req.getBody(User.class);
@@ -107,23 +125,7 @@ public class Main {
             response.send("OK");
         }));
 
-        //Sätta todo item som completed
-        app.put("/rest/todo-list/:todo_id", (req,res) -> {
-            int todo_id =  Integer.parseInt(req.getParam("todo_id"));
-            Todo todo = db.getTodoListById(todo_id);
 
-
-            if (todo.isCompleted() == true) {
-                System.out.println(todo.getTodo_id() + " is now set to 'not completed' aka false");
-                db.completeTodo(todo_id, false);
-            }
-            else {
-                System.out.println(todo.getTodo_id() + " is now set to 'completed' aka true");
-                db.completeTodo(todo_id, true);
-            }
-
-            res.send("Updated");
-        });
 
         //Här är req/res för file upload
         app.post("/api/file-upload", (req, res) -> {
@@ -132,21 +134,38 @@ public class Main {
             // extract the file from the FormData
             try {
                 List<FileItem> files = req.getFormData("files");
-
                 fileUrl = db.uploadFile(files.get(0));
-
-
             } catch (Exception e) {
                 e.printStackTrace();
                 res.send("error");
             }
 
             // return "/uploads/image-name.jpg
-            res.send("stored " + fileUrl);
+            // Här var felet! Det stod "stored" + fileUrl
+            res.send(fileUrl);
 
         });
 
-        int port = 5000;
+        app.post("/rest/files", (req, res) -> {
+            Files file = (Files) req.getBody(Files.class);
+
+            db.createFile(file);
+            res.send("post OK");
+        });
+
+        app.get("/rest/files", (req, res) -> {
+            List<Files> files = db.getFiles();
+            res.json(files);
+        });
+
+        app.delete("/rest/files/:file_id", (req,res) -> {
+            int file_id =  Integer.parseInt(req.getParam("file_id"));
+            res.send("DELETED");
+            db.deleteFile(file_id);
+        });
+
+
+        int port = 3000;
 
         app.listen(port);
         System.out.println("Running on port " + port);
