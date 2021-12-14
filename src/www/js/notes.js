@@ -11,8 +11,19 @@ class Notes {
                     </div>
                 </div>
                 <div id="currently-displayed-note">
-                    <textarea class="note-input-field" id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
-                    <textarea class="note-input-field" id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
+                    <textarea id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
+                    <textarea id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
+                    <div>
+
+                    <div id='file-container'> </div> 
+                    <button id="toggle-files-button" onclick="toggleFiles()">Show/hide files of this note</button>
+
+                    <div id="file-list"> Ladda upp fil<form onsubmit='addFile(event)'>
+                    <input type='file' placeholder='select image'>
+                    <button type='submit'>Add file</button>
+                    </form></div>
+
+
                     <button class="save-button" onclick="notes.updateNote()" note_id="id-that-will-change-depending">Save Note</button>
                 </div>
             </div>

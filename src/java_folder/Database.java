@@ -285,6 +285,40 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+
+    public List<Files> getFiles() {
+        List<Files> files = null;
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM file");
+            ResultSet rs = stmt.executeQuery();
+
+            Files[] usersFromRS = (Files[]) Utils.readResultSetToObject(rs, Files[].class);
+            files = List.of(usersFromRS);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return files;
+    }
+
+    public void deleteFile(int file_id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM file WHERE file_id = ?");
+            stmt.setInt(1, file_id);
+
+            int i = stmt.executeUpdate();
+            System.out.println(i + " records updated. Removed file with ID " + file_id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
         System.out.println("the unixTime = "+ unixtime);

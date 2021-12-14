@@ -47,10 +47,23 @@ class ToDoList{
             }
             todoList.innerHTML += todoLi;
             
+            
       }
+      
 
-        todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>  ";
-        
+        todoList.innerHTML += " <input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span> ";
+
+        /*
+        todoList.innerHTML += `
+        <form onsubmit='addFile(event)'>
+        <input type='file' placeholder='select image'>
+        <button type='submit'>Add file</button>
+        </form>
+    `
+    */
+
+
+
         let addBtn = document.getElementById("todoAddButton");
         addBtn.addEventListener("click", addTodoItem);
 
@@ -77,7 +90,7 @@ class ToDoList{
 }
 
 let toDoList1 = new ToDoList();
-       
+
 
         let complCounter = 1;
         async function sortCompleted() {
