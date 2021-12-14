@@ -94,7 +94,6 @@ public class Main {
 
             User user = (User) req.getBody(User.class);
 
-            System.out.println(user.toString());
             db.createUser(user);
 
             res.send("OK");
@@ -148,7 +147,7 @@ public class Main {
 
         });
 
-        int port = 3000;
+        int port = 3001;
 
         app.listen(port);
         System.out.println("Running on port " + port);
