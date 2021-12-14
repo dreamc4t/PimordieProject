@@ -13,19 +13,20 @@ class Notes {
                 <div id="currently-displayed-note">
                     <textarea class="note-input-field" id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
                     <textarea class="note-input-field" id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
-                    <div>
-
-                    <div id='file-container'> </div> 
+                    
+                    <div id='file-container'></div> 
                     <button id="toggle-files-button" onclick="toggleFiles()">Show/hide files of this note</button>
 
-                    <div id="file-list"> Ladda upp fil<form onsubmit='addFile(event)'>
-                    <input type='file' placeholder='select image'>
-                    <button type='submit'>Add file</button>
-                    </form></div>
-
+                    <div id="file-list"> Ladda upp fil
+                      <form class="file-upload-form" onsubmit='addFile(event)'>
+                        <input type='file' placeholder='select image'>
+                        <button type='submit'>Add file</button>
+                      </form>
+                    </div>
 
                     <button class="save-button" onclick="notes.updateNote()" note_id="id-that-will-change-depending">Save Note</button>
                 </div>
+                
             </div>
         `;
     return toReturn;
@@ -60,9 +61,11 @@ class Notes {
 
   //rendera listan där man kan välja vilken note man vill se
   async renderNotesList() {
-    let notesList = "";
-    for (let note of await this.getNotesFromDB()) {
-      notesList += `
+    let notesFromDB = await this.getNotesFromDB();
+    this.sortByCreationDateDescending(notesFromDB);
+    let notesListToRender = "<style> #notesId{ background-color: rgb(129, 155, 129);  } </style>";
+    for (let note of notesFromDB) {
+      notesListToRender += `
                 <span class="note-list-item">
                     <img class="notes-trashcan" src="img/trashcan.png" onclick="notes.deleteNote(${note.note_id})">
                     <div id="note-button-${note.note_id}" class="note-button"  onclick="notes.renderCurrentlyDisplayedNote(${note.note_id}); notes.markNoteListItemAsActive(${note.note_id}); notes.assignNewIdToSaveButton(${note.note_id})">
@@ -71,7 +74,14 @@ class Notes {
                 </span>
             `;
     }
-    document.querySelector("#notes-list").innerHTML = notesList;
+    document.querySelector("#notes-list").innerHTML = notesListToRender;
+  }
+
+  //Sortera efter nyast skapad först
+  sortByCreationDateDescending(notes) {
+    notes.sort(function (a, b) {
+      return b.created_datetime - a.created_datetime;
+    });
   }
 
   //Styr färgen på list-items så man ser vilken note som är vald
@@ -93,11 +103,13 @@ class Notes {
   async renderCurrentlyDisplayedNote(id) {
     let currentNoteElement = document.querySelector("#notes-input");
     let currentNoteTitle = document.querySelector("#noteTitle");
+    let fileUploadFormElement = document.querySelector('.file-upload-form');
     for (let note of await this.getNotesFromDB()) {
       if (note.note_id === id) {
         console.log("rendering currently displayed note")
         currentNoteTitle.value = note.title;
         currentNoteElement.value = note.text;
+        fileUploadFormElement.setAttribute('id', id);
       }
     }
   }
