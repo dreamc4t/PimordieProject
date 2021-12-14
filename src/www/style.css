@@ -166,6 +166,7 @@ footer{
     overflow: auto;
     row-gap: 10px;
     padding-right: 20px;
+    overflow-x: hidden;
 }
 .note-list-item {
     width: 200px;
@@ -211,26 +212,23 @@ footer{
     background-color: rgb(30,53,109);
     width: 700px;
     overflow: auto;
-    padding: 20px;
+    padding: 40px;
     color: white;
     border-radius: 1.5cm;
-    border:solid white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
 }
-#currently-displayed-note p {
-    font-size: 20px;
-}
-
 #notes-input{
-    height: 90%;
     width: 100%;
-    background-color: rgb(30,53,109);
+    background-color: rgba(0,0,0,0.5);
     color: white;
     border:none;
     outline: none;
+    resize: none;
+    border-radius: 0.2cm;
+    padding: 5px;
 }
 #save-note-button{
     background-color:rgb(68,140,93);

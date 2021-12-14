@@ -79,6 +79,36 @@ public class Main {
             db.deleteTodo(todo_id);
         });
 
+        // req/res Login
+        app.post("/rest/user", (req, res) ->{
+            User user = (User) req.getBody(User.class);
+
+
+            db.login(user);
+
+            res.send("OK");
+        });
+
+        // res/req signup
+        app.post("/rest/signup", (req, res) -> {
+
+            User user = (User) req.getBody(User.class);
+
+            System.out.println(user.toString());
+            db.createUser(user);
+
+            res.send("OK");
+        });
+
+        // req/res contact
+        app.post("/rest/contact", (req, res) -> {
+            ContactMessage message = (ContactMessage) req.getBody(ContactMessage.class);
+
+        db.addMessage(message);
+
+            res.send("OK");
+        });
+
         //Sätta todo item som completed
         app.put("/rest/todo-list/:todo_id", (req,res) -> {
             int todo_id =  Integer.parseInt(req.getParam("todo_id"));
@@ -97,36 +127,6 @@ public class Main {
             res.send("Updated");
         });
 
-        // req/res Login
-        app.post("/rest/user", (req, res) ->{
-            User user = (User) req.getBody(User.class);
-
-
-            db.login(user);
-
-            res.send("OK");
-        });
-
-        // res/req signup
-        app.post("/rest/user", ((req, res) -> {
-            User user = (User) req.getBody(User.class);
-
-            db.createUser(user);
-
-            res.send("OK");
-        }));
-
-        // req/res contact
-        app.post("/rest/contact", ((request, response) -> {
-            ContactMessage message = (ContactMessage) request.getBody(ContactMessage.class);
-
-        db.addMessage(message);
-
-            response.send("OK");
-        }));
-
-
-
         //Här är req/res för file upload
         app.post("/api/file-upload", (req, res) -> {
             String fileUrl = null;
@@ -134,36 +134,19 @@ public class Main {
             // extract the file from the FormData
             try {
                 List<FileItem> files = req.getFormData("files");
+
                 fileUrl = db.uploadFile(files.get(0));
+
+
             } catch (Exception e) {
                 e.printStackTrace();
                 res.send("error");
             }
 
             // return "/uploads/image-name.jpg
-            // Här var felet! Det stod "stored" + fileUrl
-            res.send(fileUrl);
+            res.send("stored " + fileUrl);
 
         });
-
-        app.post("/rest/files", (req, res) -> {
-            Files file = (Files) req.getBody(Files.class);
-
-            db.createFile(file);
-            res.send("post OK");
-        });
-
-        app.get("/rest/files", (req, res) -> {
-            List<Files> files = db.getFiles();
-            res.json(files);
-        });
-
-        app.delete("/rest/files/:file_id", (req,res) -> {
-            int file_id =  Integer.parseInt(req.getParam("file_id"));
-            res.send("DELETED");
-            db.deleteFile(file_id);
-        });
-
 
         int port = 3000;
 

@@ -29,22 +29,20 @@ class SignUp {
       email: createEmail,
       password: createPassword,
     };
+    console.log(user);
 
-
-    let result = await fetch("/rest/user", {
+    let result = await fetch("/rest/signup", {
       method: "POST",
-      body: JSON.stringify(user),
+      body: JSON.stringify(user)
     });
   }
 
-
-    showPassword() {
-        let x = document.getElementById("password-input");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
-      }
-
+  showPassword() {
+    let x = document.getElementById("password-input");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
     }
+  }
+}
