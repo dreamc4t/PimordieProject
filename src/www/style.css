@@ -692,7 +692,13 @@ strong{
     width: 500px;
     height:27px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: left;
     /* min-height: 27px; */
+}
+
+#todoUl li:hover {
+    background-color: rgba(23, 41, 85, 0.5);
 }
 
 /* TO DO INPUT + BUTTON */
@@ -725,14 +731,14 @@ strong{
   }
   
   #todoAddButton:hover {
-    background-color: #bbb;
+    background-color:rgba(23, 41, 85, 0.5);
   }
     
   .trashcan-div {
-      background-color: rgb(30,53,109);
+      /* background-color: rgb(30,53,109); */
       border-radius: 8px;
       margin: -5px;
-      padding: 3px;
+      padding: 5px;
   }
 
   .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
@@ -749,6 +755,7 @@ strong{
     width: 200px;
 }
 
+/* Sorting buttons */
 #sortCompletedButton {
     background-color:rgb(30,53,109);
     border: 1px white solid;
