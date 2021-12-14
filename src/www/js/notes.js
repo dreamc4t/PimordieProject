@@ -26,6 +26,7 @@ class Notes {
 
                     <button class="save-button" onclick="notes.updateNote()" note_id="id-that-will-change-depending">Save Note</button>
                 </div>
+                
             </div>
         `;
     return toReturn;
@@ -62,7 +63,7 @@ class Notes {
   async renderNotesList() {
     let notesFromDB = await this.getNotesFromDB();
     this.sortByCreationDateDescending(notesFromDB);
-    let notesListToRender = "";
+    let notesListToRender = "<style> #notesId{ background-color: rgb(129, 155, 129);  } </style>";
     for (let note of notesFromDB) {
       notesListToRender += `
                 <span class="note-list-item">

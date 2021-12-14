@@ -40,6 +40,10 @@ header{
     font-size: 45px;
 }
 
+#headerLink:link {
+    text-decoration: none;
+}
+
 /*Main*/
 main{
     width: 100%;
