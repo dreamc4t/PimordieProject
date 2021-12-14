@@ -33,7 +33,7 @@ class SignUp {
 
     let result = await fetch("/rest/user", {
       method: "POST",
-      body: JSON.stringify(user),
+      body: JSON.stringify(user)
     });
   }
 

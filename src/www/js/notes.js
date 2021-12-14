@@ -111,7 +111,7 @@ class Notes {
 
     await fetch(`/rest/notes/` + currentNoteId, {
       method: "PUT",
-      body: JSON.stringify(textUpdate),
+      body: JSON.stringify(textUpdate)
     });
     this.renderNotesList();
   }
