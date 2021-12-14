@@ -30,7 +30,7 @@ function changePage() {
         break;
         
         case('todo'):
-        document.querySelector('main').innerHTML = '<ul id="todoUl"> </ul>';
+        document.querySelector('main').innerHTML = '<div id="todoWrapper"> </div>';
         toDoList1.renderTodoList();
         break;
 

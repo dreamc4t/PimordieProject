@@ -19,6 +19,7 @@ header{
     background-color: rgb(30,53,109);
     display: flex;
     justify-content: center;
+    position: relative;
 }
 #logo-div {
     display: flex;
@@ -668,7 +669,7 @@ strong{
 
 /* To do listan */ 
 
-#todoUl {
+#todoWrapper {
     height: 600px;
     /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
     padding: 5px;
@@ -822,4 +823,10 @@ strong{
 
 #sortLastAddedButton:hover {
     background-color:rgba(23, 41, 85, 0.5);
+}
+
+#todoUl {
+    overflow: auto;
+    height: 350px;
+    
 }
