@@ -95,6 +95,18 @@ footer{
     bottom: 0px;
 }
 
+footer h5 {
+    text-align: center;
+    
+}
+footer a:link {
+    text-decoration: none;
+}
+
+#inner-box1 {
+    background-color: black;
+}
+
 /*Footer Nav*/
 #nav-box{
     display: flex;
