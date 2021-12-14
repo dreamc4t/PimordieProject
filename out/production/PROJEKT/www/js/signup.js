@@ -1,9 +1,6 @@
-class SignUp{
-
-
-    renderSignUp(){
-        
-        return`
+class SignUp {
+  renderSignUp() {
+    return `
         <div id="signup-mainbox">
             <nav id="signup-leftbox">
                 <img id="signup-img" src="img/register.jpg" alt="">
@@ -21,23 +18,21 @@ class SignUp{
                 <button onclick="signup.createAccount()" id="signup-button">SIGN UP</button>
                 <a id="login-create-toggle" href="#login">Back to login</a>
             </article>
-        </div>`
-    }
+        </div>`;
+  }
 
-    async createAccount(){
+  async createAccount() {
+    let createEmail = document.querySelector("#email-input").value;
+    let createPassword = document.querySelector("#password-input").value;
+    console.log(createEmail, createPassword);
+    let user = {
+      email: createEmail,
+      password: createPassword,
+    };
 
-        let createEmail = document.querySelector("#email-input").value;
-        let createPassword = document.querySelector("#password-input").value;
-        console.log(createEmail, createPassword)
-        let user = {
-            email: createEmail,
-            password: createPassword
-        }
-
-        let result = await fetch("/rest/user", {
-        method: "POST",
-        body: JSON.stringify(user)
-        });
-    }
-
+    await fetch("/rest/user", {
+      method: "POST",
+      body: JSON.stringify(user),
+    });
+  }
 }
