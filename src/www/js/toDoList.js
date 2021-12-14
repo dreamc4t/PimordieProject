@@ -49,7 +49,7 @@ class ToDoList{
             
       }
 
-        todoList.innerHTML += "<div class='todoBottom'> <input type='text' id='todoInput' maxlength='68' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>  <button id='sortCompletedButton'> Sort by completed</button> <button id='sortAlphabetButton'> Sort by name</button> <button id='sortLastAddedButton'> Sort by latest</button> </div>";
+        todoList.innerHTML += "<div class='todoBottom'> <input type='text' id='todoInput' maxlength='68' placeholder='Enter stuff to do...'> <span id='todoAddButton'>Add</span>  <button id='sortCompletedButton'> Sort by completed</button> <button id='sortAlphabetButton'> Sort by name</button> <button id='sortLastAddedButton'> Sort by latest</button> </div>";
         
         let addBtn = document.getElementById("todoAddButton");
         addBtn.addEventListener("click", addTodoItem);

@@ -668,7 +668,8 @@ strong{
 
 /* To do listan */ 
 
-#todoUl {height: 600px;
+#todoUl {
+    height: 600px;
     /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
     padding: 5px;
     width: 525px;
@@ -692,7 +693,13 @@ strong{
     width: 500px;
     height:27px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: left;
     /* min-height: 27px; */
+}
+
+#todoUl li:hover {
+    background-color: rgba(23, 41, 85, 0.5);
 }
 
 /* TO DO INPUT + BUTTON */
@@ -725,14 +732,14 @@ strong{
   }
   
   #todoAddButton:hover {
-    background-color: #bbb;
+    background-color:rgba(23, 41, 85, 0.5);
   }
     
   .trashcan-div {
-      background-color: rgb(30,53,109);
+      /* background-color: rgb(30,53,109); */
       border-radius: 8px;
       margin: -5px;
-      padding: 3px;
+      padding: 5px;
   }
 
   .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
@@ -749,6 +756,7 @@ strong{
     width: 200px;
 }
 
+/* Sorting buttons */
 #sortCompletedButton {
     background-color:rgb(30,53,109);
     border: 1px white solid;
@@ -759,6 +767,7 @@ strong{
     width: 150px;
     margin-top: 5px;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 #sortAlphabetButton {
@@ -770,6 +779,7 @@ strong{
     height: 27px;
     width: 150px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 #sortLastAddedButton {
@@ -782,11 +792,26 @@ strong{
     width: 150px;
     margin-top: 5px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .todoBottom {
-    border: #555;
+    align-self: flex-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+/* Mouseover/hover sort-buttons */
+#sortCompletedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortAlphabetButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortLastAddedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
 }
