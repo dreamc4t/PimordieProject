@@ -2,6 +2,7 @@ class Contact {
   //Render in main when #contact
   renderContact() {
     return `
+    <div id="contact-main">
         <article id="contact-leftside">
             <div id="contact-header">
                 <h1 id="contact-headline">
@@ -47,6 +48,7 @@ class Contact {
             <hr id="line">
             <div id="contact-innerbox">
                 <button id="send-button" onclick="contact.contactMessage()">SEND MESSAGE</button>
+            </div>
             </div>
         </aside>
         `;
