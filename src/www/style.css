@@ -685,10 +685,13 @@ strong{
     list-style: none;
     border: 1px white solid;
     border-radius: 10px;
+    background-color: rgb(30,53,109);
+    color: white;
     padding: 5px;
     margin: 5px;
     width: 500px;
     height:27px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     /* min-height: 27px; */
 }
 
@@ -698,7 +701,7 @@ strong{
     margin-left: 5px;
     border: none;
     border-radius: 10px;
-    width: 395px;
+    width: 390px;
     padding: 10px;
     float: left;
     font-size: 16px;
@@ -707,11 +710,12 @@ strong{
   /*  button */
   #todoAddButton {
     margin-top: 5px;
+    margin-right: 5px;
     padding: 10px;
     width: 100px;
-    background: #d9d9d9;
+    background: rgb(30,53,109);
     border: 1px white solid;
-    color: #555;
+    color: white;
     float: left;
     text-align: center;
     font-size: 16px;
@@ -754,6 +758,7 @@ strong{
     height: 27px;
     width: 150px;
     margin-top: 5px;
+    margin-left: 5px;
 }
 
 #sortAlphabetButton {
@@ -776,6 +781,7 @@ strong{
     height: 27px;
     width: 150px;
     margin-top: 5px;
+    margin-right: 5px;
 }
 
 .todoBottom {
