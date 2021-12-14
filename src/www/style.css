@@ -223,25 +223,38 @@ footer{
 }
 #notes-input{
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
+    height: 80%;
+    background-color: rgba(23, 41, 85, 0.5);
     color: white;
-    border:none;
+    border: none;
     outline: none;
     resize: none;
     border-radius: 0.2cm;
     padding: 5px;
+    font-size: 20px;
+    margin-top: 5px;
 }
-#save-note-button{
+.save-button{
     background-color:rgb(68,140,93);
     border-radius: 0.5cm;
     height: 50px;
     width: 80px;
     color: white;
-    border:solid white;
+
     
 }
 #save-note-button:hover{
     background-color: rgba(255,255,255,0.5);
+}
+
+#noteTitle{
+    width: 90%;
+    font-size: 40px;
+    background-color: rgba(23, 41, 85, 0.5);
+    color: white;
+    border: none;
+    outline: none;
+    resize: none;
 }
 
 /*Social/download side*/
