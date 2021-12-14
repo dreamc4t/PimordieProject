@@ -785,7 +785,7 @@ strong{
 }
 
 .todoBottom {
-    border: #555;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
