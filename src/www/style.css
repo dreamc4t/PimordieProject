@@ -751,9 +751,17 @@ strong{
     margin-top: 1px;
     float: right;
 }
-
+#file-container {
+    display: flex;
+    column-gap: 10px;
+}
+.single-image-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
 .img-tests {
-    width: 200px;
+    height: 50px;
 }
 
 /* Sorting buttons */

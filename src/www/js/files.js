@@ -22,10 +22,10 @@ function renderFilePosts() {
         //Behövs någon form av ifsats för att ge bilder <img>-tag och filer bara url
         //Samt att det blir länkar (med target ny flik) av url
         let postLi = `
-                <img class="img-tests" src="${file.fileUrl}" alt="post-image">
-                <button class='delete-class' id='del${file.file_id}'>Delete file</button>
-                id: ${file.file_id} <br>
-                url: ${file.fileUrl} <br>
+                <div class="single-image-container">
+                    <img class="img-tests" src="${file.fileUrl}" alt="post-image">
+                    <button class='delete-class' id='del${file.file_id}'>Delete file</button>
+                </div>
         `;
         
 
@@ -93,6 +93,8 @@ async function deteleFile() {
                 body: JSON.stringify(file)
             });
             console.log("Deleting id with id number " + idTodelete)
+            toggleFiles();
+            toggleFiles();//Ett sätt att rendera om bilderna som visas så att den borttagna bilden försvinner
         }
 
         else {
