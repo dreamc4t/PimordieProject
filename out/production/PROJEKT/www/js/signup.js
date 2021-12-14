@@ -30,7 +30,7 @@ class SignUp {
       password: createPassword,
     };
 
-    await fetch("/rest/user", {
+    let result = await fetch("/rest/user", {
       method: "POST",
       body: JSON.stringify(user),
     });

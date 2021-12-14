@@ -27,7 +27,7 @@ class ToDoList{
     
     async renderTodoList(sortingBy, ascendDecend) {
         let todoList = document.querySelector('#todoUl');
-        todoList.innerHTML = "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style> <button id='sortCompletedButton'> Sortera efter completed</button> <button id='sortAlphabetButton'> Sortera alfabetiskt</button> <button id='sortLastAddedButton'> Sortera efter senast tillagd</button> " ; 
+        todoList.innerHTML = "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>" ; 
 
         console.log("rendering todo list..")
         
@@ -49,7 +49,7 @@ class ToDoList{
             
       }
 
-        todoList.innerHTML += "<input type='text' id='todoInput' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>  ";
+        todoList.innerHTML += "<div class='todoBottom'> <input type='text' id='todoInput' maxlength='68' placeholder='Enter todo...'> <span id='todoAddButton'>Add</span>  <button id='sortCompletedButton'> Sort by completed</button> <button id='sortAlphabetButton'> Sort by name</button> <button id='sortLastAddedButton'> Sort by latest</button> </div>";
         
         let addBtn = document.getElementById("todoAddButton");
         addBtn.addEventListener("click", addTodoItem);

@@ -598,15 +598,44 @@ strong{
 /* To do listan */ 
 
 #todoUl {
-
+    height: 600px;
+    /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
+    padding: 5px;
+    width: 525px;
+    border: 5px white solid;
+    border-radius: 25px;
+    background-color:rgb(68,140,93);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    align-content: center;
 }
+    /* Scrollbar */
+    /* ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    } */
+    
 #todoUl li{
     list-style: none;
-    border: 1px black solid;
+    border: 1px white solid;
+    border-radius: 10px;
     padding: 5px;
     margin: 5px;
     width: 500px;
-    min-height: 27px;
+    height:27px;
+    /* min-height: 27px; */
 }
 
 /* TO DO INPUT + BUTTON */
@@ -614,18 +643,21 @@ strong{
     margin-top: 5px;
     margin-left: 5px;
     border: none;
-    border-radius: 0;
+    border-radius: 10px;
     width: 400px;
+    height:27px;
     padding: 10px;
     float: left;
     font-size: 16px;
+    align-self: flex-end;
   }
   
   /*  button */
   #todoAddButton {
     margin-top: 5px;
-    padding: 10px;
+    padding: 5px;
     width: 100px;
+    height: 27px;
     background: #d9d9d9;
     color: #555;
     float: left;
@@ -633,7 +665,8 @@ strong{
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 0;
+    border-radius: 10px;
+    align-self: flex-end;
   }
   
   #todoAddButton:hover {
@@ -641,9 +674,10 @@ strong{
   }
     
   .trashcan-div {
-      background-color: blue;
+      background-color:rgb(30,53,109);
+      border-radius: 10px;
       margin: -5px;
-      padding: 4px;
+      padding: 3px;
   }
 
   .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
@@ -654,4 +688,46 @@ strong{
     margin-right: 15px;
     margin-top: 1px;
     float: right;
+}
+
+/* Sort buttons */
+
+#sortCompletedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+}
+
+#sortAlphabetButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+}
+
+#sortLastAddedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+}
+
+.todoBottom {
+    border: #555;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
