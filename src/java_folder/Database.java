@@ -297,7 +297,7 @@ public class Database {
     }
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
-        System.out.println("the unixTime = "+ unixTimestamp());
+        System.out.println("the unixTime = "+ unixtime);
         return unixtime;
     };
 }

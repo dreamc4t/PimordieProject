@@ -37,7 +37,6 @@ class SignUp {
     });
   }
 
-
     showPassword() {
         let x = document.getElementById("password-input");
         if (x.type === "password") {
