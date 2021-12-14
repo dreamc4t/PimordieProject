@@ -14,8 +14,7 @@ class Notes {
                     <textarea class="note-input-field" id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
                     <textarea class="note-input-field" id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
                     
-                    <div id='file-container'></div> 
-                    <button id="toggle-files-button" onclick="toggleFiles()">Show/hide files of this note</button>
+                    <div id='file-container'></div>
 
                     <div id="file-list"> Ladda upp fil
                       <form class="file-upload-form" onsubmit="addFile(event)">
@@ -110,6 +109,7 @@ class Notes {
         currentNoteElement.value = note.text;
       }
     }
+    getFilePosts();
   }
 
   //fetcha alla anteckningar
