@@ -36,7 +36,6 @@ class SignUp {
       body: JSON.stringify(user),
     });
   }
-}
 
     showPassword() {
         let x = document.getElementById("password-input");

@@ -12,12 +12,12 @@ class Login{
                 <h2 id="signup-email">Email Address</h2>
                 <input id="email-input" type="text">
                 <h2 id="signup-password">Password</h2>
-                <input id="password-input" type="text">
+                <input id="password-input" type="password" value="Hicka">
                 <div id="show-password">
-                    <input id="checkbox" type="checkbox">
+                    <input id="checkbox" type="checkbox" onclick="signup.showPassword()">
                     <h2 id="password-text">Show password</h2>
                 </div>
-                <button onclick="login.loginAccount()" id="signup-button">Login</button>
+                <button onclick="login.loginAccount()" id="signup-button">LOGIN</button>
                 <a id="login-create-toggle" href="#signup">Create account</a>
             </article>
         </div>
@@ -39,4 +39,13 @@ class Login{
         body: JSON.stringify(user)
         });
     }
+
+    showPassword() {
+        let x = document.getElementById("password-input");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
 }

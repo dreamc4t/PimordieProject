@@ -11,6 +11,7 @@ class Notes {
                     </div>
                 </div>
                 <div id="currently-displayed-note">
+                    <textarea id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
                     <textarea id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
                     <button class="save-button" onclick="notes.updateNote()" note_id="id-that-will-change-depending">Save Note</button>
                 </div>
@@ -58,19 +59,6 @@ class Notes {
                     </div>
                 </span>
             `;
-        }
-        document.querySelector('#notes-list').innerHTML = notesList;
-    }
-
-    //Styr färgen på list-items så man ser vilken note som är vald
-    async markNoteListItemAsActive(id) {
-        for (let note of await this.getNotesFromDB()) {
-            if(note.note_id === id) {
-                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgba(68,140,93,0.5)";
-            } else {
-                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgb(30,53,109)";
-            }
-        }
     }
     document.querySelector("#notes-list").innerHTML = notesList;
   }
@@ -85,7 +73,7 @@ class Notes {
       } else {
         document.getElementById(
           `note-button-${note.note_id}`
-        ).style.backgroundColor = "rgb(68,140,93)";
+        ).style.backgroundColor = "rgb(30,53,109)";
       }
     }
   }
@@ -93,8 +81,10 @@ class Notes {
   //rendera den valda anteckningen så den visas på höger sida
   async renderCurrentlyDisplayedNote(id) {
     let currentNoteElement = document.querySelector("#notes-input");
+    let currentNoteTitle = document.querySelector("#noteTitle");
     for (let note of await this.getNotesFromDB()) {
       if (note.note_id === id) {
+        currentNoteTitle.textContent = note.title;
         currentNoteElement.textContent = note.text;
       }
     }
@@ -108,13 +98,18 @@ class Notes {
   }
 
   async updateNote() {
-    let textInput = document.querySelector("#notes-input").textContent;
-
+    let textInput = document.querySelector("#notes-input").value;
+    let titleinput = document.querySelector("#noteTitle").value;
+    let currentNoteId = document
+      .querySelector(".save-button")
+      .getAttribute("id");
     let textUpdate = {
       text: textInput,
+      note_id: currentNoteId,
+      title: titleinput,
     };
 
-    await fetch("/rest/notes", {
+    await fetch(`/rest/notes/` + currentNoteId, {
       method: "PUT",
       body: JSON.stringify(textUpdate),
     });
