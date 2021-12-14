@@ -99,20 +99,3 @@ async function deteleFile() {
             console.log("ok inget jävla deletande då")
         }
 }
-
-let toggleCounter = 1;
-async function toggleFiles() {
-    if (toggleCounter == 1) {
-        console.log("Showing files!")
-        getFilePosts();
-
-    }
-    else {
-        console.log("Hiding files!")
-        document.getElementById("file-container").innerHTML = "";
-    }
-    toggleCounter++;
-    if (toggleCounter >2) {
-        toggleCounter = 1;
-    }
-}

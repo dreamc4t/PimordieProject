@@ -50,7 +50,8 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto; 
+    overflow-y: auto;
+    margin-bottom: 180px; /*Så att man kan scrolla ända ner på main när sidan blir väldigt lång*/
 }
 
 /* .toggle-nav, alltså Notes eller To-do knapparna */ 
