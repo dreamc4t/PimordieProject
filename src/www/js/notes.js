@@ -70,7 +70,7 @@ class Notes {
             if(note.note_id === id) {
                 document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgba(68,140,93,0.5)";
             } else {
-                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgb(68,140,93)";
+                document.getElementById(`note-button-${note.note_id}`).style.backgroundColor = "rgb(30,53,109)";
             }
         }
     }

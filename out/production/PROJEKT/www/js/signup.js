@@ -6,7 +6,7 @@ class SignUp{
         return`
         <div id="signup-mainbox">
             <nav id="signup-leftbox">
-                <img id="signup-img" src="img/register.jpg" alt="">
+                <img id="signup-img" src="img/dynamic_line_light_blue_background_558053.jpg" alt="">
             </nav>
             <article id="signup-rightbox">
                 <h1 id="signup-title">SIGN UP</h1>
