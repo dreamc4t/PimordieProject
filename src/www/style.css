@@ -668,7 +668,8 @@ strong{
 
 /* To do listan */ 
 
-#todoUl {height: 600px;
+#todoUl {
+    height: 600px;
     /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
     padding: 5px;
     width: 525px;
@@ -766,6 +767,7 @@ strong{
     width: 150px;
     margin-top: 5px;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 #sortAlphabetButton {
@@ -777,6 +779,7 @@ strong{
     height: 27px;
     width: 150px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 #sortLastAddedButton {
@@ -789,9 +792,11 @@ strong{
     width: 150px;
     margin-top: 5px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .todoBottom {
+    align-self: flex-end;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-wrap: wrap;
