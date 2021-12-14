@@ -113,6 +113,7 @@ class Notes {
       method: "PUT",
       body: JSON.stringify(textUpdate),
     });
+    this.renderNotesList();
   }
 
   autoGrowTextarea() {
