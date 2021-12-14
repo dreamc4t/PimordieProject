@@ -16,9 +16,6 @@ class Notes {
                     <input id="notes-input" type="text-note">
                     <button onclick="notes.updateNote()" id="save-note-button">Save Note</button>
                 </div>
-                <div id="currently-displayed-note">
-                <input id="notes-input" type="text">
-                </div>
             </div>
         `;
         return toReturn;
