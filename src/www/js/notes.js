@@ -11,8 +11,8 @@ class Notes {
                     </div>
                 </div>
                 <div id="currently-displayed-note">
-                    <textarea id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
-                    <textarea id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
+                    <textarea class="note-input-field" id="noteTitle" oninput="notes.autoGrowTextarea()"></textarea>
+                    <textarea class="note-input-field" id="notes-input" oninput="notes.autoGrowTextarea()"></textarea>
                     <div>
 
                     <div id='file-container'> </div> 
