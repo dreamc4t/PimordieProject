@@ -163,6 +163,15 @@ public class Main {
             db.deleteFile(file_id);
         });
 
+        //---------- REQ/RES FÖR COMPOSITE ----------
+
+        app.get("/rest/composite", (req, res) -> {
+            List<CompositeKeyNotesFiles> compKeys = db.getCompositeKeys();
+            res.json(compKeys);
+        });
+
+
+
 
         int port = 3000;
 
