@@ -12,7 +12,7 @@ class Contact {
                     Contact us for suggestions or questions.
                 </h2>
             </div>
-            <div id="contact-main">
+            <div id="contact-middle">
                 <div id="contact-contact">
                     <div id="contact-phone">
                         <img id="contact-logo" src="img/phoneLogo.png" alt="">

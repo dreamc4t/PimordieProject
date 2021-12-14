@@ -162,7 +162,10 @@ footer a:link {
 /*Notes-page*/
 #notes-page {
    /* height: calc(100vh - 280px); /*footer 100px, togglenav 80px, header 100px*/
-    width: 100%;
+   margin-top: 50px;
+   height: 600px;
+   width: 900px; 
+   min-height: 150px;
    padding-top: 20px;
     display: flex;
     justify-content: center;
@@ -230,6 +233,7 @@ footer a:link {
     padding: 40px;
     color: white;
     border-radius: 1.5cm;
+    border:solid white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -264,7 +268,7 @@ footer a:link {
     width: 80px;
     color: white;
 }
-#save-note-button:hover{
+.save-button:hover{
     background-color: rgba(255,255,255,0.5);
 }
 
@@ -303,14 +307,19 @@ strong{
 /*#Contact*/
 
 #contact-main {
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
+    min-height: 150px;
+    min-height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 150px;
+
 }
 #contact-leftside{
-    height: 350px;
-    width: 400px;
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     background-color: rgb(30,53,109);
@@ -324,8 +333,8 @@ strong{
 
 
 #contact-rightside{
-height: 350px;
-    width: 400px;
+    height: 100%;
+    width: 50%;
     border-bottom-right-radius: 1.5cm;
     border-top-right-radius: 1.5cm;
     border-top: solid white;
@@ -337,6 +346,14 @@ height: 350px;
     justify-content: center;
     background-color: rgb(30,53,109);
 
+}
+
+#contact-middle{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #contact-header{
@@ -353,14 +370,6 @@ height: 350px;
 #contact-subline{
     font-size: 30px;
     padding-left: 50px;
-}
-#contact-main{
-    
-    width: 100%;
-    display: flex;
-    padding-left: 50px;
-
-
 }
 #contact-contact{
     height: 100%;
@@ -473,8 +482,9 @@ height: 350px;
 
 /*about us*/
 #about-main{
-    height: 90%;
-    width: 60%; 
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
 }
 #about-top{
     border-top-left-radius: 1.5cm;
@@ -585,29 +595,30 @@ height: 350px;
 /*sign up*/
 #signup-mainbox{
     display: flex;
-    height: 90%;
-    width: 60%;
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
 
     
     
 }
 #signup-leftbox{
-    height: 350px;
-    width: 400px;
+    height: 100%;
+    width: 50%;
     border:solid rgb(255, 255, 255, 0.7);
     border-bottom-left-radius: 10%;
     border-top-left-radius: 10%;
 
 }
 #signup-img{
-    height: 340px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     border-bottom-left-radius: 10%;
     border-top-left-radius: 10%;
 }
 #signup-rightbox{
-    height: 350px;
-    width: 400px;
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -12,24 +12,20 @@ async function getFilePosts() {
 }
 
 function renderFilePosts() {
+    let currentNoteId = document.querySelector(".save-button").getAttribute("id");
     let filePostList = document.querySelector('#file-container');
-
     filePostList.innerHTML = "";
-
+    
     for(let file of filePosts) {
-
-
-        //Behövs någon form av ifsats för att ge bilder <img>-tag och filer bara url
-        //Samt att det blir länkar (med target ny flik) av url
-        let postLi = `
-                <img class="img-tests" src="${file.fileUrl}" alt="post-image">
-                <button class='delete-class' id='del${file.file_id}'>Delete file</button>
-                id: ${file.file_id} <br>
-                url: ${file.fileUrl} <br>
-        `;
-        
-
-        filePostList.innerHTML += postLi;
+        if(file.note_id == currentNoteId) {
+            let postLi =`
+                    <div class="single-image-container">
+                        <img class="img-tests" src="${file.fileUrl}" alt="post-image">
+                        <button class='delete-class' id='del${file.file_id}'>Delete file</button>
+                    </div>
+            `;
+            filePostList.innerHTML += postLi;
+        }
     }
 
     document.querySelectorAll(".delete-class").forEach(item => {
@@ -58,7 +54,7 @@ async function addFile(e) {
  
      // get the uploaded image url from response
      let fileUrl = await uploadResult.text();
-     let note_id = document.querySelector('.file-upload-form').getAttribute('id');
+     let note_id = document.querySelector(".save-button").getAttribute("id");
      console.log(note_id);
      // create a post object containing values from inputs
      // and the uploaded image url
@@ -73,6 +69,8 @@ async function addFile(e) {
      });
  
      filePosts.push(post)
+     toggleFiles();
+     toggleFiles();
  
      console.log(await result.text())
 
@@ -93,6 +91,8 @@ async function deteleFile() {
                 body: JSON.stringify(file)
             });
             console.log("Deleting id with id number " + idTodelete)
+            toggleFiles();
+            toggleFiles();//Ett sätt att rendera om bilderna som visas så att den borttagna bilden försvinner
         }
 
         else {
