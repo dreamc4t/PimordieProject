@@ -797,3 +797,16 @@ strong{
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+/* Mouseover/hover sort-buttons */
+#sortCompletedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortAlphabetButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortLastAddedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
