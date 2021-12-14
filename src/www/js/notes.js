@@ -18,7 +18,7 @@ class Notes {
                     <button id="toggle-files-button" onclick="toggleFiles()">Show/hide files of this note</button>
 
                     <div id="file-list"> Ladda upp fil
-                      <form class="file-upload-form" onsubmit='addFile(event)'>
+                      <form class="file-upload-form" onsubmit="addFile(event)">
                         <input type='file' placeholder='select image'>
                         <button type='submit'>Add file</button>
                       </form>
@@ -103,13 +103,11 @@ class Notes {
   async renderCurrentlyDisplayedNote(id) {
     let currentNoteElement = document.querySelector("#notes-input");
     let currentNoteTitle = document.querySelector("#noteTitle");
-    let fileUploadFormElement = document.querySelector('.file-upload-form');
     for (let note of await this.getNotesFromDB()) {
       if (note.note_id === id) {
         console.log("rendering currently displayed note")
         currentNoteTitle.value = note.title;
         currentNoteElement.value = note.text;
-        fileUploadFormElement.setAttribute('id', id);
       }
     }
   }
@@ -124,9 +122,7 @@ class Notes {
   async updateNote() {
     let textInput = document.querySelector("#notes-input").value;
     let titleinput = document.querySelector("#noteTitle").value;
-    let currentNoteId = document
-      .querySelector(".save-button")
-      .getAttribute("id");
+    let currentNoteId = document.querySelector(".save-button").getAttribute("id");
     let textUpdate = {
       text: textInput,
       note_id: currentNoteId,
