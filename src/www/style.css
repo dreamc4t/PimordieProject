@@ -5,9 +5,9 @@
 }
 
 body{
-    height: 100vh;
+    /*height: 100vh; */
     width: 100%;
-    background-color: rgb(31,71,72);
+    background-image: url(img/dark-green-texture_1205-338.webp);
     display: flex;
     flex-direction: column;
 }
@@ -19,6 +19,7 @@ header{
     background-color: rgb(30,53,109);
     display: flex;
     justify-content: center;
+    position: relative;
 }
 #logo-div {
     display: flex;
@@ -40,21 +41,24 @@ header{
     font-size: 45px;
 }
 
+#headerLink:link {
+    text-decoration: none;
+}
+
 /*Main*/
 main{
-    width: 100%;
-    margin-bottom: 180px;
-    background-color: rgb(31,71,72);
+    min-height: 600px; /* denna går att ändra först när conact/about us fixas så att den ej är beroende av den */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+    margin-bottom: 180px; /*Så att man kan scrolla ända ner på main när sidan blir väldigt lång*/
 }
 
 /* .toggle-nav, alltså Notes eller To-do knapparna */ 
 .toggle-nav {
-    background-color: rgb(31,71,72);
-    height: 80px;
+
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,8 +91,21 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: fixed;
     bottom: 0px;
+    position: fixed;
+
+}
+
+footer h5 {
+    text-align: center;
+    
+}
+footer a:link {
+    text-decoration: none;
+}
+
+#inner-box1 {
+    background-color: black;
 }
 
 /*Footer Nav*/
@@ -145,19 +162,116 @@ footer{
 }
 
 /*Notes-page*/
-#notes-container {
-    height: 100%;
-    width: 100%;
-    padding: 20px;
+#notes-page {
+   /* height: calc(100vh - 280px); /*footer 100px, togglenav 80px, header 100px*/
+   margin-top: 50px;
+   height: 600px;
+   width: 900px; 
+   min-height: 150px;
+   padding-top: 20px;
     display: flex;
-    align-items:flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+   /* gap: 20px; */
 }
-.note {
-    background-color:beige;
-    height: 400px;
-    width: 300px;
+#notes-menu { /*notes-list + add-note*/
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-bottom: 20px;
+}
+#notes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    row-gap: 10px;
+    padding-right: 20px;
+    overflow-x: hidden;
+}
+.note-list-item {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    color: white;
+    
+}
+#add-note {
+    background-color:rgb(68,140,93);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 166px;
+    margin-left: 34px;
+    border-radius: 0.5cm;
+    border:solid white;
+    
+}
+
+#add-note:hover {
+    background-color:rgba(255,255,255,0.5);
+}
+.notes-trashcan {
+    height: 20px;
+    margin-right: 10px;
+}
+.notes-trashcan:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+.note-button {
+    background-color: rgb(30,53,109);
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    border-radius: 0.5cm;
+    border:solid white;
+}
+.note-button:hover {
+    background-color: rgba(255,255,255,0.5);
+}
+#currently-displayed-note {
+    background-color: rgb(30,53,109);
+    width: 700px;
+    overflow: auto;
+    padding: 40px;
+    color: white;
+    border-radius: 1.5cm;
+    border:solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.note-input-field{
+    width: 100%;
+    background-color: rgba(23, 41, 85, 0.5);
+    color: white;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 5px;
+    padding-left: 20px;
+}
+#noteTitle{
+    padding-top: 20px;
+    font-size: 40px;
+    line-height: 20px;
+    border-top-left-radius: 0.2cm;
+    border-top-right-radius: 0.2cm;
+}
+#notes-input {
+    flex-grow: 1;
+    border-bottom-left-radius: 0.2cm;
+    border-bottom-right-radius: 0.2cm;
+    margin-bottom: 10px;
+}
+.save-button{
+    background-color:rgb(68,140,93);
+    border-radius: 0.5cm;
+    height: 50px;
+    width: 80px;
+    color: white;
+}
+.save-button:hover{
+    background-color: rgba(255,255,255,0.5);
 }
 
 /*Social/download side*/
@@ -179,29 +293,71 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 3px;
 }
 strong{
     width: 150px;
     display: flex;
     justify-content: right;
     align-items: center;
-    margin-right: 30px;
+
 }
 #social:hover{
     color: white;
 }
 
 /*#Contact*/
+
+#contact-main {
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
+    min-height: 150px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 #contact-leftside{
-    height: 90%;
-    width: 30%;
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     background-color: rgb(30,53,109);
     color: white;
     border: solid rgb(255, 255, 255, 0.5);
+    border-bottom-left-radius: 1.5cm;
+    border-top-left-radius: 1.5cm;
+    justify-content: space-around;
     
 }
+
+
+#contact-rightside{
+    height: 100%;
+    width: 50%;
+    border-bottom-right-radius: 1.5cm;
+    border-top-right-radius: 1.5cm;
+    border-top: solid white;
+    border-bottom: solid white;
+    border-right: solid white;
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(255, 255, 255, 0.5);
+    justify-content: center;
+    background-color: rgb(30,53,109);
+
+}
+
+#contact-middle{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #contact-header{
     height: 20%;
     width: 100%;
@@ -216,14 +372,6 @@ strong{
 #contact-subline{
     font-size: 30px;
     padding-left: 50px;
-}
-#contact-main{
-    height: 80%;
-    width: 100%;
-    display: flex;
-    padding-left: 50px;
-
-
 }
 #contact-contact{
     height: 100%;
@@ -266,25 +414,31 @@ strong{
 
 
 
-#contact-rightside{
-
-    height: 90%;
-    width: 30%;
+#input-fullname{
+    margin-left: 15px;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(30, 53, 109, 0);
+    border:none;
     display: flex;
-    flex-direction: column;
-    border: solid rgb(255, 255, 255, 0.5);
-    justify-content: center;
-    background-color: rgb(68,140,93);
-
+    color: white;
+    align-items: flex-start;
+    outline: none;
+}
+#input-fullname::placeholder{
+    color: white;
 }
 #input-contact{
     color: white;
     height: 80%;
     width: 80%;
-    background-color: rgb(30, 53, 109, 0);
+    background-color: rgb(30,53,109);
     margin-left: 15px;
     border:none;
     outline: none;
+}
+#input-contact::placeholder{
+    color: white;
 }
 #contact-innerbox{
     height: 10%;
@@ -311,7 +465,9 @@ strong{
     outline: none;
  
 }
-
+#input-message::placeholder{
+    color: white;
+}
 #send-button{
     height: 80%;
     width: 80%;
@@ -328,30 +484,41 @@ strong{
 
 /*about us*/
 #about-main{
-    height: 90%;
-    width: 60%;
-    border:solid rgb(255, 255, 255, 0.7)
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
 }
 #about-top{
+    border-top-left-radius: 1.5cm;
     height: 35%;
     width: 100%;
     display: flex;
+    background-color: rgb(30,53,109);
+    border-top-right-radius: 1.5cm;
 }
 #img-teamwork{
     height: 100%;
     width: 50%;
+    border-top-left-radius: 1.5cm;
+    border-bottom-right-radius: 1.5cm;
+    border-top: solid white;
+    border-left: solid white;
+
 }
 #about-welcome{
     height: 100%;
     width: 50%;
     padding-left: 70px;
     padding-right: 30px;
-    background-color:rgb(68,140,93);
-    color: rgb(30,53,109);
+    background-color: rgb(30,53,109);
+    color: white;
     font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-right-radius: 1.5cm;
+    border-top: solid white;
+    border-right: solid white;
 }
 #about-middle{
     height: 30%;
@@ -360,16 +527,17 @@ strong{
 }
 #about-us{
     width: 30%;
-    background-color:rgb(68,140,93);
+    background-color: rgb(30,53,109);
     font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(30,53,109);
+    color: white;
+    border-left: solid white;
 }
 #about-us-text{
     width: 40%;
-    background-color: rgb(31, 71, 72, 0.5);
+    background-color: rgb(30,53,109);
     color: white;
     padding-left: 30px;
     padding-right: 30px;
@@ -381,56 +549,88 @@ strong{
 #about-middle-color{
     width: 30%;
     background-color: rgb(30,53,109);
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid white;
 }
 #about-bottom{
+    background-color: rgb(30,53,109);
     height: 35%;
     width: 100%;
     display: flex;
+    border-bottom-right-radius: 1.5cm;
+    border-bottom-left-radius: 1.5cm;
+
 }
 #about-bottom-color{
     width: 50%;
     background-color: rgb(30,53,109);
-    color: rgb(68,140,93);
+    color: white;
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-right: 30px;
     padding-left: 30px;
+    border-bottom-left-radius: 1.5cm; 
+    border-left: solid white;
+    border-bottom: solid white;
 }
 #img-box-bottom{
     width: 50%;
-    background-color:rgb(68,140,93);
+    border-bottom-right-radius: 1.5cm;
 }
 #img-teamwork2{
     height: 100%;
     width: 100%;
+    border-bottom-right-radius: 1.5cm;
+    border-bottom: solid white;
+    border-right: solid white;
+    border-top-left-radius: 1.5cm;
 }
 
 /*sign up*/
 #signup-mainbox{
     display: flex;
-    height: 90%;
-    width: 60%;
-    border:solid rgb(255, 255, 255, 0.7)
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
+
+    
     
 }
 #signup-leftbox{
-    width: 50%;
     height: 100%;
+    width: 50%;
+    border:solid rgb(255, 255, 255, 0.7);
+    border-bottom-left-radius: 10%;
+    border-top-left-radius: 10%;
+
 }
 #signup-img{
     height: 100%;
     width: 100%;
+    border-bottom-left-radius: 10%;
+    border-top-left-radius: 10%;
 }
 #signup-rightbox{
-    width: 50%;
     height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(30,53,109);
     color: white;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border:solid rgb(255, 255, 255, 0.7);
+    border-left: none;
+    
 }
 #signup-title{
     margin-left: 50px;
@@ -481,28 +681,174 @@ strong{
     justify-content: center;
 }
 
-/* To do listan */ 
-#to-do-list {
-    list-style: none;
-    background-color: greenyellow;
-    padding: 2px;
+#login-create-toggle{
+    color: white;
+    margin-left: 177px;
+    margin-top: 15px;
+
 }
 
-#to-do-list li {
-    border: 1px black solid;
+/* To do listan */ 
+
+#todoWrapper {
+    height: 600px;
+    /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
+    padding: 5px;
+    width: 570px;
+    border: 5px white solid;
+    border-radius: 25px;
+    background-color:rgb(68,140,93);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+#todoUl li{
+    list-style: none;
+    border: 1px white solid;
+    border-radius: 10px;
+    background-color: rgb(30,53,109);
+    color: white;
     padding: 5px;
     margin: 5px;
-    width: 650px;
+    width: 500px;
+    height:27px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    /* min-height: 27px; */
+}
+
+#todoUl li:hover {
+    background-color: rgba(23, 41, 85, 0.5);
+}
+
+/* TO DO INPUT + BUTTON */
+#todoInput {
+    margin-top: 5px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 390px;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  
+  /*  button */
+  #todoAddButton {
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    width: 100px;
+    background: rgb(30,53,109);
+    border: 1px white solid;
+    color: white;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+  }
+  
+  #todoAddButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+  }
     
+  .trashcan-div {
+      /* background-color: rgb(30,53,109); */
+      border-radius: 8px;
+      margin: -5px;
+      padding: 5px;
+  }
+
+  .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
+      cursor: pointer;
+  }
+
+.isItCompleted-div {
+    margin-right: 15px;
+    margin-top: 1px;
+    float: right;
+}
+#file-container {
+    display: flex;
+    column-gap: 10px;
+}
+.single-image-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.img-tests {
+    height: 50px;
 }
 
-#to-do-list li button {
-    padding: 0px 10px;
-   
+/* Sorting buttons */
+#sortCompletedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
-#c #to-do-list li input {
-    width: 550px;
+#sortAlphabetButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    cursor: pointer;
 }
-    
 
+#sortLastAddedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.todoBottom {
+    margin: 5px;
+    align-self: flex-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Mouseover/hover sort-buttons */
+#sortCompletedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortAlphabetButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortLastAddedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#todoUl {
+    overflow: auto;
+    height: 350px;
+    width: 530px;
+}

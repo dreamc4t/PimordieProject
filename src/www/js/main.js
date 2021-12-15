@@ -1,7 +1,11 @@
 let nav = new Nav();
 let notes = new Notes();
+let login = new Login();
+let signup = new SignUp();
+let contact = new Contact();
 
 document.querySelector('main').innerHTML = notes.render();
+notes.renderNotesList();
 document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
@@ -9,23 +13,34 @@ document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 onhashchange = changePage;
 changePage();
 
+function openMail() {
+    var adminMail = document.createElement("a");
+    adminMail.href = "mailto:info@pimordie.com";
+    adminMail.click();
+}
+
 function changePage() {
     let page = location.hash.replace('#', '');
     console.log(page);
-
+    
     switch(page) {
         case('notes'):
         document.querySelector('main').innerHTML = notes.render();
+        notes.renderNotesList();
         break;
-
+        
         case('todo'):
-        let toDoList = new ToDoList();
-        document.querySelector('main').innerHTML = toDoList.renderToDoList() + " <style> #todoId{ background-color: rgb(129, 155, 129);  } </style> ";
+        document.querySelector('main').innerHTML = '<div id="todoWrapper"> </div>';
+        toDoList1.renderTodoList();
         break;
 
-        case('sign-up'):
-        let signUp = new SignUp();
-        document.querySelector('main').innerHTML = signUp.renderSignUp();
+        case('login'):
+        document.querySelector('main').innerHTML = login.renderLogin();
+        break;
+
+        case('signup'):
+ 
+        document.querySelector('main').innerHTML = signup.renderSignUp();
         break;
 
         case('about-us'):
@@ -34,17 +49,17 @@ function changePage() {
         break;
 
         case('contact'):
-        let contact = new Contact();
+
         document.querySelector('main').innerHTML = contact.renderContact();
         break;
 
         default:
             document.querySelector('main').innerHTML = notes.render();
+        notes.renderNotesList();
     }
 }
 
-function activePage() {
 
-}
+    
 
 
