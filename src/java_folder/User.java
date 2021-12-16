@@ -15,11 +15,18 @@ public class User {
         this.password = password;
     }
 
-    public int getUserID() {
+    public User(int user_id, String email, String password, long created_date_time) {
+        this.user_id = user_id;
+        this.email = email;
+        this.password = password;
+        this.created_date_time = created_date_time;
+    }
+
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUserID(int user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

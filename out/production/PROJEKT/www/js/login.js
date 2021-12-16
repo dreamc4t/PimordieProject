@@ -19,6 +19,7 @@ class Login{
                 </div>
                 <button onclick="login.loginAccount()" id="signup-button">LOGIN</button>
                 <a id="login-create-toggle" href="#signup">Create account</a>
+                <h2 id="wrong-input">Wrong email or password</h2>
             </article>
         </div>
         `
@@ -28,7 +29,7 @@ class Login{
 
         let loginEmail = document.querySelector("#email-input").value;
         let loginPassword = document.querySelector("#password-input").value;
-      
+
         let user = {
             email: loginEmail,
             password: loginPassword
@@ -36,9 +37,25 @@ class Login{
 
         let result = await fetch("/rest/user", {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+          },
         body: JSON.stringify(user)
         });
+        let response = await result.json();
+        
+        if(response.login === true){
+
+            location.hash = "#notes";
+        }
+        else{
+            console.log("ska byta farg på wrong-input")
+        }
+
     }
+
+     
+    
 
     showPassword() {
         let x = document.getElementById("password-input");

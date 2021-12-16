@@ -688,6 +688,17 @@ strong{
 
 }
 
+#wrong-input{
+    font-size: 20px;
+    color:rgb(30,53,109);
+
+}
+#account-created{
+    font-size: 20px;
+    color: rgb(68,140,93);
+
+}
+
 /* To do listan */ 
 
 #todoWrapper {
