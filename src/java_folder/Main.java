@@ -166,7 +166,7 @@ public class Main {
             res.json(compKeys);
         });
 
-        int port = 3003;
+        int port = 3000;
 
         app.listen(port);
         System.out.println("Running on port " + port);
