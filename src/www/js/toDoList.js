@@ -27,9 +27,9 @@ class ToDoList{
     
     async renderTodoList(sortingBy, ascendDecend) {
         let wrapper = document.querySelector('#todoWrapper');
-        // todoList.innerHTML = "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>" ; 
         wrapper.innerHTML = '<ul id="todoUl"> </ul>'
         let todoList = document.querySelector('#todoUl');
+
         console.log("rendering todo list..")
         
         for(let todo of await this.getTodoListFromDb(sortingBy, ascendDecend)) {
@@ -47,6 +47,8 @@ class ToDoList{
 
             }
             todoList.innerHTML += todoLi;
+            todoList.innerHTML += "<style> #todoId{ background-color: rgb(129, 155, 129);  } </style>" ; 
+
             
       }
 

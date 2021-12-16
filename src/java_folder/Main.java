@@ -69,8 +69,8 @@ public class Main {
         app.post("/rest/todo-list", (req,res) -> {
             Todo todo = (Todo) req.getBody(Todo.class);
             System.out.println(todo.toString());
-            res.send("Post OK!");
             db.addTodo(todo);
+            res.send("Post OK!");
         });
 
         app.delete("/rest/todo-list/:todo_id", (req,res) -> {
@@ -166,7 +166,7 @@ public class Main {
             res.json(compKeys);
         });
 
-        int port = 3000;
+        int port = 3001;
 
         app.listen(port);
         System.out.println("Running on port " + port);
