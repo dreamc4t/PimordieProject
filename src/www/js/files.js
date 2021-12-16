@@ -1,5 +1,6 @@
 let filePosts = [];
 console.log("Hej här var der files.js");
+let noteSlask = new Notes;
 
 async function getFilePosts() {
     let result = await fetch('/rest/files')
@@ -18,15 +19,22 @@ function renderFilePosts() {
     
     for(let file of filePosts) {
         if(file.note_id == currentNoteId) {
+            let fileName = file.fileUrl.replace('/uploads/', '')
             let postLi =`
                     <div class="single-image-container">
-                        <img class="img-tests" src="${file.fileUrl}" alt="post-image">
+                        <div class='fileNameContainer'>${fileName}</div>
+                        <img class="img-tests" src="${file.fileUrl}" alt="Filename: ${fileName}" id='imgId${file.file_id}'>
                         <button class='delete-class' id='del${file.file_id}'>Delete file</button>
+                        <a href='${file.fileUrl}' download class='downloadFile'> <button>Download</button>
+                        </a>
                     </div>
             `;
+            
             filePostList.innerHTML += postLi;
         }
     }
+
+   
 
     document.querySelectorAll(".delete-class").forEach(item => {
         item.addEventListener("click", deteleFile)
@@ -69,10 +77,13 @@ async function addFile(e) {
      });
  
      filePosts.push(post)
+     /*
      toggleFiles();
      toggleFiles();
- 
+    */
      console.log(await result.text())
+     noteSlask.renderCurrentlyDisplayedNote();
+
 
 }
 
@@ -91,11 +102,15 @@ async function deteleFile() {
                 body: JSON.stringify(file)
             });
             console.log("Deleting id with id number " + idTodelete)
+            /*
             toggleFiles();
             toggleFiles();//Ett sätt att rendera om bilderna som visas så att den borttagna bilden försvinner
+            */
         }
 
         else {
             console.log("ok inget jävla deletande då")
         }
+        noteSlask.renderCurrentlyDisplayedNote();
+        
 }

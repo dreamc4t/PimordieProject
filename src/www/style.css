@@ -231,7 +231,7 @@ footer a:link {
 #currently-displayed-note {
     background-color: rgb(30,53,109);
     width: 700px;
-    overflow: auto;
+    /*overflow: auto;*/
     padding: 40px;
     color: white;
     border-radius: 1.5cm;
@@ -776,15 +776,51 @@ strong{
 #file-container {
     display: flex;
     column-gap: 10px;
+    width: 650px;
+    max-height: 180px;
+
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 5px;
+    padding-left: 20px;
 }
 .single-image-container {
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
+    row-gap: 2px;
+    width: 100px;
+    
+
 }
+.single-image-container button {
+    width: 100px;
+}
+
+.fileNameContainer {
+    font-size: 12px;
+    height: 16px;
+    margin-left: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
 .img-tests {
-    height: 50px;
+    height: 80px;
+    width: 100px;
+    
+    object-fit: cover;
+    
+    color: rgba(255, 255, 255, 0.637);
+    font-size: 11px;
+    
 }
+
 
 /* Sorting buttons */
 #sortCompletedButton {

@@ -18,15 +18,22 @@ function renderFilePosts() {
     
     for(let file of filePosts) {
         if(file.note_id == currentNoteId) {
+            let fileName = file.fileUrl.replace('/uploads/', '')
             let postLi =`
                     <div class="single-image-container">
-                        <img class="img-tests" src="${file.fileUrl}" alt="post-image">
+                        ${fileName}
+                        <img class="img-tests" src="${file.fileUrl}" alt="Filename: ${fileName}" id='imgId${file.file_id}'>
                         <button class='delete-class' id='del${file.file_id}'>Delete file</button>
+                        <a href='${file.fileUrl}' download class='downloadFile'> <button>Download</button>
+                        </a>
                     </div>
             `;
+            
             filePostList.innerHTML += postLi;
         }
     }
+
+   
 
     document.querySelectorAll(".delete-class").forEach(item => {
         item.addEventListener("click", deteleFile)
