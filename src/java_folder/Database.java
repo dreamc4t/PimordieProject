@@ -211,28 +211,42 @@ public class Database {
 
     //create user
 
-    public void createUser(User user) {
+    public ResponseLogin createUser(User user) {
+        ResponseLogin create = new ResponseLogin();
+        User userTry = this.getUserByEmail(user.getEmail());
         try {
+            if(userTry == null){
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
+                stmt.setString(1, user.getEmail());
+                stmt.setString(2, user.getPassword());
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
-            stmt.setString(1, user.getEmail());
-            stmt.setString(2, user.getPassword());
+                stmt.executeUpdate();
 
-            stmt.executeUpdate();
+                create.setLogin(true);
+            }
+            else{
+                create.setLogin(false);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    };
+
+        return create;
+    }
 
     //Login
-    public Boolean login(User user){
-        Boolean login = false;
+    public ResponseLogin login(User user){
+        ResponseLogin login = new ResponseLogin();
         User userTry = this.getUserByEmail(user.getEmail());
+
         if(userTry != null){
             if(userTry.getPassword().equals(user.getPassword())){
-                login = true;
+                login.setLogin(true);
             }
+        }
+        else{
+            login.setLogin(false);
         }
         return login;
     }
@@ -250,9 +264,7 @@ public class Database {
 
             user = userFromRS[0];
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (JsonProcessingException e) {
+        } catch (SQLException | JsonProcessingException e) {
             e.printStackTrace();
         }
 
