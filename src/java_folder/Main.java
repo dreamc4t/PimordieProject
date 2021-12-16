@@ -75,17 +75,18 @@ public class Main {
 
         app.delete("/rest/todo-list/:todo_id", (req,res) -> {
             int todo_id =  Integer.parseInt(req.getParam("todo_id"));
-            res.send("DELETED");
+
             db.deleteTodo(todo_id);
+
+            res.send("DELETED");
         });
 
         // req/res Login
-        app.post("/rest/user", (req, res) ->{
+        app.post("/rest/user", (req, res) -> {
+
             User user = (User) req.getBody(User.class);
 
-
-            db.login(user);
-
+            res.json(db.login(user));
             res.send("OK");
         });
 
@@ -94,8 +95,7 @@ public class Main {
 
             User user = (User) req.getBody(User.class);
 
-            db.createUser(user);
-
+            res.json(db.createUser(user));
             res.send("OK");
         });
 

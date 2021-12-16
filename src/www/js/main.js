@@ -1,13 +1,14 @@
+let login = new Login();
 let nav = new Nav();
 let notes = new Notes();
-let login = new Login();
 let signup = new SignUp();
 let contact = new Contact();
 
-document.querySelector('main').innerHTML = notes.render();
-notes.renderNotesList();
-document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
+// document.querySelector('main').innerHTML = notes.render();
+// notes.renderNotesList();
 
+document.querySelector('main').innerHTML = login.renderLogin();
+document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
 /*  +"<style>  #notes a{ background-color: linen; } </style>" */
 
 onhashchange = changePage;
@@ -24,6 +25,15 @@ function changePage() {
     console.log(page);
     
     switch(page) {
+
+        case('login'):
+        document.querySelector('main').innerHTML = login.renderLogin();
+        break;
+
+        case('signup'):
+        document.querySelector('main').innerHTML = signup.renderSignUp();
+        break;
+
         case('notes'):
         document.querySelector('main').innerHTML = notes.render();
         notes.renderNotesList();
@@ -34,28 +44,19 @@ function changePage() {
         toDoList1.renderTodoList();
         break;
 
-        case('login'):
-        document.querySelector('main').innerHTML = login.renderLogin();
-        break;
-
-        case('signup'):
- 
-        document.querySelector('main').innerHTML = signup.renderSignUp();
-        break;
-
         case('about-us'):
         let aboutUs = new AboutUs();
         document.querySelector('main').innerHTML = aboutUs.renderAboutUs();
         break;
 
         case('contact'):
-
         document.querySelector('main').innerHTML = contact.renderContact();
         break;
 
         default:
-            document.querySelector('main').innerHTML = notes.render();
-        notes.renderNotesList();
+        //     document.querySelector('main').innerHTML = notes.render();
+        // notes.renderNotesList();
+        document.querySelector('main').innerHTML = login.renderLogin();
     }
 }
 

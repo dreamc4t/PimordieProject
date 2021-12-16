@@ -11,8 +11,8 @@ class Footer{
             <div id="nav-box">
                 <div id="nav-box-top">
                     <div id="inner-box">
-                        <a id="nav-logos" href="#sign-up"><img id="signup" src="/pictures/signup.png" alt=""></a>
-                        <h5 id="nav-logos-signup">SIGN UP</h5>
+                        <a id="nav-logos" href="#signup"><img id="signup" src="img/kisspng-computer-icons-photography-clip-art-5ae13d878c94d3.5407367515247107915758.png" alt=""></a>
+                        <h5 id="nav-logos-signup">LogOut</h5>
                     </div>
                     <div id="inner-box">
                         <a id="nav-logos" href="#about-us"><img id="about" src="/pictures/aboutUS.png" alt=""></a>
