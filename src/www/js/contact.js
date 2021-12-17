@@ -1,10 +1,8 @@
-class Contact{
-
-
-    
-    //Render in main when #contact
-    renderContact(){
-        return`
+class Contact {
+  //Render in main when #contact
+  renderContact() {
+    return `
+    <div id="contact-main">
         <article id="contact-leftside">
             <div id="contact-header">
                 <h1 id="contact-headline">
@@ -14,7 +12,7 @@ class Contact{
                     Contact us for suggestions or questions.
                 </h2>
             </div>
-            <div id="contact-main">
+            <div id="contact-middle">
                 <div id="contact-contact">
                     <div id="contact-phone">
                         <img id="contact-logo" src="img/phoneLogo.png" alt="">
@@ -51,26 +49,27 @@ class Contact{
             <div id="contact-innerbox">
                 <button id="send-button" onclick="contact.contactMessage()">SEND MESSAGE</button>
             </div>
+            </div>
         </aside>
         `;
-    }
+  }
 
-    async contactMessage(){
+  async contactMessage() {
+    let sendFullname = document.querySelector("#input-fullname").value;
+    let sendEmail = document.querySelector("#input-contact").value;
+    let sendMessage = document.querySelector("#input-message").value;
 
-        let sendFullname = document.querySelector("#input-fullname").value;
-        let sendEmail = document.querySelector("#input-contact").value;
-        let sendMessage = document.querySelector("#input-message").value;
-        
-        let message = {
-            fullname: sendFullname,
-            email: sendEmail,
-            password: sendMessage
-        }
+    console.log(sendEmail, sendFullname, sendMessage);
+    let message = {
+      fullName: sendFullname,
+      email: sendEmail,
+      message: sendMessage,
+    };
+    console.log(message);
 
-        let result = await fetch("/rest/contact", {
-        method: "POST",
-        body: JSON.stringify(message)
-        });
-    }
+    let result = await fetch("/rest/contact", {
+      method: "POST",
+      body: JSON.stringify(message),
+    });
+  }
 }
-

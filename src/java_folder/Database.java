@@ -211,21 +211,21 @@ public class Database {
 
     //create user
 
-    public Boolean createUser(User user){
-        Boolean create = false;
+    public ResponseLogin createUser(User user) {
+        ResponseLogin create = new ResponseLogin();
+        User userTry = this.getUserByEmail(user.getEmail());
         try {
-
-            User userTry = this.getUserByEmail(user.getEmail());
             if(userTry == null){
-                create = true;
-
                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO user (email, password) VALUES(?, ?)");
-
                 stmt.setString(1, user.getEmail());
                 stmt.setString(2, user.getPassword());
 
                 stmt.executeUpdate();
 
+                create.setLogin(true);
+            }
+            else{
+                create.setLogin(false);
             }
 
         } catch (SQLException e) {
@@ -236,13 +236,17 @@ public class Database {
     }
 
     //Login
-    public Boolean login(User user){
-        Boolean login = false;
+    public ResponseLogin login(User user){
+        ResponseLogin login = new ResponseLogin();
         User userTry = this.getUserByEmail(user.getEmail());
+
         if(userTry != null){
             if(userTry.getPassword().equals(user.getPassword())){
-                login = true;
+                login.setLogin(true);
             }
+        }
+        else{
+            login.setLogin(false);
         }
         return login;
     }
@@ -260,15 +264,49 @@ public class Database {
 
             user = userFromRS[0];
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (JsonProcessingException e) {
+        } catch (SQLException | JsonProcessingException e) {
             e.printStackTrace();
         }
 
         return user;
     }
+
+//******************************** Composite key *********************************
+
+    public void createCompositeKey(int file_id, int note_id) {
+        try {
+
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO file_composite (file_id, notes_id) VALUES(?, ?)");
+            stmt.setInt(1, file_id);
+            stmt.setInt(2,note_id);
+
+            stmt.executeUpdate();
+
+            stmt.executeQuery();
+            System.out.println("Created a composite key with file_id " + file_id + " and notes_id " + note_id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public List<CompositeKeyNotesFiles> getCompositeKeys() {
+        List<CompositeKeyNotesFiles> compositeKeys = null;
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM file_composite");
+            ResultSet rs = stmt.executeQuery();
+
+            CompositeKeyNotesFiles[] usersFromRS = (CompositeKeyNotesFiles[]) Utils.readResultSetToObject(rs, CompositeKeyNotesFiles[].class);
+            compositeKeys = List.of(usersFromRS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return compositeKeys;
+    }
 //************************ File upload ************************
+
 
     public String uploadFile(FileItem file) {
 
@@ -287,17 +325,52 @@ public class Database {
 
     public void createFile(Files file) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO file (fileUrl) VALUES(?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO file (fileUrl,note_id) VALUES(?,?)");
             stmt.setString(1, file.getFileUrl());
-
+            stmt.setInt(2, file.getNote_id());
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+    public List<Files> getFiles() {
+        List<Files> files = null;
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM file");
+            ResultSet rs = stmt.executeQuery();
+
+            Files[] usersFromRS = (Files[]) Utils.readResultSetToObject(rs, Files[].class);
+            files = List.of(usersFromRS);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return files;
+    }
+
+    public void deleteFile(int file_id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM file WHERE file_id = ?");
+            stmt.setInt(1, file_id);
+
+            int i = stmt.executeUpdate();
+            System.out.println(i + " records updated. Removed file with ID " + file_id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private long unixTimestamp(){
         long unixtime = Instant.now().getEpochSecond();
-        System.out.println("the unixTime = "+ unixTimestamp());
+        System.out.println("the unixTime = "+ unixtime);
         return unixtime;
     };
+
+
 }

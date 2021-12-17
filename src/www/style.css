@@ -5,7 +5,7 @@
 }
 
 body{
-    height: 100vh;
+    /*height: 100vh; */
     width: 100%;
     background-image: url(img/dark-green-texture_1205-338.webp);
     display: flex;
@@ -19,6 +19,7 @@ header{
     background-color: rgb(30,53,109);
     display: flex;
     justify-content: center;
+    position: relative;
 }
 #logo-div {
     display: flex;
@@ -40,15 +41,18 @@ header{
     font-size: 45px;
 }
 
+#headerLink:link {
+    text-decoration: none;
+}
+
 /*Main*/
 main{
-    width: 100%;
-    height: 70%;
-
+    min-height: 600px; /* denna går att ändra först när conact/about us fixas så att den ej är beroende av den */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+    margin-bottom: 180px; /*Så att man kan scrolla ända ner på main när sidan blir väldigt lång*/
 }
 
 /* .toggle-nav, alltså Notes eller To-do knapparna */ 
@@ -59,7 +63,7 @@ main{
     justify-content: center;
     align-items: center;
     gap: 20px;
-    position: absolute;
+    position: fixed;
     bottom: 110px;
     width: 100%;
 }
@@ -87,8 +91,21 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: fixed;
     bottom: 0px;
+    position: fixed;
+
+}
+
+footer h5 {
+    text-align: center;
+    
+}
+footer a:link {
+    text-decoration: none;
+}
+
+#inner-box1 {
+    background-color: black;
 }
 
 /*Footer Nav*/
@@ -146,12 +163,15 @@ footer{
 
 /*Notes-page*/
 #notes-page {
-    height: calc(100vh - 280px); /*footer 100px, togglenav 80px, header 100px*/
-    width: 100%;
-    padding: 20px 20px 20px 20px;
+   /* height: calc(100vh - 280px); /*footer 100px, togglenav 80px, header 100px*/
+   margin-top: 50px;
+   height: 600px;
+   width: 900px; 
+   min-height: 150px;
+   padding-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+   /* gap: 20px; */
 }
 #notes-menu { /*notes-list + add-note*/
     display: flex;
@@ -166,6 +186,7 @@ footer{
     overflow: auto;
     row-gap: 10px;
     padding-right: 20px;
+    overflow-x: hidden;
 }
 .note-list-item {
     width: 200px;
@@ -210,38 +231,46 @@ footer{
 #currently-displayed-note {
     background-color: rgb(30,53,109);
     width: 700px;
-    overflow: auto;
-    padding: 20px;
+    /*overflow: auto;*/
+    padding: 40px;
     color: white;
     border-radius: 1.5cm;
     border:solid white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
-#currently-displayed-note p {
-    font-size: 20px;
-}
-
-#notes-input{
-    height: 90%;
+.note-input-field{
     width: 100%;
-    background-color: rgb(30,53,109);
+    background-color: rgba(23, 41, 85, 0.5);
     color: white;
-    border:none;
+    border: none;
     outline: none;
+    resize: none;
+    padding: 5px;
+    padding-left: 20px;
 }
-#save-note-button{
+#noteTitle{
+    padding-top: 20px;
+    font-size: 40px;
+    line-height: 20px;
+    border-top-left-radius: 0.2cm;
+    border-top-right-radius: 0.2cm;
+}
+#notes-input {
+    flex-grow: 1;
+    border-bottom-left-radius: 0.2cm;
+    border-bottom-right-radius: 0.2cm;
+    margin-bottom: 10px;
+}
+.save-button{
     background-color:rgb(68,140,93);
     border-radius: 0.5cm;
     height: 50px;
     width: 80px;
     color: white;
-    border:solid white;
-    
 }
-#save-note-button:hover{
+.save-button:hover{
     background-color: rgba(255,255,255,0.5);
 }
 
@@ -278,9 +307,21 @@ strong{
 }
 
 /*#Contact*/
+
+#contact-main {
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
+    min-height: 150px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 #contact-leftside{
-    height: 90%;
-    width: 30%;
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     background-color: rgb(30,53,109);
@@ -288,8 +329,35 @@ strong{
     border: solid rgb(255, 255, 255, 0.5);
     border-bottom-left-radius: 1.5cm;
     border-top-left-radius: 1.5cm;
+    justify-content: space-around;
     
 }
+
+
+#contact-rightside{
+    height: 100%;
+    width: 50%;
+    border-bottom-right-radius: 1.5cm;
+    border-top-right-radius: 1.5cm;
+    border-top: solid white;
+    border-bottom: solid white;
+    border-right: solid white;
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(255, 255, 255, 0.5);
+    justify-content: center;
+    background-color: rgb(30,53,109);
+
+}
+
+#contact-middle{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #contact-header{
     height: 20%;
     width: 100%;
@@ -304,14 +372,6 @@ strong{
 #contact-subline{
     font-size: 30px;
     padding-left: 50px;
-}
-#contact-main{
-    height: 80%;
-    width: 100%;
-    display: flex;
-    padding-left: 50px;
-
-
 }
 #contact-contact{
     height: 100%;
@@ -354,22 +414,6 @@ strong{
 
 
 
-#contact-rightside{
-
-    border-bottom-right-radius: 1.5cm;
-    border-top-right-radius: 1.5cm;
-    border-top: solid white;
-    border-bottom: solid white;
-    border-right: solid white;
-    height: 90%;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    border: solid rgb(255, 255, 255, 0.5);
-    justify-content: center;
-    background-color: rgb(30,53,109);
-
-}
 #input-fullname{
     margin-left: 15px;
     height: 100%;
@@ -440,8 +484,9 @@ strong{
 
 /*about us*/
 #about-main{
-    height: 90%;
-    width: 60%; 
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
 }
 #about-top{
     border-top-left-radius: 1.5cm;
@@ -552,15 +597,16 @@ strong{
 /*sign up*/
 #signup-mainbox{
     display: flex;
-    height: 90%;
-    width: 60%;
+    margin-top: 50px;
+    height: 600px;
+    width: 900px; 
 
     
     
 }
 #signup-leftbox{
-    width: 50%;
     height: 100%;
+    width: 50%;
     border:solid rgb(255, 255, 255, 0.7);
     border-bottom-left-radius: 10%;
     border-top-left-radius: 10%;
@@ -573,8 +619,8 @@ strong{
     border-top-left-radius: 10%;
 }
 #signup-rightbox{
-    width: 50%;
     height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -637,23 +683,56 @@ strong{
 
 #login-create-toggle{
     color: white;
-    margin-left: 245px;
+    margin-left: 177px;
     margin-top: 15px;
+
+}
+
+#wrong-input{
+    font-size: 20px;
+    color:rgb(30,53,109);
+
+}
+#account-created{
+    font-size: 20px;
+    color: rgb(68,140,93);
 
 }
 
 /* To do listan */ 
 
-#todoUl {
-
+#todoWrapper {
+    height: 600px;
+    /* height: calc(100vh - 300px); /*footer 100px, togglenav 80px, header 100px*/
+    padding: 5px;
+    width: 570px;
+    border: 5px white solid;
+    border-radius: 25px;
+    background-color:rgb(68,140,93);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    align-content: center;
 }
+
 #todoUl li{
     list-style: none;
-    border: 1px black solid;
+    border: 1px white solid;
+    border-radius: 10px;
+    background-color: rgb(30,53,109);
+    color: white;
     padding: 5px;
     margin: 5px;
     width: 500px;
-    min-height: 27px;
+    height:27px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    /* min-height: 27px; */
+}
+
+#todoUl li:hover {
+    background-color: rgba(23, 41, 85, 0.5);
 }
 
 /* TO DO INPUT + BUTTON */
@@ -661,8 +740,8 @@ strong{
     margin-top: 5px;
     margin-left: 5px;
     border: none;
-    border-radius: 0;
-    width: 400px;
+    border-radius: 10px;
+    width: 390px;
     padding: 10px;
     float: left;
     font-size: 16px;
@@ -671,26 +750,29 @@ strong{
   /*  button */
   #todoAddButton {
     margin-top: 5px;
+    margin-right: 5px;
     padding: 10px;
     width: 100px;
-    background: #d9d9d9;
-    color: #555;
+    background: rgb(30,53,109);
+    border: 1px white solid;
+    color: white;
     float: left;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 0;
+    border-radius: 10px;
   }
   
   #todoAddButton:hover {
-    background-color: #bbb;
+    background-color:rgba(23, 41, 85, 0.5);
   }
     
   .trashcan-div {
-      background-color: blue;
+      /* background-color: rgb(30,53,109); */
+      border-radius: 8px;
       margin: -5px;
-      padding: 4px;
+      padding: 5px;
   }
 
   .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
@@ -701,4 +783,119 @@ strong{
     margin-right: 15px;
     margin-top: 1px;
     float: right;
+}
+#file-container {
+    display: flex;
+    column-gap: 10px;
+    width: 650px;
+    max-height: 180px;
+
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 5px;
+    padding-left: 20px;
+}
+.single-image-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    width: 100px;
+    
+
+}
+.single-image-container button {
+    width: 100px;
+}
+
+.fileNameContainer {
+    font-size: 12px;
+    height: 16px;
+    margin-left: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.img-tests {
+    height: 80px;
+    width: 100px;
+    
+    object-fit: cover;
+    
+    color: rgba(255, 255, 255, 0.637);
+    font-size: 11px;
+    
+}
+
+
+/* Sorting buttons */
+#sortCompletedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#sortAlphabetButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#sortLastAddedButton {
+    background-color:rgb(30,53,109);
+    border: 1px white solid;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    height: 27px;
+    width: 150px;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.todoBottom {
+    margin: 5px;
+    align-self: flex-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Mouseover/hover sort-buttons */
+#sortCompletedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortAlphabetButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#sortLastAddedButton:hover {
+    background-color:rgba(23, 41, 85, 0.5);
+}
+
+#todoUl {
+    overflow: auto;
+    height: 350px;
+    width: 530px;
 }

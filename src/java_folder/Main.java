@@ -69,43 +69,44 @@ public class Main {
         app.post("/rest/todo-list", (req,res) -> {
             Todo todo = (Todo) req.getBody(Todo.class);
             System.out.println(todo.toString());
-            res.send("Post OK!");
             db.addTodo(todo);
+            res.send("Post OK!");
         });
 
         app.delete("/rest/todo-list/:todo_id", (req,res) -> {
             int todo_id =  Integer.parseInt(req.getParam("todo_id"));
-            res.send("DELETED");
+
             db.deleteTodo(todo_id);
+
+            res.send("DELETED");
         });
 
         // req/res Login
-        app.post("/rest/user", (req, res) ->{
+        app.post("/rest/user", (req, res) -> {
+
             User user = (User) req.getBody(User.class);
 
-
-            db.login(user);
-
+            res.json(db.login(user));
             res.send("OK");
         });
 
         // res/req signup
-        app.post("/rest/user", ((req, res) -> {
+        app.post("/rest/signup", (req, res) -> {
+
             User user = (User) req.getBody(User.class);
 
-            db.createUser(user);
-
+            res.json(db.createUser(user));
             res.send("OK");
-        }));
+        });
 
         // req/res contact
-        app.post("/rest/contact", ((request, response) -> {
-            ContactMessage message = (ContactMessage) request.getBody(ContactMessage.class);
+        app.post("/rest/contact", (req, res) -> {
+            ContactMessage message = (ContactMessage) req.getBody(ContactMessage.class);
 
         db.addMessage(message);
 
-            response.send("OK");
-        }));
+            res.send("OK");
+        });
 
         //Sätta todo item som completed
         app.put("/rest/todo-list/:todo_id", (req,res) -> {
@@ -132,21 +133,40 @@ public class Main {
             // extract the file from the FormData
             try {
                 List<FileItem> files = req.getFormData("files");
-
                 fileUrl = db.uploadFile(files.get(0));
-
-
             } catch (Exception e) {
                 e.printStackTrace();
                 res.send("error");
             }
 
-            // return "/uploads/image-name.jpg
-            res.send("stored " + fileUrl);
+            res.send(fileUrl);
 
         });
 
-        int port = 5000;
+        app.post("/rest/files", (req, res) -> {
+            Files file = (Files) req.getBody(Files.class);
+
+            db.createFile(file);
+            res.send("post OK");
+        });
+
+        app.get("/rest/files", (req, res) -> {
+            List<Files> files = db.getFiles();
+            res.json(files);
+        });
+
+        app.delete("/rest/files/:file_id", (req,res) -> {
+            int file_id =  Integer.parseInt(req.getParam("file_id"));
+            res.send("DELETED");
+            db.deleteFile(file_id);
+        });
+
+        app.get("/rest/composite", (req, res) -> {
+            List<CompositeKeyNotesFiles> compKeys = db.getCompositeKeys();
+            res.json(compKeys);
+        });
+
+        int port = 3000;
 
         app.listen(port);
         System.out.println("Running on port " + port);
