@@ -4,12 +4,6 @@ let notes = new Notes();
 let signup = new SignUp();
 let contact = new Contact();
 
-// document.querySelector('main').innerHTML = notes.render();
-// notes.renderNotesList();
-
-document.querySelector('main').innerHTML = login.renderLogin();
-document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav() ;
-/*  +"<style>  #notes a{ background-color: linen; } </style>" */
 
 onhashchange = changePage;
 changePage();
@@ -28,6 +22,7 @@ function changePage() {
 
         case('login'):
         document.querySelector('main').innerHTML = login.renderLogin();
+        document.querySelector('.toggle-nav').innerHTML = ""; //Makes sure toggle nav is not visible before successful login
         break;
 
         case('signup'):
@@ -54,8 +49,6 @@ function changePage() {
         break;
 
         default:
-        //     document.querySelector('main').innerHTML = notes.render();
-        // notes.renderNotesList();
         document.querySelector('main').innerHTML = login.renderLogin();
     }
 }

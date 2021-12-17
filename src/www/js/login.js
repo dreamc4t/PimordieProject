@@ -45,8 +45,8 @@ class Login{
         let response = await result.json();
         
         if(response.login === true){
-
             location.hash = "#notes";
+            document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav();
         }
         else{
             console.log("ska byta farg på wrong-input")
