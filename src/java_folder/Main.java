@@ -83,9 +83,7 @@ public class Main {
 
         // req/res Login
         app.post("/rest/user", (req, res) -> {
-
             User user = (User) req.getBody(User.class);
-
             res.json(db.login(user));
             res.send("OK");
         });
