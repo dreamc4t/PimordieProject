@@ -43,13 +43,14 @@ class Login{
         body: JSON.stringify(user)
         });
         let response = await result.json();
-        
+        console.log('got response:')
+        console.log(response);
         if(response.login === true){
-
             location.hash = "#notes";
+            document.querySelector('.toggle-nav').innerHTML = nav.renderMainNav();
         }
         else{
-            console.log("ska byta farg på wrong-input")
+            alert('Incorrect email or password');
         }
 
     }
