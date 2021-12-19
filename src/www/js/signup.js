@@ -17,7 +17,6 @@ class SignUp {
                 </div>
                 <button onclick="signup.createAccount()" id="signup-button">SIGN UP</button>
                 <a id="login-create-toggle" href="#login">Back to login</a>
-                <h2 id="account-created">Welcome to PimOrDie</h2>
             </article>
         </div>`;
   }
