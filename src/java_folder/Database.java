@@ -164,10 +164,10 @@ public class Database {
         }
     }
 
-    public void updateTodo(int todo_id, String text) {
+    public void updateTodo(int todo_id, Todo todo) {
         try {
             PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET text = ? WHERE todo_id = ?");
-            stmt.setString(1, text);
+            stmt.setString(1, todo.getText());
             stmt.setInt(2, todo_id);
 
             stmt.executeUpdate();
@@ -176,11 +176,9 @@ public class Database {
         }
     }
 
+
     public void completeTodo(int todo_id, boolean isCompleted) {
         try {
-
-
-
             PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET isCompleted = " + isCompleted + " WHERE todo_id = ?");
             stmt.setInt(1, todo_id);
 
@@ -237,18 +235,14 @@ public class Database {
 
     //Login
     public ResponseLogin login(User user){
-        ResponseLogin login = new ResponseLogin();
-        User userTry = this.getUserByEmail(user.getEmail());
-
-        if(userTry != null){
-            if(userTry.getPassword().equals(user.getPassword())){
-                login.setLogin(true);
+        ResponseLogin loginAttempt = new ResponseLogin();
+        User matchingUserFromDb = this.getUserByEmail(user.getEmail());
+        if(matchingUserFromDb != null){
+            if(matchingUserFromDb.getPassword().equals(user.getPassword())) {
+                loginAttempt.setLogin(true); //if there is a user with matching email and password set login.login to true
             }
         }
-        else{
-            login.setLogin(false);
-        }
-        return login;
+        return loginAttempt;
     }
 
 
@@ -259,10 +253,10 @@ public class Database {
             stmt.setString(1, email);
 
             ResultSet rs = stmt.executeQuery();
-
-            User[] userFromRS = (User[]) Utils.readResultSetToObject(rs, User[].class);
-
-            user = userFromRS[0];
+            if(rs.isBeforeFirst()) {//Checks that Resultset is not empty
+                User[] userFromRS = (User[]) Utils.readResultSetToObject(rs, User[].class);
+                user = userFromRS[0];
+            }
 
         } catch (SQLException | JsonProcessingException e) {
             e.printStackTrace();

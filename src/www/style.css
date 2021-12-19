@@ -768,15 +768,20 @@ strong{
     background-color:rgba(23, 41, 85, 0.5);
   }
     
-  .trashcan-div {
+  .trashcan-div, .edit-div {
       /* background-color: rgb(30,53,109); */
       border-radius: 8px;
       margin: -5px;
       padding: 5px;
   }
 
-  .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
+   .edit-div:hover, .trashcan-div:hover, .isItCompleted-div:hover, .isItCompleted-div input:hover{
       cursor: pointer;
+  }
+
+  .edit-div {
+      margin-right: 1px;
+      margin-left: -10px;
   }
 
 .isItCompleted-div {

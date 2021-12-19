@@ -36,7 +36,7 @@ class ToDoList{
             let todoLi = `
             <li> 
                 ${todo.text}
-                <span class='trashcan-div'id='trash${todo.todo_id}' style='float:right;'> <img src='img/trashcan.png' style='height:15px;' class='trashcan-image'> </span>
+                <span class='trashcan-div'id='trash${todo.todo_id}' style='float:right;'> <img src='img/trashcan.png' style='height:15px;' class='trashcan-image'> </span> <span style='float:right;' class='edit-div'id='edit${todo.todo_id}'> <img src='img/edit.png' style='height:15px;'> </span>
                 `;
     
                 if (todo.completed == true) {
@@ -73,6 +73,10 @@ class ToDoList{
         document.querySelectorAll(".isItCompleted-div").forEach(item => {
             item.addEventListener("click", setIsCompelted)
         }); 
+
+        document.querySelectorAll(".edit-div").forEach(item => {
+            item.addEventListener("click", editByClick)
+        })
 
        
 
@@ -142,7 +146,6 @@ let toDoList1 = new ToDoList();
         
 
     async function deleteItemByClick() {
-
         idTodelete = this.id.replace('trash', '')
         let yesOrNo = confirm("Are you sure?");
     
@@ -164,6 +167,32 @@ let toDoList1 = new ToDoList();
         toDoList1.renderTodoList();
         
     }
+
+    async function editByClick() {
+        console.log("edkjha a a b b b bakjhit")
+        idToEdit = this.id.replace('edit', '');
+        let textInput = prompt("Update to:");
+        console.log(textInput + " " + idToEdit)
+
+        let textUpdate = {
+            text: textInput,
+            todo_id: idToEdit
+        }
+        
+
+        await fetch('/rest/todo-list/edit/' + idToEdit, {
+            method: 'put',
+            body: JSON.stringify(textUpdate)
+        }); 
+        console.log("Hejdå")
+        toDoList1.renderTodoList();
+
+    }
+
+
+
+
+
 
     async function addTodoItem() {
         if (document.getElementById("todoInput").value == '') {
@@ -206,3 +235,4 @@ let toDoList1 = new ToDoList();
 
   
 
+ 
