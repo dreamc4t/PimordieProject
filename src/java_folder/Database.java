@@ -164,10 +164,10 @@ public class Database {
         }
     }
 
-    public void updateTodo(int todo_id, String text) {
+    public void updateTodo(int todo_id, Todo todo) {
         try {
             PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET text = ? WHERE todo_id = ?");
-            stmt.setString(1, text);
+            stmt.setString(1, todo.getText());
             stmt.setInt(2, todo_id);
 
             stmt.executeUpdate();
@@ -176,11 +176,9 @@ public class Database {
         }
     }
 
+
     public void completeTodo(int todo_id, boolean isCompleted) {
         try {
-
-
-
             PreparedStatement stmt = conn.prepareStatement("UPDATE todo_list SET isCompleted = " + isCompleted + " WHERE todo_id = ?");
             stmt.setInt(1, todo_id);
 

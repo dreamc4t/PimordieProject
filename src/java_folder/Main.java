@@ -124,6 +124,18 @@ public class Main {
             res.send("Updated");
         });
 
+        //uppdatera todo
+        app.put("/rest/todo-list/edit/:todo_id", (req,res) -> {
+            int todo_id =  Integer.parseInt(req.getParam("todo_id"));
+
+            Todo todo = (Todo) req.getBody(Todo.class);
+
+            System.out.println(todo.toString());
+            res.send("Updated");
+
+            db.updateTodo(todo_id, todo);
+        });
+
         //Här är req/res för file upload
         app.post("/api/file-upload", (req, res) -> {
             String fileUrl = null;
